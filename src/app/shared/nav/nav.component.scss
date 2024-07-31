@@ -1,0 +1,88 @@
+@import "../../../palette";
+
+nav {
+  display: flex;
+  width: 100%;
+  height: 70px;
+  z-index: 10;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  background-color: transparent;
+  position: fixed;
+  flex-direction: column;
+  align-items: center;
+  transition: background-color 0.3s ease-in-out;
+  .desktop-logo {
+    display: none;
+  }
+  > .links {
+    margin-top: 14px;
+    margin-bottom: 7px;
+    display: none;
+    gap: 8px;
+    transition: display 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 1;
+    >li {
+      list-style: none;
+      > a {
+        text-decoration: none;
+        color: $white;
+        font-size: 11px;
+        position: relative;
+      }
+    }
+
+  }
+  > button.nav-btn {
+    border-radius: 50%;
+    border: none;
+    width: 70px;
+    height: 70px;
+    padding-top: 33px;
+    margin-top: -35px;
+    background-color: $nav-links;
+    transition: margin-top 0.5s ease-in-out;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+  nav {
+    padding: 20px 40px;
+    position: relative;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    >.desktop-logo {
+      >img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+    >.links {
+      >li {
+        >a {
+          color: $nav-links;
+          font-size: 16px;
+          &::before {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background-color: $nav-links;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+          }
+
+          &:hover::before {
+            width: 50%;
+          }
+        }
+      }
+    }
+  }
+}
