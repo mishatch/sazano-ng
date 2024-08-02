@@ -1,7 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'variables';
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
+}
+body {
+  background-color: $body-bg;
+}
+// Fonts
+@font-face {
+  font-family: boxo;
+  src: url(./assets/fonts/bpg_boxo.ttf);
+}
+@font-face {
+  font-family: le studio;
+  src: url(./assets/fonts/bpg_le_studio_02_caps.ttf);
+}
+@font-face {
+  font-family: castellar;
+  src: url(./assets/fonts/CASTELAR.ttf);
+}
+@font-face {
+  font-family: trajan;
+  src: url(./assets/fonts/Trajan_Pro_Regular.ttf);
+}
+@font-face {
+  font-family: cormorant;
+  src: url(./assets/fonts/CormorantGaramond-Regular.ttf);
+}
+
+.geo-primary {
+  font-family: le studio, sans-serif;
+}
+.geo-secondary {
+  font-family: boxo, sans-serif;
+}
+.eng-primary {
+  font-family: trajan, sans-serif;
+}
+.eng-secondary {
+  font-family: cormorant, sans-serif;
+}
+.eng-third {
+  font-family: castellar, sans-serif;
 }
