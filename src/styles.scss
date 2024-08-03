@@ -46,3 +46,35 @@ body {
 .eng-third {
   font-family: castellar, sans-serif;
 }
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+.carousel-item{
+  width: 100%;
+  height: 100%;
+  .picsum-img-wrapper {
+    width: 100%;
+    height: 100%;
+
+    > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+    }
+  }
+
+}
+.carousel-container {
+  height: 80%;
+  width: 100%;
+  .carousel-inner {
+    height: 100%;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+

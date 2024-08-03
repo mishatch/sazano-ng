@@ -1,0 +1,44 @@
+<section class="hotel geo-primary" id="hotel">
+  <h1 class="hotel-heading">სასტუმრო</h1>
+  <ngb-carousel
+    #carousel
+    [interval]="2000"
+    [pauseOnHover]="pauseOnHover"
+    [pauseOnFocus]="pauseOnFocus"
+    (slide)="onSlide($event)"
+    class="carousel-container"
+  >
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img src="assets/images/home/hotel/new_building.webp" alt="New Building" />
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img src="assets/images/home/hotel/new_balcony.webp" alt="New Building Balcony" />
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img src="assets/images/home/hotel/fruit.webp" alt="Fruit And Wine On Table" />
+      </div>
+    </ng-template>
+
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img src="assets/images/home/hotel/old_interior.webp" alt="Old Building Interior" />
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img src="assets/images/home/hotel/riverside.webp" alt="Riverside" />
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img src="assets/images/home/hotel/old_building.webp" alt="Old Building" />
+      </div>
+    </ng-template>
+  </ngb-carousel>
+  <button class="see-rooms">იხილეთ ოთახები</button>
+</section>

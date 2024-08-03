@@ -17,9 +17,17 @@
         რეგიონში პირველი ღია სამზარეულო, რომელსაც ერთდროულად 100 ადამიანის
         გამასპინძლება შეუძლია, გამოირჩევა თავისი მინიმალისტური დიზაინით,
         თანამედროვე აღჭურვილობითა და პანორამული ხედით.
-        <span data-modal-target="#modal">იხილეთ რესტორნის მენიუ:</span>
+        <span (click)="openScrollableContent(longContent)">იხილეთ რესტორნის მენიუ:</span>
       </p>
     </div>
   </div>
+  <ng-template #longContent let-modal>
+    <div class="modal-body">
+      <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+      <img src="../../../assets/images/home/restaurant/sazano%20wine%20menu%20(GE)-2.webp" alt="Menu" class="modal-image">
+      <img src="../../../assets/images/home/restaurant/sazano%20wine%20menu%20Wine%20Ge%20unlocked-2.webp" alt="Menu" class="modal-image">
+    </div>
+  </ng-template>
 
 </section>
+
