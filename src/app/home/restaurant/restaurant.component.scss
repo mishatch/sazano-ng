@@ -1,0 +1,132 @@
+@import "../../../variables";
+
+.restaurant {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 100px;
+  padding-bottom: 110px;
+  margin-top: -70px;
+
+  > h1 {
+    color: $nav-links;
+  }
+
+  > .restaurant-content {
+    > .restaurant-img {
+      width: 100%;
+      height: 300px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      > img {
+        max-width: 100%;
+        max-height: 350px;
+      }
+
+      > .restaurant-img-desktop {
+        display: none;
+      }
+    }
+
+    .restaurant-description {
+      > p {
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 14px;
+
+        > span {
+          font-weight: bold;
+          color: $nav-links;
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: $tablet) {
+  .restaurant {
+    justify-content: space-around;
+    height: 70vh;
+    padding-bottom: 0;
+    > h1 {
+      font-size: 28px;
+    }
+    > .restaurant-content {
+      display: flex;
+      > div {
+        width: 50%;
+      }
+      > .restaurant-img {
+        > img {
+          max-width: 105%;
+        }
+      }
+      > .restaurant-description {
+        > p.geo-secondary {
+          font-size: 16px;
+          line-height: 24px;
+        }
+      }
+      > div:nth-child(2) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        > p {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $desktop) {
+  #restaurant.restaurant.component-5 {
+    > .modal {
+      width: 50%;
+    }
+    > .restaurant-content {
+      .restaurant-description {
+        > p {
+          line-height: 30px;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: $desktop-large) {
+  .restaurant {
+    padding-right: 12%;
+    padding-left: 12%;
+    margin-bottom: 100px;
+    > h1 {
+      font-size: 32px;
+    }
+    > .restaurant-content {
+      > .restaurant-description {
+        > p {
+          font-size: 22px;
+          line-height: 40px;
+          padding-left: 130px;
+          padding-right: 0;
+        }
+      }
+      > .restaurant-img {
+        display: flex;
+        justify-content: center;
+        > img:nth-child(1) {
+          display: none;
+        }
+        > img:nth-child(2) {
+          display: block;
+          max-height: 450px;
+        }
+      }
+    }
+  }
+}

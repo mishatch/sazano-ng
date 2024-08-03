@@ -1,0 +1,151 @@
+@import "../../../variables";
+
+footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  padding: 25px 20px;
+  background-color: $nav-links;
+
+  > .footer-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    > .footer-title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      > .footer-logo {
+        width: 65px;
+        height: 62px;
+        margin-bottom: 15px;
+      }
+
+      > h6 {
+        font-size: 18px;
+        text-align: center;
+        margin-bottom: 15px;
+        color: $footer-icons;
+      }
+
+      &:hover {
+        cursor: default;
+
+        > h6 {
+          color: white;
+          transition: 0.4s;
+        }
+
+        > .footer-logo {
+          > path {
+            fill: white;
+            transition: 0.4s;
+          }
+        }
+      }
+    }
+
+    > p {
+      font-size: 10px;
+      text-align: center;
+      margin-bottom: 10px;
+      color: $footer-icons;
+    }
+
+    > p:last-of-type {
+      margin-bottom: 15px;
+    }
+  }
+
+  .footer-line {
+    width: 100%;
+    height: 1px;
+    margin-bottom: 15px;
+    background-color: $footer-icons;
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 5px;
+
+    > a {
+      > li {
+        list-style-type: none;
+
+        svg {
+          width: 29px;
+        }
+
+        svg:first-of-type {
+          height: 22px;
+        }
+      }
+
+      &:hover {
+        path {
+          fill: white;
+          transition: 0.4s;
+        }
+      }
+
+      .transparent {
+        fill: #4c0027;
+      }
+    }
+
+    > a:last-of-type {
+      &:hover {
+        #booking-path {
+          fill: white;
+          transition: 0.4s;
+        }
+
+        .transparent {
+          fill: #4c0027;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $tablet) {
+  .footer {
+    .footer-top {
+      > p {
+        font-size: 11px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $desktop) {
+  .footer {
+    .footer-top {
+      > p {
+        font-size: 11px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $desktop-large) {
+  .footer {
+    .footer-top {
+      > .footer-title {
+        margin-bottom: 15px;
+
+        > .footer-logo {
+          width: 90px;
+          height: auto;
+        }
+      }
+    }
+  }
+}
