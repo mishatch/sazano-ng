@@ -1,0 +1,11 @@
+{
+  "header-title": "Hello World",
+  "header-description": "This is a simple example of a JSON file",
+  "nav": {
+    "main": "Main",
+    "winery": "Winery",
+    "hotel": "Hotel",
+    "restaurant": "Restaurant",
+    "contact": "Contact"
+  }
+}

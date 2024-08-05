@@ -2,31 +2,31 @@
   <a href="#" class="desktop-logo" #desktopLogo>
     <img src="../../../assets/images/logo.svg" alt="logo" />
   </a>
-  <ul class="links geo-secondary" #links>
+  <ul class="links" #links [appLangClass]="'geo-secondary, eng-primary'">
     <li>
-      <a href="./index.html" class="active mainpage-link"
-      >მთავარი</a
-      >
+      <a href="./index.html" class="active mainpage-link">
+        {{ "nav.main" | translate }}
+      </a>
     </li>
     <li>
-      <a href="./wine.html" class="wine-link"
-      >მეღვინეობა</a
-      >
+      <a href="./wine.html" class="wine-link">
+        {{ "nav.winery" | translate }}
+      </a>
     </li>
     <li>
-      <a href="./rooms.html" class="hotel-link"
-      >სასტუმრო</a
-      >
+      <a href="./rooms.html" class="hotel-link">
+        {{ "nav.hotel" | translate }}
+      </a>
     </li>
     <li>
-      <a href="#restaurant" class="restaurant-link" (click)="closeNav()"
-      >რესტორანი</a
-      >
+      <a href="#restaurant" class="restaurant-link">
+        {{ "nav.restaurant" | translate }}
+      </a>
     </li>
     <li>
-      <a href="./contact.html" class="contact-link"
-      >კონტაქტი</a
-      >
+      <a href="./contact.html" class="contact-link">
+        {{ "nav.contact" | translate }}
+      </a>
     </li>
   </ul>
   <button class="nav-btn" (click)="toggleNav()" #navBtn>
@@ -44,7 +44,28 @@
         />
       </g>
     </svg>
-
   </button>
-  <button #changeLang>CHANGE LANGUAGE</button>
+  <div class="row" #changeLang>
+    <div class="col">
+      <div ngbDropdown class="d-inline-block">
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          id="dropdownBasic1"
+          ngbDropdownToggle
+        >
+          ენა
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem (click)="switchLanguage('geo')">
+            ქართული
+          </button>
+          <button ngbDropdownItem (click)="switchLanguage('en')">
+            English
+          </button>
+          <button ngbDropdownItem>Русский</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </nav>
