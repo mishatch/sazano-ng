@@ -1,12 +1,12 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { Component } from '@angular/core';
+import { LanguageClassDirective } from '../../directives/language-class.directive';
 
 @Component({
   selector: 'app-winery',
   standalone: true,
-  imports: [],
+  imports: [LanguageClassDirective, TranslateModule],
   templateUrl: './winery.component.html',
-  styleUrl: './winery.component.scss'
+  styleUrl: './winery.component.scss',
 })
-export class WineryComponent {
-
-}
+export class WineryComponent {}

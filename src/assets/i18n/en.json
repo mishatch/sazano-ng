@@ -1,11 +1,32 @@
 {
-  "header-title": "Hello World",
-  "header-description": "This is a simple example of a JSON file",
   "nav": {
     "main": "Main",
     "winery": "Winery",
     "hotel": "Hotel",
     "restaurant": "Restaurant",
     "contact": "Contact"
+  },
+  "header": {
+    "title": "Sazano Wine Cellar & Hotel",
+    "text": "\"Sazano Wine,\" established in 2017, is renowned for its exquisite winemaking, as well as its inviting hotel complex. The culinary offerings, cherished by numerous guests over the years, are a testament to the deserving acclaim they have received."
+  },
+  "winery": {
+    "title": "Winery",
+    "text": "\"Sazano Wine\" cellar commenced its wine production in 2018. Our cellar is celebrated for its Imeretian variety of wines. Additionally, we proudly offer Kakhetian selections such as \"Kisi,\" \"Rkatsiteli,\" and \"Saperavi.\" We craft both dry and semi-dry wines, with variations in alcohol content achieved through fermentation. These wines are carefully aged in a facility outfitted with state-of-the-art technologies. Our semi-sweet wines are stored in refrigerated cisterns prior to bottling. We source our grapes from our own vineyards, as well as from local growers. Explore the full spectrum of our offerings!",
+    "details": "Details"
+  },
+  "hotel": {
+    "title": "Hotel",
+    "button-text": "Rooms"
+  },
+  "restaurant": {
+    "title": "Restaurant",
+    "text": "Introducing the region's inaugural open kitchen, capable of simultaneously catering to 100 guests, it stands out for its sleek, minimalist design, modern equipment, and a breathtaking panoramic vista.",
+    "button-text": "Restaurant Menu"
+  },
+  "footer": {
+    "address": "Address: Georgia, Terjola, village Zeda Sazano, 4215",
+    "phone": "Phone: +995 588 88 88 58",
+    "email": "Email: "
   }
 }

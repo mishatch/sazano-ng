@@ -11,13 +11,18 @@
     />
   </div>
   <div class="header-txt">
-    <h1 class="geo-primary desktop-header-title" id="desktopTitle">
-      საზანოს ღვინის მარანი და სასტუმრო
+    <h1
+      class="desktop-header-title"
+      id="desktopTitle"
+      [appLangClass]="'geo-primary, eng-primary, eng-primary'"
+    >
+      {{ "header.title" | translate }}
     </h1>
-    <p class="geo-secondary header-title-description">
-      „საზანოს ღვინო“ 2017 წელს დაარსდა. იგი ცნობილია თავისი მეღვინეობით,
-      კომფორტული და გამორჩეული სასტუმრო კომპლექსითა და უგემრიელესი სამზარეულოთი,
-      რომელთაც წლების განმავლობაში არაერთი სტუმრის მოწონება დაუმსახურებიათ.
+    <p
+      class="header-title-description"
+      [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'"
+    >
+      {{ "header.text" | translate }}
     </p>
     <div class="heading-image">
       <img src="../../../assets/images/home/header/Group 42.svg" alt="Grape" />

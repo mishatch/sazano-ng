@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
-@import 'variables';
+@import "variables";
+@import "bootstrap/scss/bootstrap";
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -30,7 +32,14 @@ body {
   font-family: cormorant;
   src: url(./assets/fonts/CormorantGaramond-Regular.ttf);
 }
-
+@font-face {
+  font-family: vag;
+  src: url(./assets/fonts/18VAG\ Rounded\ M\ Normal.ttf);
+}
+@font-face {
+  font-family: cataneo;
+  src: url(./assets/fonts/1\ Cataneo\ BT\ Regular.ttf);
+}
 .geo-primary {
   font-family: le studio, sans-serif;
 }
@@ -46,10 +55,14 @@ body {
 .eng-third {
   font-family: castellar, sans-serif;
 }
+.ru-secondary {
+  font-family: vag, sans-serif;
+}
+.ru-primary {
+  font-family: cataneo, sans-serif;
+}
 
-/* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
-.carousel-item{
+.carousel-item {
   width: 100%;
   height: 100%;
   .picsum-img-wrapper {
@@ -60,10 +73,8 @@ body {
       width: 100%;
       height: 100%;
       object-fit: cover;
-
     }
   }
-
 }
 .carousel-container {
   height: 80%;
@@ -77,4 +88,3 @@ body {
     object-fit: cover;
   }
 }
-

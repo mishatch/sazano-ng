@@ -1,13 +1,25 @@
-import {Component, ViewChild} from '@angular/core';
-import {NgbCarousel, NgbCarouselModule, NgbSlideEvent, NgbSlideEventSource} from "@ng-bootstrap/ng-bootstrap";
-import {FormsModule} from "@angular/forms";
+import { TranslateModule } from '@ngx-translate/core';
+import { Component, ViewChild } from '@angular/core';
+import {
+  NgbCarousel,
+  NgbCarouselModule,
+  NgbSlideEvent,
+  NgbSlideEventSource,
+} from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+import { LanguageClassDirective } from '../../directives/language-class.directive';
 
 @Component({
   selector: 'app-hotel',
   standalone: true,
-  imports: [FormsModule, NgbCarouselModule],
+  imports: [
+    FormsModule,
+    NgbCarouselModule,
+    TranslateModule,
+    LanguageClassDirective,
+  ],
   templateUrl: './hotel.component.html',
-  styleUrl: './hotel.component.scss'
+  styleUrl: './hotel.component.scss',
 })
 export class HotelComponent {
   paused = false;
@@ -31,11 +43,16 @@ export class HotelComponent {
     if (
       this.unpauseOnArrow &&
       slideEvent.paused &&
-      (slideEvent.source === NgbSlideEventSource.ARROW_LEFT || slideEvent.source === NgbSlideEventSource.ARROW_RIGHT)
+      (slideEvent.source === NgbSlideEventSource.ARROW_LEFT ||
+        slideEvent.source === NgbSlideEventSource.ARROW_RIGHT)
     ) {
       this.togglePaused();
     }
-    if (this.pauseOnIndicator && !slideEvent.paused && slideEvent.source === NgbSlideEventSource.INDICATOR) {
+    if (
+      this.pauseOnIndicator &&
+      !slideEvent.paused &&
+      slideEvent.source === NgbSlideEventSource.INDICATOR
+    ) {
       this.togglePaused();
     }
   }

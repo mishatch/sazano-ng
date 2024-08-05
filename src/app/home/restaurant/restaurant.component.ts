@@ -1,12 +1,14 @@
-import {Component, inject} from '@angular/core';
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import { TranslateModule } from '@ngx-translate/core';
+import { Component, inject } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { LanguageClassDirective } from '../../directives/language-class.directive';
 
 @Component({
   selector: 'app-restaurant',
   standalone: true,
-  imports: [],
+  imports: [TranslateModule, LanguageClassDirective],
   templateUrl: './restaurant.component.html',
-  styleUrl: './restaurant.component.scss'
+  styleUrl: './restaurant.component.scss',
 })
 export class RestaurantComponent {
   private modalService = inject(NgbModal);

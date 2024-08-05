@@ -18,18 +18,29 @@ export class LanguageClassDirective implements OnInit {
 
   ngOnInit() {
     this.languageService.language$.subscribe((lang) => {
-      const [geoClass, engClass] = this.langClasses
+      const [geoClass, engClass, rusClass] = this.langClasses
         .split(',')
         .map((cls) => cls.trim());
-      const className = lang === 'geo' ? geoClass : engClass;
 
+      let className;
+      if (lang === 'geo') {
+        className = geoClass;
+      } else if (lang === 'en') {
+        className = engClass;
+      } else if (lang === 'ru') {
+        className = rusClass;
+      }
+
+      // Remove the previous class if it exists
       if (this.previousClass) {
         this.renderer.removeClass(this.el.nativeElement, this.previousClass);
       }
 
-      this.renderer.addClass(this.el.nativeElement, className);
-
-      this.previousClass = className;
+      // Add the new class
+      if (className) {
+        this.renderer.addClass(this.el.nativeElement, className);
+        this.previousClass = className;
+      }
     });
   }
 }

@@ -2,7 +2,11 @@
   <a href="#" class="desktop-logo" #desktopLogo>
     <img src="../../../assets/images/logo.svg" alt="logo" />
   </a>
-  <ul class="links" #links [appLangClass]="'geo-secondary, eng-primary'">
+  <ul
+    class="links"
+    #links
+    [appLangClass]="'geo-secondary, eng-primary, ru-primary'"
+  >
     <li>
       <a href="./index.html" class="active mainpage-link">
         {{ "nav.main" | translate }}
@@ -29,7 +33,7 @@
       </a>
     </li>
   </ul>
-  <button class="nav-btn" (click)="toggleNav()" #navBtn>
+  <button class="nav-button" (click)="toggleNav()" #navBtn>
     <svg
       height="25px"
       width="25px"
@@ -54,16 +58,28 @@
           id="dropdownBasic1"
           ngbDropdownToggle
         >
-          ენა
+          <img
+            [src]="getFlag(currentLanguage)"
+            alt="flag"
+            width="20"
+            height="15"
+            class="me-2"
+          />
         </button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <button ngbDropdownItem (click)="switchLanguage('geo')">
-            ქართული
+          <button
+            *ngFor="let lang of languages"
+            ngbDropdownItem
+            (click)="switchLanguage(lang.code)"
+          >
+            <img
+              [src]="getFlag(lang.code)"
+              alt="flag"
+              width="20"
+              height="15"
+              class="me-2"
+            />
           </button>
-          <button ngbDropdownItem (click)="switchLanguage('en')">
-            English
-          </button>
-          <button ngbDropdownItem>Русский</button>
         </div>
       </div>
     </div>

@@ -21,14 +21,24 @@
         & Hotel
       </h6>
     </div>
-    <p class="geo-primary address-txt">
-      მისამართი: საქართველო, ქ. თერჯოლა, სოფ. ზედა საზანო
+    <p
+      class="address-txt"
+      [appLangClass]="'geo-primary, eng-primary, ru-secondary'"
+    >
+      {{ "footer.address" | translate }}
     </p>
-    <p class="geo-primary mobile-number-txt">
-      ტელეფონის ნომერი: +995 588 88 88 58
+    <p
+      class="mobile-number-txt"
+      [appLangClass]="'geo-primary, eng-primary, ru-secondary'"
+    >
+      {{ "footer.phone" | translate }}
     </p>
-    <p class="geo-primary email-txt">
-      ელ. ფოსტა: <span class="eng-primary">frontdesksazano&#64;gmail.com</span>
+    <p
+      class="email-txt"
+      [appLangClass]="'geo-primary, eng-primary, ru-secondary'"
+    >
+      {{ "footer.email" | translate }}
+      <span class="eng-primary">frontdesksazano&#64;gmail.com</span>
     </p>
   </div>
   <div class="footer-line"></div>

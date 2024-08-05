@@ -34,13 +34,31 @@ export class NavComponent implements AfterViewInit {
   clicked = false;
   mobileNavDisable = false;
 
+  currentLanguage: string = this.languageService.getCurrentLanguage();
+  languages = [
+    { code: 'geo', flag: 'assets/images/flags/geo.png' },
+    { code: 'en', flag: 'assets/images/flags/us.png' },
+    { code: 'ru', flag: 'assets/images/flags/ru.png' },
+  ];
+
   constructor(
     private renderer: Renderer2,
     private languageService: LanguageService
-  ) {}
+  ) {
+    this.languageService.language$.subscribe((lang) => {
+      this.currentLanguage = lang;
+    });
+  }
+
   switchLanguage(lang: string) {
     this.languageService.switchLanguage(lang);
   }
+
+  getFlag(lang: string): string {
+    const language = this.languages.find((l) => l.code === lang);
+    return language ? language.flag : '';
+  }
+
   ngAfterViewInit() {
     this.checkScreenWidth();
   }
@@ -87,6 +105,7 @@ export class NavComponent implements AfterViewInit {
     this.renderer.setStyle(this.navBtn.nativeElement, 'height', '30px');
     this.renderer.setStyle(this.navBtn.nativeElement, 'paddingTop', '0');
     this.renderer.setStyle(this.navBtn.nativeElement, 'marginTop', '0');
+
     this.renderer.setStyle(
       this.navBtn.nativeElement,
       'backgroundColor',
