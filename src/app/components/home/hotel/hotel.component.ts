@@ -7,7 +7,7 @@ import {
   NgbSlideEventSource,
 } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-import { LanguageClassDirective } from '../../directives/language-class.directive';
+import { LanguageClassDirective } from '../../../shared/directives/language-class.directive';
 
 @Component({
   selector: 'app-hotel',

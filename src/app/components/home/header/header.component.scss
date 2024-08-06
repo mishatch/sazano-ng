@@ -1,4 +1,4 @@
-@import "../../../variables";
+@import "../../../../variables";
 
 .header {
   position: relative;
@@ -80,7 +80,7 @@
     > .header-img {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: start;
       width: 100%;
 
       > img:nth-child(1) {

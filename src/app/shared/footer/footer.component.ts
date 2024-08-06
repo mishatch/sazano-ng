@@ -1,6 +1,6 @@
 import { TranslateModule } from '@ngx-translate/core';
 import { Component } from '@angular/core';
-import { LanguageClassDirective } from '../../directives/language-class.directive';
+import { LanguageClassDirective } from '../directives/language-class.directive';
 
 @Component({
   selector: 'app-footer',

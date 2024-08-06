@@ -9,8 +9,9 @@ import {
 } from '@angular/core';
 import { LanguageService } from '../../services/language.service';
 import { CommonModule } from '@angular/common';
-import { LanguageClassDirective } from '../../directives/language-class.directive';
+import { LanguageClassDirective } from '../directives/language-class.directive';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-nav',
@@ -20,6 +21,7 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
     TranslateModule,
     LanguageClassDirective,
     NgbDropdownModule,
+    RouterLink,
   ],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.scss',

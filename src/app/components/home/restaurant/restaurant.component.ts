@@ -1,7 +1,7 @@
 import { TranslateModule } from '@ngx-translate/core';
 import { Component, inject } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { LanguageClassDirective } from '../../directives/language-class.directive';
+import { LanguageClassDirective } from '../../../shared/directives/language-class.directive';
 
 @Component({
   selector: 'app-restaurant',
