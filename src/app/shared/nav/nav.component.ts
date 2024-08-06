@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { LanguageClassDirective } from '../directives/language-class.directive';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import {RouterLink} from "@angular/router";
+import {ScrollService} from "../../services/scroll.service";
 
 @Component({
   selector: 'app-nav',
@@ -45,13 +46,16 @@ export class NavComponent implements AfterViewInit {
 
   constructor(
     private renderer: Renderer2,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private scrollService: ScrollService
   ) {
     this.languageService.language$.subscribe((lang) => {
       this.currentLanguage = lang;
     });
   }
-
+  navigateToSection(sectionId: string) {
+    this.scrollService.navigateToHomeAndScroll(sectionId);
+  }
   switchLanguage(lang: string) {
     this.languageService.switchLanguage(lang);
   }
