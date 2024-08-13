@@ -47,12 +47,24 @@ export class NavComponent implements AfterViewInit {
   constructor(
     private renderer: Renderer2,
     private languageService: LanguageService,
-    private scrollService: ScrollService
+    private scrollService: ScrollService,
+    private el: ElementRef
   ) {
     this.languageService.language$.subscribe((lang) => {
       this.currentLanguage = lang;
     });
   }
+  @HostListener('window:scroll', [])
+
+  onWindowScroll() {
+    const dropdown = this.el.nativeElement.querySelector('.row.lang');
+    if (window.pageYOffset > 50) {
+      this.renderer.addClass(dropdown, 'hide-dropdown');
+    } else {
+      this.renderer.removeClass(dropdown, 'hide-dropdown');
+    }
+  }
+
   navigateToSection(sectionId: string) {
     this.scrollService.navigateToHomeAndScroll(sectionId);
   }
@@ -94,7 +106,6 @@ export class NavComponent implements AfterViewInit {
       this.desktopNav();
     } else {
       this.renderer.setStyle(this.desktopLogo.nativeElement, 'display', 'none');
-      this.renderer.setStyle(this.changeLang.nativeElement, 'display', 'none');
       this.closeNav();
     }
   }
@@ -111,6 +122,7 @@ export class NavComponent implements AfterViewInit {
     this.renderer.setStyle(this.navBtn.nativeElement, 'height', '30px');
     this.renderer.setStyle(this.navBtn.nativeElement, 'paddingTop', '0');
     this.renderer.setStyle(this.navBtn.nativeElement, 'marginTop', '0');
+    this.renderer.setStyle(this.changeLang.nativeElement, 'display', 'none');
 
     this.renderer.setStyle(
       this.navBtn.nativeElement,
@@ -139,6 +151,8 @@ export class NavComponent implements AfterViewInit {
       '#4c0027'
     );
     this.renderer.setStyle(this.navBtn.nativeElement, 'display', 'block');
+    this.renderer.setStyle(this.changeLang.nativeElement, 'display', 'block');
+
     this.clicked = false;
   }
   // change element styles for desktop nav bar

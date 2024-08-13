@@ -1,0 +1,126 @@
+@import "../../../variables";
+
+.all-wines {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  flex-direction: column;
+  > .wine-section:first-of-type {
+    margin-top: 90px;
+  }
+  > .wine-section {
+    display: flex;
+    width: 100%;
+    margin-bottom: 40px;
+    gap: 30px;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    .bottle-image {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      height: 200px;
+      > img {
+        max-height: 100%;
+      }
+    }
+    .bottle-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      > p {
+        text-align: center;
+        font-size: $font-size-medium;
+
+      }
+      > h1 {
+        font-size: $font-size-xlarge;
+        margin-bottom: 20px;
+        color: $nav-links;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $tablet) {
+
+  .all-wines {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    flex-direction: column;
+    > .wine-section:nth-of-type(1) {
+      margin-top: 50px;
+    }
+    > .wine-section:nth-of-type(2) {
+      flex-direction: row-reverse;
+    }
+    > .wine-section:nth-of-type(4) {
+      flex-direction: row-reverse;
+    }
+    > .wine-section:nth-of-type(6) {
+      flex-direction: row-reverse;
+    }
+    > .wine-section {
+      width: 100%;
+      height: 520px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding-left: 20px;
+      padding-right: 20px;
+      > div {
+        width: 100%;
+        height: 200px;
+      }
+      .bottle-image {
+        display: flex;
+        justify-content: center;
+        height: 90%;
+        > img {
+          max-height: 100%;
+        }
+      }
+      .bottle-description {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        > p {
+          text-align: center;
+        }
+        > h1 {
+          margin-bottom: 20px;
+          color: $nav-links;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $desktop){
+  .all-wines {
+    > .wine-section {
+      height: 400px;
+    }
+  }
+}
+@media screen and (min-width: $desktop-large){
+  .all-wines {
+    >.wine-section {
+      > .bottle-description {
+        > h1 {
+          font-size: $font-size-xxlarge;
+
+        }
+        > p {
+          font-size: $font-size-xlarge;
+        }
+      }
+    }
+  }
+}
