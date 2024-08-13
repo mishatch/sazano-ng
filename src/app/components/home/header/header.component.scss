@@ -58,13 +58,13 @@
       }
 
       > h1 {
-        font-size: 25px;
+        font-size: $font-size-xlarge;
         text-align: center;
         color: $nav-links;
       }
 
       > p {
-        font-size: 16px;
+        font-size: $font-size-medium;
         text-align: center;
         width: 110%;
       }
@@ -109,11 +109,11 @@
 
     > .header-txt {
       > p {
-        font-size: 22px;
+        font-size: $font-size-xlarge;
       }
 
       > h1 {
-        font-size: 32px;
+        font-size: $font-size-xxlarge;
       }
     }
   }

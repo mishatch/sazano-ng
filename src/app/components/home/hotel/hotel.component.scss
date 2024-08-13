@@ -15,6 +15,7 @@
   > h1 {
     color: $nav-links;
     margin-bottom: 30px;
+    font-size: $font-size-xlarge;
   }
 
   > button {
@@ -22,7 +23,7 @@
     height: 50px;
     margin-top: 20px;
 
-    font-size: 14px;
+    font-size: $font-size-medium;
 
     background-color: $nav-links;
     color: white;
@@ -37,13 +38,6 @@
   }
 }
 
-@media screen and (min-width: 768px) {
-  .hotel {
-    > h1 {
-      font-size: 25px;
-    }
-  }
-}
 
 @media screen and (min-width: $desktop) {
   .hotel {
@@ -56,7 +50,13 @@
     height: 100vh;
 
     > h1 {
-      font-size: 32px;
+      font-size: $font-size-xxlarge;
+    }
+    > button {
+      width: auto;
+      height: auto;
+      font-size: $font-size-xlarge;
+      padding: 10px 20px;
     }
   }
 }

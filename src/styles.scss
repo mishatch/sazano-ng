@@ -10,6 +10,7 @@
 }
 body {
   background-color: $body-bg;
+  min-height: 100vh;
 }
 // Fonts
 @font-face {
@@ -61,6 +62,10 @@ body {
 .ru-primary {
   font-family: cataneo, sans-serif;
 }
+
+
+
+
 
 .carousel-item {
   width: 100%;

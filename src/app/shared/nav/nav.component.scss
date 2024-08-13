@@ -31,12 +31,14 @@ nav {
 
       > a {
         position: relative;
-        font-size: 11px;
+        font-size: $font-size-small;
         text-decoration: none;
         color: $white;
       }
+
     }
   }
+
 
   > button.nav-button {
     width: 70px;
@@ -81,9 +83,9 @@ nav {
 
         > a {
           position: relative;
-          font-size: 16px;
+          font-size: $font-size-medium;
           color: $nav-links;
-
+          cursor: pointer;
           &::before {
             content: "";
             position: absolute;
@@ -104,7 +106,17 @@ nav {
     }
   }
 }
-
+@media screen and (min-width: $desktop-large) {
+  nav {
+    >.links {
+      > li {
+        > a {
+          font-size: $font-size-large;
+        }
+      }
+    }
+  }
+}
 // Language changing dropdown styling
 .dropdown-menu.show {
   min-width: 0;

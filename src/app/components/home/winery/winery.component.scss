@@ -18,12 +18,12 @@
     height: 56%;
 
     > h1 {
-      height: 23px;
+      font-size: $font-size-xlarge;
       color: $nav-links;
     }
 
     > p {
-      font-size: 14px;
+      font-size: $font-size-medium;
       text-align: start;
       text-indent: 10px;
 
@@ -61,13 +61,11 @@
       height: 90%;
 
       > h1 {
-        font-size: 25px;
         width: 100%;
       }
 
       > p {
         width: 70%;
-        font-size: 16px;
         line-height: 24px;
       }
     }
@@ -113,11 +111,11 @@
       gap: 90px;
 
       > h1 {
-        font-size: 32px;
+        font-size: $font-size-xxlarge;
       }
 
       > p {
-        font-size: 22px;
+        font-size: $font-size-xlarge;
       }
     }
 

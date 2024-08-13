@@ -28,5 +28,20 @@
     "address": "Address: Georgia, Terjola, village Zeda Sazano, 4215",
     "phone": "Phone: +995 588 88 88 58",
     "email": "Email: "
+  },
+  "contact": {
+    "title": "Contact Us",
+    "address": {
+      "title": "Address",
+      "text": "Georgia, Terjola, village Zeda Sazano, 4215"
+    },
+    "email": {
+      "title": "Email",
+      "text": "frontdesksazano@gmail.com"
+    },
+    "phone": {
+      "title": "Phone Number",
+      "text": "+995 588 88 88 58"
+    }
   }
 }
