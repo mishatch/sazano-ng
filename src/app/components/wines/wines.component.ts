@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-wines',
@@ -11,8 +12,8 @@ import { RouterLink } from '@angular/router';
 })
 export class WinesComponent {
   http = inject(HttpClient);
-
+  authService = inject(AuthService);
   logout() {
-    console.log('log out');
+    this.authService.logout();
   }
 }
