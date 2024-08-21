@@ -43,5 +43,35 @@
       "title": "Phone Number",
       "text": "+995 588 88 88 58"
     }
+  },
+  "wines": {
+    "krakhuna": {
+      "title": "Krakhuna",
+      "description": "White Semi Sweet. Produced from most distinctive grape variety Krakhuna indigenous to Imereti region. Harvested in local vineyards. Fermented and matured in Qvevri for 6 months. Rich yellow fruit aroma with honeycomb tones. Full boded. Chalky tannins and fresh, balanced sourness on the palate. Subtle notes of sweet spices and tropical fruits adding complexity to its considerable flavor profile."
+    },
+    "kisi": {
+      "title": "Kisi",
+      "description": "Qvevri dry amber wine. Produced from Kisi grape variety cultivated in Kakheti region. Fermented and matured in Qvevri for 6 months. Deep straw colored. Is characterized by opulent aromas mixed by pear, peach, pineapples and slight touch of citrus notes. Full-bodied with grip tannins and harmonious aftertaste."
+    },
+    "chinuri": {
+      "title": "Chinuri",
+      "description": "Qvevri dry amber wine. Produced from one of the distinguished variety of Chinuri grape originated in Kartli region. Fermented and matured in Qvevri for 6 months. Well-developed fruity bouquet with a delicate herbal aromas. Features a velvety tannins and crisp acidity, soft lingering flavor with a touch of citrus notes on the profile."
+    },
+    "tsitska": {
+      "title": "Tsitska",
+      "description": "Qvevri dry amber wine. Produced from highly regarded indigenous Imeretian variety Tsitska. Harvested in local vineyards. Fermented and matured in Qvevry for 6 months. Bright aromas of yellow fruits and white flowers. A sligth touch of quince and melon on the palate. Distinguished by its freshness and cheerfulness. Supple tannins and crisp acidity."
+    },
+    "aladasturi": {
+      "title": "Aladasturi",
+      "description": "Qvevri dry red wine. produced from Aladasturi grape variety cultivated in Imereti Region. Fermented and matured in Qvevri for 6 months. This pale garnet color wine is characterized by rich aroma of red currant with delicate floral notes. It features a well-developed, elegant bouquet and supple tannins. Distinguished by long and balanced aftertaste. Contains sulpites"
+    },
+    "otskhanuri": {
+      "title": "Otskhanuri",
+      "description": "Qvevri dry red wine. Produced from Otskhanuri Sapere grape, one of the oldest, teinturier type grape variety native to western Georgia. Harvested in village Sazano, Imereti region. Fermented and matured in Qvevri for 6 months. Characterized by intense, deep ruby color and bright aromas of ripe berries and herbal flowers. This elegant wine exhibits a well developed, opulent bouquet. A welcome firmness of tannins and balanced acidity. Harmonious, distinctive flavor profile with lingering notes of black plums and cherry. Contains sulpites."
+    }
+  },
+  "hotel-page": {
+    "title": "Hotel Complex",
+    "description": "Nestled along the serene banks of the Dzusa River, \"Sazano Wine\" Hotel Complex was established in 2017. Originally comprising of two charming buildings and 170 years-old antique wooden house, the complex underwent a remarkable expansion in 2023. Today, it boasts a collection of 31 distinctively designed rooms, providing accommodation for up to 78 guests. Inclusivity is at the heart of our offerings, with a specially adapted room and comprehensive assistive facilities for guests with disabilities. Spanning across a lush expanse of up to a hectare, our verdant grounds offer a tranquil retreat, complete with a dedicated children's entertainment area, ensuring an enriching experience for guests of all ages."
   }
 }

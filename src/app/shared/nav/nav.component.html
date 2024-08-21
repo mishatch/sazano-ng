@@ -1,6 +1,6 @@
 <nav class="nav" id="nav" #nav>
   <a routerLink="/" class="desktop-logo" #desktopLogo>
-    <img src="../../../assets/images/logo.svg" alt="logo" />
+    <img src="assets/images/logo.svg" alt="logo" />
   </a>
   <ul
     class="links"
@@ -8,17 +8,17 @@
     [appLangClass]="'geo-secondary, eng-primary, ru-primary'"
   >
     <li>
-      <a routerLink="/" class="active mainpage-link">
+      <a routerLink="/" class="active mainpage-link" (click)="scrollOnTop()">
         {{ "nav.main" | translate }}
       </a>
     </li>
     <li>
-      <a routerLink="/wines" class="wine-link">
+      <a routerLink="/wines" class="wine-link" (click)="scrollOnTop()">
         {{ "nav.winery" | translate }}
       </a>
     </li>
     <li>
-      <a routerLink="/hotel" class="hotel-link">
+      <a routerLink="/hotel" class="hotel-link" (click)="scrollOnTop()">
         {{ "nav.hotel" | translate }}
       </a>
     </li>
@@ -28,7 +28,7 @@
       </a>
     </li>
     <li>
-      <a routerLink="/contact" class="contact-link">
+      <a routerLink="/contact" class="contact-link" (click)="scrollOnTop()">
         {{ "nav.contact" | translate }}
       </a>
     </li>

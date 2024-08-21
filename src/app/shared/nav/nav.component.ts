@@ -64,9 +64,16 @@ export class NavComponent implements AfterViewInit {
       this.renderer.removeClass(dropdown, 'hide-dropdown');
     }
   }
-
+  scrollOnTop(){
+    const screenWidth = window.innerWidth;
+    if(screenWidth < 768){
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      this.navBtn.nativeElement.click();
+    }
+  }
   navigateToSection(sectionId: string) {
     this.scrollService.navigateToHomeAndScroll(sectionId);
+    this.navBtn.nativeElement.click();
   }
   switchLanguage(lang: string) {
     this.languageService.switchLanguage(lang);
@@ -100,7 +107,6 @@ export class NavComponent implements AfterViewInit {
   checkScreenWidth() {
     const screenWidth = window.innerWidth;
     this.mobileNavDisable = screenWidth >= 768;
-
     if (this.mobileNavDisable) {
       this.openNav();
       this.desktopNav();

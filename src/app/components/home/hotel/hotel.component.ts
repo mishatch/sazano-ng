@@ -8,6 +8,7 @@ import {
 } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { LanguageClassDirective } from '../../../shared/directives/language-class.directive';
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-hotel',
@@ -17,6 +18,7 @@ import { LanguageClassDirective } from '../../../shared/directives/language-clas
     NgbCarouselModule,
     TranslateModule,
     LanguageClassDirective,
+    RouterLink,
   ],
   templateUrl: './hotel.component.html',
   styleUrl: './hotel.component.scss',
@@ -55,5 +57,9 @@ export class HotelComponent {
     ) {
       this.togglePaused();
     }
+  }
+
+  scrollOnTop(){
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }

@@ -12,7 +12,7 @@
     >
       {{ "winery.text" | translate }}
       <b
-        ><a href="./wine.html" class="winery-details">
+        ><a routerLink="/wines" class="winery-details" (click)="scrollOnTop()" >
           {{ "winery.details" | translate }}</a
         ></b
       >
@@ -20,17 +20,17 @@
   </div>
   <div class="images">
     <img
-      src="../../../../assets/images/home/winery/krakhuna.webp"
+      src="assets/images/home/winery/krakhuna.webp"
       alt="Krakhuna"
       class="side"
     />
     <img
-      src="../../../../assets/images/home/winery/Group%2037@2x.webp"
+      src="assets/images/home/winery/Group%2037@2x.webp"
       alt="Aladasturi"
       class="middle"
     />
     <img
-      src="../../../../assets/images/home/winery/colikouri.webp"
+      src="assets/images/home/winery/colikouri.webp"
       alt="Tsolikouri"
       class="side"
     />

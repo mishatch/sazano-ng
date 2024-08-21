@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {LanguageClassDirective} from "../../shared/directives/language-class.directive";
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-wines',
   standalone: true,
-  imports: [RouterLink, LanguageClassDirective],
+  imports: [RouterLink, LanguageClassDirective, TranslateModule],
   templateUrl: './wines.component.html',
   styleUrl: './wines.component.scss',
 })
