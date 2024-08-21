@@ -1,1 +1,0 @@
-import{Bb as s,ea as o,gb as i,hb as a,xb as r}from"./chunk-LO6DH2OG.js";var m=(()=>{let e=class e{};e.\u0275fac=function(n){return new(n||e)},e.\u0275cmp=o({type:e,selectors:[["app-hotel"]],standalone:!0,features:[s],decls:2,vars:0,template:function(n,l){n&1&&(i(0,"p"),r(1,"hotel works!"),a())}});let t=e;return t})();export{m as HotelComponent};
