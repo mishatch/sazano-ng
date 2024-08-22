@@ -7,12 +7,12 @@ import {
   HostListener,
   AfterViewInit,
 } from '@angular/core';
-import { LanguageService } from '../../services/language.service';
+import { LanguageService } from '../../core/services/language.service';
 import { CommonModule } from '@angular/common';
 import { LanguageClassDirective } from '../directives/language-class.directive';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import {RouterLink} from "@angular/router";
-import {ScrollService} from "../../services/scroll.service";
+import {ScrollService} from "../../core/services/scroll.service";
 
 @Component({
   selector: 'app-nav',

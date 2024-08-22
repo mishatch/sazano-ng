@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
+import { HomeComponent } from './features/home/home.component';
 
 export const routes: Routes = [
   {
@@ -9,21 +9,21 @@ export const routes: Routes = [
   {
     path: 'wines',
     loadComponent: () =>
-      import('./components/wines/wines.component').then(
+      import('./features/wines/wines.component').then(
         (m) => m.WinesComponent
       ),
   },
   {
     path: 'hotel',
     loadComponent: () =>
-      import('./components/hotel/hotel.component').then(
+      import('./features/hotel/hotel.component').then(
         (m) => m.HotelComponent
       ),
   },
   {
     path: 'contact',
     loadComponent: () =>
-      import('./components/contact/contact.component').then(
+      import('./features/contact/contact.component').then(
         (m) => m.ContactComponent
       ),
   },

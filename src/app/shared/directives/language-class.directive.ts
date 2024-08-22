@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Renderer2, OnInit, Input } from '@angular/core';
-import { LanguageService } from '../../services/language.service';
+import { LanguageService } from '../../core/services/language.service';
 
 @Directive({
   selector: '[appLangClass]',

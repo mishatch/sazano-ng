@@ -1,0 +1,59 @@
+@import "../../../../variables";
+
+.wrapper {
+  display: flex;
+  padding: 0 20px;
+  flex-direction: column;
+  gap: 20px;
+  >div {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: $tablet) {
+  .wrapper {
+    flex-direction: row;
+    gap: 60px;
+    flex-wrap: wrap;
+    padding: 0 60px;
+    >div {
+      width: calc(50% - 30px);
+    }
+  }
+}
+@media screen and (min-width: $desktop) {
+  .wrapper {
+    gap: 25px;
+    padding: 0 80px;
+    >div {
+      width: calc(33% - 15px);
+    }
+  }
+}
+@media screen and (min-width: $desktop-large) {
+  .wrapper {
+    gap: 40px;
+    padding: 0 12%;
+    >div {
+      width: calc(33% - 25px);
+    }
+  }
+}
+.modal-body {
+  padding: 0;
+
+
+}
+
+.btn-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  outline: none;
+  box-shadow: none;
+}
+
+.modal-content {
+  border: none;
+}

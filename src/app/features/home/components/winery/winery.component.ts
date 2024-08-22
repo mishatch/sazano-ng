@@ -1,6 +1,6 @@
 import { TranslateModule } from '@ngx-translate/core';
 import { Component } from '@angular/core';
-import { LanguageClassDirective } from '../../../shared/directives/language-class.directive';
+import { LanguageClassDirective } from '../../../../shared/directives/language-class.directive';
 import {RouterLink} from "@angular/router";
 
 @Component({

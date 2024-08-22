@@ -1,4 +1,4 @@
-@import "../../../../variables";
+@import "../../../../../variables";
 
 .restaurant {
   display: flex;
@@ -89,10 +89,6 @@
 
 @media screen and (min-width: $desktop) {
   .restaurant {
-    > .modal {
-      width: 50%;
-    }
-
     > .restaurant-content {
       .restaurant-description {
         > p {
@@ -100,6 +96,9 @@
         }
       }
     }
+  }
+  .modal {
+    width: 100% !important;
   }
 }
 

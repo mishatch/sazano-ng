@@ -8,11 +8,11 @@
   <div class="restaurant-content">
     <div class="restaurant-img">
       <img
-        src="assets/images/home/restaurant/Mask%20Group%2013@2x.webp"
+        src="../../../../../assets/images/home/restaurant/Mask%20Group%2013@2x.webp"
         alt="Restaurant"
       />
       <img
-        src="assets/images/home/restaurant/restaurant-desktop.webp"
+        src="../../../../../assets/images/home/restaurant/restaurant-desktop.webp"
         alt="Restaurant"
         class="restaurant-img-desktop"
       />
@@ -38,12 +38,12 @@
         (click)="modal.dismiss('Cross click')"
       ></button>
       <img
-        src="assets/images/home/restaurant/sazano%20wine%20menu%20(GE)-2.webp"
+        [src]="menuFoodUrl"
         alt="Menu"
         class="modal-image"
       />
       <img
-        src="assets/images/home/restaurant/sazano%20wine%20menu%20Wine%20Ge%20unlocked-2.webp"
+        [src]="menuDrinksUrl"
         alt="Menu"
         class="modal-image"
       />

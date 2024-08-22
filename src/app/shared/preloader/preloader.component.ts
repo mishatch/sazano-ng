@@ -1,5 +1,5 @@
 import { Component, Renderer2 } from '@angular/core';
-import { ScrollService } from '../../services/scroll.service';
+import { ScrollService } from '../../core/services/scroll.service';
 
 @Component({
   selector: 'app-preloader',
