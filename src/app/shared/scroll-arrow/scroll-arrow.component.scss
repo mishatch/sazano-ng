@@ -1,0 +1,22 @@
+@import "../../../variables";
+
+.scroll-arrow {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  fill: $nav-links;
+  transition: fill 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  cursor: pointer;
+  &.white{
+    fill: $body-bg;
+  }
+  &.visible{
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+}
+
