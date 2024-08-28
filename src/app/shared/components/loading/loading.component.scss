@@ -21,7 +21,10 @@
   height: 60px;
   animation: spin 1s linear infinite;
 }
-
+.logo {
+  position: absolute;
+  width: 30px;
+}
 @keyframes spin {
   to {
     transform: rotate(360deg);
