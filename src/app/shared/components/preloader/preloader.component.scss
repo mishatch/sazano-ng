@@ -1,15 +1,15 @@
-@import "../../../variables";
+@import "../../../../variables";
 
 body.no-scroll {
   overflow: hidden;
 }
 
 #preloader {
-  width: 100vw;
-  height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
   background-color: $body-bg;
   z-index: 9999;
@@ -87,7 +87,6 @@ body.no-scroll {
   from {
     opacity: 1;
   }
-
   to {
     opacity: 0;
   }
@@ -97,7 +96,6 @@ body.no-scroll {
   from {
     opacity: 0;
   }
-
   to {
     opacity: 1;
   }

@@ -1,12 +1,21 @@
-@import "../../../../variables";
+@import "../../../../../variables";
 
 .wrapper {
   display: flex;
   padding: 0 20px;
   flex-direction: column;
   gap: 20px;
-  >div {
+  >.card {
     width: 100%;
+    .card-title {
+      text-align: center;
+      color: $nav-links;
+    }
+    .btn {
+      width: 100%;
+      background-color: $nav-links;
+      color: $body-bg;
+    }
   }
 }
 
@@ -16,7 +25,7 @@
     gap: 60px;
     flex-wrap: wrap;
     padding: 0 60px;
-    >div {
+    >.card {
       width: calc(50% - 30px);
     }
   }
@@ -25,7 +34,7 @@
   .wrapper {
     gap: 25px;
     padding: 0 80px;
-    >div {
+    >.card {
       width: calc(33% - 15px);
     }
   }
@@ -34,26 +43,8 @@
   .wrapper {
     gap: 40px;
     padding: 0 12%;
-    >div {
+    >.card {
       width: calc(33% - 25px);
     }
   }
-}
-.modal-body {
-  padding: 0;
-
-
-}
-
-.btn-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 2;
-  outline: none;
-  box-shadow: none;
-}
-
-.modal-content {
-  border: none;
 }

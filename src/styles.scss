@@ -1,4 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
 @import "variables";
 @import "bootstrap/scss/bootstrap";
 
@@ -8,68 +7,80 @@
   padding: 0;
   scroll-behavior: smooth;
 }
+
 body {
   background-color: $body-bg;
   min-height: 100vh;
 }
+
 // Fonts
 @font-face {
   font-family: boxo;
   src: url(./assets/fonts/bpg_boxo.ttf);
 }
+
 @font-face {
   font-family: le studio;
   src: url(./assets/fonts/bpg_le_studio_02_caps.ttf);
 }
+
 @font-face {
   font-family: castellar;
   src: url(./assets/fonts/CASTELAR.ttf);
 }
+
 @font-face {
   font-family: trajan;
   src: url(./assets/fonts/Trajan_Pro_Regular.ttf);
 }
+
 @font-face {
   font-family: cormorant;
   src: url(./assets/fonts/CormorantGaramond-Regular.ttf);
 }
+
 @font-face {
   font-family: vag;
-  src: url(./assets/fonts/18VAG\ Rounded\ M\ Normal.ttf);
+  src: url(./assets/fonts/18vag_normal.ttf);
 }
+
 @font-face {
   font-family: cataneo;
-  src: url(./assets/fonts/1\ Cataneo\ BT\ Regular.ttf);
+  src: url(./assets/fonts/cataneo_regular.ttf);
 }
+
 .geo-primary {
   font-family: le studio, sans-serif;
 }
+
 .geo-secondary {
   font-family: boxo, sans-serif;
 }
+
 .eng-primary {
   font-family: trajan, sans-serif;
 }
+
 .eng-secondary {
   font-family: cormorant, sans-serif;
 }
+
 .eng-third {
   font-family: castellar, sans-serif;
 }
+
 .ru-secondary {
   font-family: vag, sans-serif;
 }
+
 .ru-primary {
   font-family: cataneo, sans-serif;
 }
 
-
-
-
-
 .carousel-item {
   width: 100%;
   height: 100%;
+
   .picsum-img-wrapper {
     width: 100%;
     height: 100%;
@@ -81,12 +92,15 @@ body {
     }
   }
 }
+
 .carousel-container {
-  height: 80%;
   width: 100%;
+  height: 80%;
+
   .carousel-inner {
     height: 100%;
   }
+
   img {
     width: 100%;
     height: 100%;

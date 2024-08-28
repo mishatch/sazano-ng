@@ -1,38 +1,42 @@
-@import "../../../variables";
+@import "../../../../variables";
+
 .row.lang {
   position: fixed;
   right: 10px;
   z-index: 1000;
   transition: opacity 0.3s ease;
 }
+
 .hide-dropdown {
   opacity: 0;
   pointer-events: none;
 }
+
 nav {
-  width: 100%;
-  height: 70px;
+  position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: fixed;
+  width: 100%;
+  height: 70px;
   z-index: 10;
+  background-color: transparent;
   border-bottom-left-radius: 50%;
   border-bottom-right-radius: 50%;
-  background-color: transparent;
-  transition: background-color 0.3s ease-in-out;
   line-height: 15px;
+  transition: background-color 0.3s ease-in-out;
+
   .desktop-logo {
     display: none;
   }
 
   > .links {
     display: none;
+    opacity: 1;
     gap: 8px;
     margin-top: 14px;
     margin-bottom: 7px;
     padding: 0;
-    opacity: 1;
     transition: display 0.3s ease-in-out, opacity 0.3s ease-in-out;
 
     > li {
@@ -44,10 +48,8 @@ nav {
         text-decoration: none;
         color: $white;
       }
-
     }
   }
-
 
   > button.nav-button {
     width: 70px;
@@ -72,11 +74,11 @@ nav {
   }
 
   nav {
-    padding: 20px 60px;
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    position: relative;
+    padding: 20px 60px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 
@@ -92,6 +94,7 @@ nav {
       gap: 15px;
       margin-top: 0;
       margin-bottom: 0;
+
       > li {
         list-style: none;
 
@@ -100,6 +103,7 @@ nav {
           font-size: $font-size-medium;
           color: $nav-links;
           cursor: pointer;
+
           &::before {
             content: "";
             position: absolute;
@@ -120,9 +124,10 @@ nav {
     }
   }
 }
+
 @media screen and (min-width: $desktop-large) {
   nav {
-    >.links {
+    > .links {
       > li {
         > a {
           font-size: $font-size-large;
@@ -131,11 +136,13 @@ nav {
     }
   }
 }
+
 // Language changing dropdown styling
 .dropdown-menu.show {
   min-width: 0;
   width: 71px;
 }
+
 #dropdownBasic1 {
   --bs-btn-border-color: transparent;
   --bs-btn-color: #4c0027;
@@ -146,6 +153,7 @@ nav {
   --bs-btn-disabled-color: #4c0027;
   --bs-btn-disabled-border-color: #4c0027;
 }
+
 .dropdown-item {
   --bs-dropdown-link-active-bg: #4c0027;
 }

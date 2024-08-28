@@ -1,0 +1,26 @@
+<ng-template #longContent let-modal>
+  <div class="modal-body">
+    <button
+      type="button"
+      class="btn-close btn-close-white"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+    <ngb-carousel
+      #carousel
+      [interval]="2000"
+      [pauseOnHover]="pauseOnHover"
+      [pauseOnFocus]="pauseOnFocus"
+      (slide)="onSlide($event)"
+      class="carousel-container"
+    >
+      <ng-template ngbSlide *ngFor="let image of images">
+        <div class="picsum-img-wrapper">
+          <img [src]="image" alt="Room Image" />
+        </div>
+      </ng-template>
+    </ngb-carousel>
+
+    <p>{{ description }}</p>
+  </div>
+</ng-template>

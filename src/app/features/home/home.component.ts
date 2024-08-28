@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PreloaderComponent } from '../../shared/preloader/preloader.component';
+import { PreloaderComponent } from '../../shared/components/preloader/preloader.component';
 import { HeaderComponent } from './components/header/header.component';
 import { WineryComponent } from './components/winery/winery.component';
 import { RestaurantComponent } from './components/restaurant/restaurant.component';

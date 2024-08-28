@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {LanguageClassDirective} from "../../shared/directives/language-class.directive";
 import {TranslateModule} from "@ngx-translate/core";
-import {RoomsComponent} from "./rooms/rooms.component";
+import {RoomsComponent} from "./components/rooms/rooms.component";
 
 @Component({
   selector: 'app-hotel',

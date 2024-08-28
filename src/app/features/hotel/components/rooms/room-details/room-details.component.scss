@@ -1,0 +1,40 @@
+@import "../../../../../../variables";
+.modal-body {
+  padding: 0;
+}
+.btn-close {
+  position: absolute;
+    z-index: 1;
+    right: 10px;
+    top: 10px;
+}
+
+.carousel-container {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+
+  .picsum-img-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+p {
+  padding: 20px;
+  font-size: $font-size-medium;
+}
+@media screen and (min-width: $desktop-large){
+  p {
+    font-size: $font-size-xlarge;
+  }
+}
