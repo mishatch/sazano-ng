@@ -1,4 +1,8 @@
-<div class="wrapper">
+<div *ngIf="isLoading">
+  <app-loading></app-loading>
+</div>
+
+<div class="wrapper" *ngIf="!isLoading">
   <div class="card" *ngFor="let room of rooms">
     <img class="card-img-top" [src]="room.cardImage" alt="Room Image">
     <div class="card-body">
