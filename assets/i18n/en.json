@@ -73,6 +73,15 @@
   "hotel-page": {
     "title": "Hotel Complex",
     "description": "Nestled along the serene banks of the Dzusa River, \"Sazano Wine\" Hotel Complex was established in 2017. Originally comprising of two charming buildings and 170 years-old antique wooden house, the complex underwent a remarkable expansion in 2023. Today, it boasts a collection of 31 distinctively designed rooms, providing accommodation for up to 78 guests. Inclusivity is at the heart of our offerings, with a specially adapted room and comprehensive assistive facilities for guests with disabilities. Spanning across a lush expanse of up to a hectare, our verdant grounds offer a tranquil retreat, complete with a dedicated children's entertainment area, ensuring an enriching experience for guests of all ages.",
-    "room-description": "Room Description"
+    "room-description": "Room Description",
+    "amenities": {
+      "bathrobe": "Bathrobe",
+      "slippers": "Slippers",
+      "hairdryer": "Hairdryer",
+      "toiletries": "Toiletries",
+      "safe": "Safe",
+      "kettle": "Kettle",
+      "wifi": "Free Wi-Fi"
+    }
   }
 }
