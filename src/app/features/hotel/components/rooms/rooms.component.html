@@ -9,7 +9,7 @@
       <h5 class="card-title eng-primary">{{room.name}}</h5>
       <a
         class="btn"
-        (click)="openRoomDetails(room.description, room.modalImages)"
+        (click)="openRoomDetails(room.description, room.modalImages, room.name)"
         [appLangClass]="'geo-primary, eng-primary, ru-primary'"
       >
         {{ 'hotel-page.room-description' | translate }}

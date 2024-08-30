@@ -1,11 +1,17 @@
 <ng-template #longContent let-modal>
-  <div class="modal-body">
+  <div class="modal-header eng-primary">
+    <h5>
+      {{ name }}
+    </h5>
     <button
       type="button"
-      class="btn-close btn-close-white"
+      class="btn-close btn-close-black"
       aria-label="Close"
       (click)="modal.dismiss('Cross click')"
     ></button>
+
+  </div>
+  <div class="modal-body">
     <ngb-carousel
       #carousel
       [interval]="2000"
@@ -21,6 +27,29 @@
       </ng-template>
     </ngb-carousel>
 
-    <p>{{ description }}</p>
+    <p [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'"> {{ description }}</p>
+    <ul [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'">
+      <li>
+        {{ "hotel-page.amenities.bathrobe" | translate }}
+      </li>
+      <li>
+        {{ "hotel-page.amenities.slippers" | translate }}
+      </li>
+      <li>
+        {{ "hotel-page.amenities.hairdryer" | translate }}
+      </li>
+      <li>
+        {{ "hotel-page.amenities.toiletries" | translate }}
+      </li>
+      <li>
+        {{ "hotel-page.amenities.safe" | translate }}
+      </li>
+      <li>
+        {{ "hotel-page.amenities.kettle" | translate }}
+      </li>
+      <li>
+        {{ "hotel-page.amenities.wifi" | translate }}
+      </li>
+    </ul>
   </div>
 </ng-template>

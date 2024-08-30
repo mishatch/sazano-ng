@@ -8,6 +8,8 @@ import {
   NgbSlideEventSource
 } from "@ng-bootstrap/ng-bootstrap";
 import { NgForOf } from "@angular/common";
+import {TranslateModule} from "@ngx-translate/core";
+import {LanguageClassDirective} from "../../../../shared/directives/language-class.directive";
 
 @Component({
   selector: 'app-room-details',
@@ -16,6 +18,8 @@ import { NgForOf } from "@angular/common";
     NgbCarousel,
     NgForOf,
     NgbSlide,
+    TranslateModule,
+    LanguageClassDirective
   ],
   templateUrl: './room-details.component.html',
   styleUrls: ['./room-details.component.scss']
@@ -23,7 +27,7 @@ import { NgForOf } from "@angular/common";
 export class RoomDetailsComponent {
   @Input() images: string[] = [];
   @Input() description: string = '';
-
+  @Input() name: string = '';
   @ViewChild('carousel', { static: true }) carousel!: NgbCarousel;
   @ViewChild('longContent', { static: true }) longContent!: TemplateRef<any>;
 

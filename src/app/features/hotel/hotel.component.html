@@ -1,10 +1,13 @@
-<section class="hotel-description" id="hotel-description">
-  <h1 class="hotel-complex" id="hotel-complex" [appLangClass]="'geo-primary, eng-primary, ru-primary'">
-    {{ "hotel-page.title" | translate }}
-  </h1>
-  <p [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'">
-    {{ "hotel-page.description" | translate }}
-  </p>
-</section>
+<div class="wrapper">
+  <section class="hotel-description" id="hotel-description">
+    <h1 class="hotel-complex" id="hotel-complex" [appLangClass]="'geo-primary, eng-primary, ru-primary'">
+      {{ "hotel-page.title" | translate }}
+    </h1>
+    <p [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'">
+      {{ "hotel-page.description" | translate }}
+    </p>
+  </section>
 
-<app-rooms></app-rooms>
+  <app-rooms></app-rooms>
+
+</div>

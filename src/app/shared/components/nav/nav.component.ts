@@ -33,6 +33,7 @@ export class NavComponent implements AfterViewInit {
   @ViewChild('navBtn', { static: true }) navBtn!: ElementRef;
   @ViewChild('desktopLogo', { static: true }) desktopLogo!: ElementRef;
   @ViewChild('changeLang', { static: true }) changeLang!: ElementRef;
+  @ViewChild('profile', { static: true }) profile!: ElementRef;
 
   clicked = false;
   mobileNavDisable = false;
@@ -58,10 +59,13 @@ export class NavComponent implements AfterViewInit {
 
   onWindowScroll() {
     const dropdown = this.el.nativeElement.querySelector('.row.lang');
+    const profile = this.el.nativeElement.querySelector('.profile');
     if (window.pageYOffset > 50) {
       this.renderer.addClass(dropdown, 'hide-dropdown');
+      this.renderer.addClass(profile, 'hide-dropdown');
     } else {
       this.renderer.removeClass(dropdown, 'hide-dropdown');
+      this.renderer.removeClass(profile, 'hide-dropdown');
     }
   }
   scrollOnTop(){
@@ -129,7 +133,7 @@ export class NavComponent implements AfterViewInit {
     this.renderer.setStyle(this.navBtn.nativeElement, 'paddingTop', '0');
     this.renderer.setStyle(this.navBtn.nativeElement, 'marginTop', '0');
     this.renderer.setStyle(this.changeLang.nativeElement, 'display', 'none');
-
+    this.renderer.setStyle(this.profile.nativeElement, 'display', 'none');
     this.renderer.setStyle(
       this.navBtn.nativeElement,
       'backgroundColor',
@@ -158,6 +162,7 @@ export class NavComponent implements AfterViewInit {
     );
     this.renderer.setStyle(this.navBtn.nativeElement, 'display', 'block');
     this.renderer.setStyle(this.changeLang.nativeElement, 'display', 'block');
+    this.renderer.setStyle(this.profile.nativeElement, 'display', 'block');
 
     this.clicked = false;
   }
