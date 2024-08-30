@@ -4,7 +4,8 @@
     "winery": "Винодельня",
     "hotel": "Гостиница",
     "restaurant": "Ресторан",
-    "contact": "Контакт"
+    "contact": "Контакт",
+    "login": "Войти"
   },
   "header": {
     "title": "Sazano Wine Cellar & Hotel",

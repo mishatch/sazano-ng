@@ -8,7 +8,7 @@ import {
 } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { LanguageClassDirective } from '../../../../shared/directives/language-class.directive';
-import {RouterLink} from "@angular/router";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-hotel',
@@ -21,7 +21,7 @@ import {RouterLink} from "@angular/router";
     RouterLink,
   ],
   templateUrl: './hotel.component.html',
-  styleUrl: './hotel.component.scss',
+  styleUrls: ['./hotel.component.scss'],
 })
 export class HotelComponent {
   paused = false;
@@ -50,6 +50,7 @@ export class HotelComponent {
     ) {
       this.togglePaused();
     }
+
     if (
       this.pauseOnIndicator &&
       !slideEvent.paused &&
@@ -59,7 +60,7 @@ export class HotelComponent {
     }
   }
 
-  scrollOnTop(){
+  scrollOnTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }

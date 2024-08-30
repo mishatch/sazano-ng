@@ -31,12 +31,10 @@ export class LanguageClassDirective implements OnInit {
         className = rusClass;
       }
 
-      // Remove the previous class if it exists
       if (this.previousClass) {
         this.renderer.removeClass(this.el.nativeElement, this.previousClass);
       }
 
-      // Add the new class
       if (className) {
         this.renderer.addClass(this.el.nativeElement, className);
         this.previousClass = className;

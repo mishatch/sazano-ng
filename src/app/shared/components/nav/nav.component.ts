@@ -11,8 +11,8 @@ import { LanguageService } from '../../../core/services/language.service';
 import { CommonModule } from '@angular/common';
 import { LanguageClassDirective } from '../../directives/language-class.directive';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
-import {RouterLink} from "@angular/router";
-import {ScrollService} from "../../../core/services/scroll.service";
+import { RouterLink } from '@angular/router';
+import { ScrollService } from '../../../core/services/scroll.service';
 
 @Component({
   selector: 'app-nav',
@@ -25,7 +25,7 @@ import {ScrollService} from "../../../core/services/scroll.service";
     RouterLink,
   ],
   templateUrl: './nav.component.html',
-  styleUrl: './nav.component.scss',
+  styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent implements AfterViewInit {
   @ViewChild('nav', { static: true }) nav!: ElementRef;
@@ -37,7 +37,6 @@ export class NavComponent implements AfterViewInit {
 
   clicked = false;
   mobileNavDisable = false;
-
   currentLanguage: string = this.languageService.getCurrentLanguage();
   languages = [
     { code: 'geo', flag: 'assets/images/flags/geo.png' },
@@ -51,12 +50,12 @@ export class NavComponent implements AfterViewInit {
     private scrollService: ScrollService,
     private el: ElementRef
   ) {
-    this.languageService.language$.subscribe((lang) => {
+    this.languageService.language$.subscribe((lang: string) => {
       this.currentLanguage = lang;
     });
   }
-  @HostListener('window:scroll', [])
 
+  @HostListener('window:scroll')
   onWindowScroll() {
     const dropdown = this.el.nativeElement.querySelector('.row.lang');
     const profile = this.el.nativeElement.querySelector('.profile');
@@ -68,17 +67,19 @@ export class NavComponent implements AfterViewInit {
       this.renderer.removeClass(profile, 'hide-dropdown');
     }
   }
-  scrollOnTop(){
-    const screenWidth = window.innerWidth;
-    if(screenWidth < 768){
+
+  scrollOnTop() {
+    if (window.innerWidth < 768) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       this.navBtn.nativeElement.click();
     }
   }
+
   navigateToSection(sectionId: string) {
     this.scrollService.navigateToHomeAndScroll(sectionId);
     this.navBtn.nativeElement.click();
   }
+
   switchLanguage(lang: string) {
     this.languageService.switchLanguage(lang);
   }
@@ -96,19 +97,16 @@ export class NavComponent implements AfterViewInit {
   onResize() {
     this.checkScreenWidth();
   }
+
   toggleNav() {
     if (this.mobileNavDisable) {
       return;
     }
 
-    if (!this.clicked) {
-      this.openNav();
-    } else {
-      this.closeNav();
-    }
+    this.clicked ? this.closeNav() : this.openNav();
   }
 
-  checkScreenWidth() {
+  private checkScreenWidth() {
     const screenWidth = window.innerWidth;
     this.mobileNavDisable = screenWidth >= 768;
     if (this.mobileNavDisable) {
@@ -120,8 +118,7 @@ export class NavComponent implements AfterViewInit {
     }
   }
 
-  // change element styles after mobile nav bar button toggle
-  openNav() {
+  private openNav() {
     this.renderer.setStyle(
       this.nav.nativeElement,
       'backgroundColor',
@@ -143,7 +140,7 @@ export class NavComponent implements AfterViewInit {
     this.clicked = true;
   }
 
-  closeNav() {
+  private closeNav() {
     this.renderer.setStyle(
       this.nav.nativeElement,
       'backgroundColor',
@@ -163,11 +160,10 @@ export class NavComponent implements AfterViewInit {
     this.renderer.setStyle(this.navBtn.nativeElement, 'display', 'block');
     this.renderer.setStyle(this.changeLang.nativeElement, 'display', 'block');
     this.renderer.setStyle(this.profile.nativeElement, 'display', 'block');
-
     this.clicked = false;
   }
-  // change element styles for desktop nav bar
-  desktopNav() {
+
+  private desktopNav() {
     this.renderer.setStyle(
       this.nav.nativeElement,
       'backgroundColor',

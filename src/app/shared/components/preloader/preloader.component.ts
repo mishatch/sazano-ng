@@ -6,10 +6,13 @@ import { ScrollService } from '../../../core/services/scroll.service';
   standalone: true,
   imports: [],
   templateUrl: './preloader.component.html',
-  styleUrls: ['./preloader.component.scss']
+  styleUrls: ['./preloader.component.scss'],
 })
 export class PreloaderComponent {
-  constructor(private renderer: Renderer2, private scrollService: ScrollService) {}
+  constructor(
+    private renderer: Renderer2,
+    private scrollService: ScrollService
+  ) {}
 
   ngOnInit(): void {
     this.disableScroll();
@@ -33,7 +36,7 @@ export class PreloaderComponent {
       setTimeout(() => {
         this.renderer.setStyle(preloader, 'display', 'none');
         this.renderer.setStyle(document.body, 'overflow', 'auto');
-        // Trigger scroll after preloader is fully handled
+
         setTimeout(() => {
           const urlHash = window.location.hash.replace('#', '');
           if (urlHash) {

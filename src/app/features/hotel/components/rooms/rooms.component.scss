@@ -2,20 +2,24 @@
 
 .wrapper {
   display: flex;
-  padding: 0 20px;
   flex-direction: column;
+  padding: 0 20px;
   gap: 20px;
-  >.card {
+
+  > .card {
     width: 100%;
+
     .card-title {
       text-align: center;
       color: $nav-links;
     }
+
     .btn {
       width: 100%;
       background-color: $nav-links;
       color: $body-bg;
     }
+
     .card-img-top {
       height: 227px;
     }
@@ -24,30 +28,36 @@
 
 @media screen and (min-width: $tablet) {
   .wrapper {
+    display: flex;
     flex-direction: row;
-    gap: 60px;
     flex-wrap: wrap;
     padding: 0 60px;
-    >.card {
+    gap: 60px;
+
+    > .card {
       width: calc(50% - 30px);
     }
   }
 }
+
 @media screen and (min-width: $desktop) {
   .wrapper {
-    gap: 25px;
+    gap: 50px;
     padding: 0 80px;
-    >.card {
-      width: calc(33% - 15px);
+
+    > .card {
+      width: calc(33% - 30px);
     }
   }
 }
+
 @media screen and (min-width: $desktop-large) {
   .wrapper {
-    gap: 40px;
+    gap: 70px;
     padding: 0 12%;
-    >.card {
-      width: calc(33% - 25px);
+
+    > .card {
+      width: calc(33% - 42px);
     }
   }
 }

@@ -1,57 +1,78 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnDestroy } from '@angular/core';
 import { RoomDetailsComponent } from '../room-details/room-details.component';
 import { RoomService } from '../../services/room.service';
-import {NgForOf, NgIf} from "@angular/common";
-import { TranslateModule } from "@ngx-translate/core";
-import { LanguageClassDirective } from "../../../../shared/directives/language-class.directive";
-import { LoadingComponent } from "../../../../shared/components/loading/loading.component";
-import {LanguageService} from "../../../../core/services/language.service";
-import {Description} from "../../models/description.interface";
-import {Room} from "../../models/room.interface";
-
+import { TranslateModule } from '@ngx-translate/core';
+import { LanguageClassDirective } from '../../../../shared/directives/language-class.directive';
+import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
+import { LanguageService } from '../../../../core/services/language.service';
+import { Description } from '../../models/description.interface';
+import { Room } from '../../models/room.interface';
+import { Subscription } from 'rxjs';
+import { Language } from '../../models/language.type';
 @Component({
   selector: 'app-rooms',
   standalone: true,
-  imports: [RoomDetailsComponent, NgForOf, TranslateModule, LanguageClassDirective, LoadingComponent, NgIf],
+  imports: [
+    RoomDetailsComponent,
+    TranslateModule,
+    LanguageClassDirective,
+    LoadingComponent,
+  ],
   templateUrl: './rooms.component.html',
-  styleUrls: ['./rooms.component.scss']
+  styleUrls: ['./rooms.component.scss'],
 })
-export class RoomsComponent {
+export class RoomsComponent implements OnDestroy {
   rooms: Room[] = [];
   isLoading = true;
-  private currentLanguage: string = this.languageService.getCurrentLanguage();
   description!: string;
-  @ViewChild('roomDetailsModal') roomDetails!: RoomDetailsComponent;
 
-  constructor(private roomService: RoomService, private languageService: LanguageService) {
+  private currentLanguage!: Language;
+  private languageSubscription: Subscription;
+
+  @ViewChild('roomDetailsModal', { static: false })
+  roomDetails!: RoomDetailsComponent;
+
+  constructor(
+    private roomService: RoomService,
+    private languageService: LanguageService
+  ) {
     this.fetchRooms();
+    this.languageSubscription = this.languageService.language$.subscribe(
+      (lang: string) => {
+        this.currentLanguage = lang as Language;
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    this.languageSubscription.unsubscribe();
   }
 
   fetchRooms() {
     this.isLoading = true;
-    this.roomService.getRooms().subscribe((data: any) => {
-      this.rooms = data;
-      this.isLoading = false;
-      console.log(this.rooms);
-    }, error => {
-      this.isLoading = false;
-      console.error('Error fetching rooms:', error);
-    });
+    this.roomService.getRooms().subscribe(
+      (data: Room[]) => {
+        this.rooms = data;
+        this.isLoading = false;
+      },
+      (error: any) => {
+        this.isLoading = false;
+        console.error('Error fetching rooms:', error);
+      }
+    );
   }
 
   openRoomDetails(description: Description, images: string[], name: string) {
     this.roomDetails.images = images;
     this.roomDetails.name = name;
-    this.languageService.language$.subscribe((lang) => {
-      this.currentLanguage = lang;
-      if(this.currentLanguage === 'geo') {
-        this.roomDetails.description = description.ka;
-      } else if (this.currentLanguage === 'en') {
-        this.roomDetails.description = description.en;
-      } else {
-        this.roomDetails.description = description.ru;
-      }
-    });
+
+    const descriptions: { [key in Language]: string } = {
+      geo: description.ka,
+      en: description.en,
+      ru: description.ru,
+    };
+
+    this.roomDetails.description = descriptions[this.currentLanguage];
     this.roomDetails.openModal();
   }
 }

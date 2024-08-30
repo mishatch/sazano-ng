@@ -1,20 +1,23 @@
-<div *ngIf="isLoading">
-  <app-loading></app-loading>
-</div>
-
-<div class="wrapper" *ngIf="!isLoading">
-  <div class="card" *ngFor="let room of rooms">
-    <img class="card-img-top" [src]="room.cardImage" alt="Room Image">
+@if(isLoading){
+<app-loading></app-loading>
+} @else {
+<div class="wrapper">
+  @for(room of rooms; track room){
+  <div class="card">
+    <img class="card-img-top" [src]="room.cardImage" alt="Room Image" />
     <div class="card-body">
-      <h5 class="card-title eng-primary">{{room.name}}</h5>
+      <h5 class="card-title eng-primary">{{ room.name }}</h5>
       <a
         class="btn"
         (click)="openRoomDetails(room.description, room.modalImages, room.name)"
         [appLangClass]="'geo-primary, eng-primary, ru-primary'"
       >
-        {{ 'hotel-page.room-description' | translate }}
+        {{ "hotel-page.room-description" | translate }}
       </a>
     </div>
   </div>
+  }
 </div>
+}
+
 <app-room-details #roomDetailsModal></app-room-details>

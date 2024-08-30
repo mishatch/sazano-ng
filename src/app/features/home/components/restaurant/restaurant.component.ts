@@ -1,35 +1,56 @@
 import { TranslateModule } from '@ngx-translate/core';
-import { Component, inject } from '@angular/core';
+import { Component, OnDestroy, TemplateRef } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LanguageClassDirective } from '../../../../shared/directives/language-class.directive';
-import {LanguageService} from "../../../../core/services/language.service";
+import { LanguageService } from '../../../../core/services/language.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-restaurant',
   standalone: true,
   imports: [TranslateModule, LanguageClassDirective],
   templateUrl: './restaurant.component.html',
-  styleUrl: './restaurant.component.scss',
+  styleUrls: ['./restaurant.component.scss'],
 })
-export class RestaurantComponent {
-  private modalService = inject(NgbModal);
-  private currentLanguage: string = this.languageService.getCurrentLanguage();
-  menuFoodUrl!: string;
-  menuDrinksUrl!: string;
-  constructor(private languageService: LanguageService) {
-    this.languageService.language$.subscribe((lang) => {
-      this.currentLanguage = lang;
-      if(this.currentLanguage === 'geo') {
-        this.menuFoodUrl = 'assets/images/home/restaurant/menu_food_ge.webp';
-        this.menuDrinksUrl = 'assets/images/home/restaurant/menu_drinks_ge.webp';
-      } else {
-        this.menuFoodUrl = 'assets/images/home/restaurant/menu_food_en.webp';
-        this.menuDrinksUrl = 'assets/images/home/restaurant/menu_drinks_en.webp';
+export class RestaurantComponent implements OnDestroy {
+  menuFoodUrl: string = '';
+  menuDrinksUrl: string = '';
+  private currentLanguage: string = '';
+  private languageSubscription: Subscription;
+
+  constructor(
+    private modalService: NgbModal,
+    private languageService: LanguageService
+  ) {
+    this.languageSubscription = this.languageService.language$.subscribe(
+      (lang: string) => {
+        this.currentLanguage = lang;
+        this.updateMenuUrls();
       }
-    });
+    );
+
+    this.updateMenuUrls();
   }
 
-  openScrollableContent(longContent: any) {
-    this.modalService.open(longContent, { scrollable: true, centered: true, size: 'lg' });
+  ngOnDestroy() {
+    this.languageSubscription.unsubscribe();
+  }
+
+  private updateMenuUrls() {
+    if (this.currentLanguage === 'geo') {
+      this.menuFoodUrl = 'assets/images/home/restaurant/menu_food_ge.webp';
+      this.menuDrinksUrl = 'assets/images/home/restaurant/menu_drinks_ge.webp';
+    } else {
+      this.menuFoodUrl = 'assets/images/home/restaurant/menu_food_en.webp';
+      this.menuDrinksUrl = 'assets/images/home/restaurant/menu_drinks_en.webp';
+    }
+  }
+
+  openScrollableContent(longContent: TemplateRef<any>) {
+    this.modalService.open(longContent, {
+      scrollable: true,
+      centered: true,
+      size: 'lg',
+    });
   }
 }
