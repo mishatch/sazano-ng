@@ -84,5 +84,23 @@
       "kettle": "მადუღარა",
       "wifi": "უფასო Wi-Fi"
     }
+  },
+  "auth": {
+    "required-field": "ეს ველი სავალდებულოა",
+    "name": "სახელი",
+    "surname": "გვარი",
+    "phone": "ტელეფონის ნომერი",
+    "phone-invalid": "ტელეფონის ნომერი არასწორია",
+    "email": "ელ. ფოსტა",
+    "email-invalid": "ელ. ფოსტის ფორმატი არასწორია",
+    "password": "პაროლი",
+    "password-minlength": "პაროლი უნდა შეიცავდეს მინიმუმ 6 სიმბოლოს",
+    "confirm-password": "დაადასტურეთ პაროლი",
+    "password-mismatch": "პაროლები არ ემთხვევა",
+    "no-account": "არ გაქვთ ანგარიში?",
+    "register": "დარეგისტრირდი",
+    "registration": "რეგისტრაცია",
+    "not-registered": "არ გაქვთ ანგარიში?",
+    "already-registered": "უკვე გაქვთ ანგარიში?"
   }
 }

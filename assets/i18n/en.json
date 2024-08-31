@@ -84,5 +84,23 @@
       "kettle": "Kettle",
       "wifi": "Free Wi-Fi"
     }
+  },
+  "auth": {
+    "required-field": "This field is required",
+    "name": "Name",
+    "surname": "Surname",
+    "phone": "Phone",
+    "phone-invalid": "Please enter a valid phone number",
+    "email": "Email",
+    "email-invalid": "Please enter a valid email",
+    "password": "Password",
+    "password-minlength": "Password must be at least 6 characters",
+    "confirm-password": "Confirm Password",
+    "password-mismatch": "Passwords do not match",
+    "no-account": "Don't have an account?",
+    "register": "Register",
+    "registration": "Registration",
+    "not-registered": "Don't have an account yet?",
+    "already-registered": "Already have an account?"
   }
 }
