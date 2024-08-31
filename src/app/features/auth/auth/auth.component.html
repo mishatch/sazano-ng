@@ -1,0 +1,44 @@
+<ng-template #longContent let-modal>
+  <div class="modal-header eng-primary">
+    @if (isLoginMode) {
+    <h5 [appLangClass]="'geo-primary, eng-primary, ru-primary'">
+      {{ "nav.login" | translate }}
+    </h5>
+    } @else {
+    <h5 [appLangClass]="'geo-primary, eng-primary, ru-primary'">
+      {{ "auth.registration" | translate }}
+    </h5>
+    }
+    <button
+      type="button"
+      class="btn-close btn-close-black"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  @if (isLoginMode) {
+  <app-login></app-login>
+  } @else {
+  <app-registration></app-registration>
+  } @if (isLoginMode) {
+  <div
+    class="suggestion"
+    [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'"
+  >
+    {{ "auth.not-registered" | translate }}
+    <span (click)="switchMode()">
+      {{ "auth.register" | translate }}
+    </span>
+  </div>
+  } @else {
+  <div
+    class="suggestion"
+    [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'"
+  >
+    {{ "auth.already-registered" | translate }}
+    <span (click)="switchMode()">
+      {{ "nav.login" | translate }}
+    </span>
+  </div>
+  }
+</ng-template>

@@ -1,0 +1,45 @@
+<div class="modal-body">
+  <form
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
+    [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'"
+  >
+    <div class="form-group">
+      <label for="email">{{ "auth.email" | translate }}</label>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        formControlName="email"
+        [class.is-invalid]="email?.touched && email?.invalid"
+      />
+      @if (email?.touched && email?.errors?.['required']) {
+      <small>
+        {{ "auth.required-field" | translate }}
+      </small>
+      } @else if (email?.touched && email?.errors?.['email']) {
+      <small>
+        {{ "auth.email-invalid" | translate }}
+      </small>
+      }
+    </div>
+    <div class="form-group">
+      <label for="password">{{ "auth.password" | translate }}</label>
+      <input
+        type="password"
+        id="password"
+        class="form-control"
+        formControlName="password"
+        [class.is-invalid]="password?.touched && password?.invalid"
+      />
+      @if (password?.touched && password?.errors?.['required']) {
+      <small>
+        {{ "auth.required-field" | translate }}
+      </small>
+      }
+    </div>
+    <button type="submit" class="btn" [class.disabled]="loginForm?.invalid">
+      {{ "nav.login" | translate }}
+    </button>
+  </form>
+</div>

@@ -1,0 +1,123 @@
+<div class="modal-body">
+  <form
+    [formGroup]="registrationForm"
+    (ngSubmit)="onSubmit()"
+    [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'"
+  >
+    <div class="form-group">
+      <label for="name">{{ "auth.name" | translate }}</label>
+      <input
+        type="text"
+        id="name"
+        class="form-control"
+        formControlName="name"
+        [class.is-invalid]="name?.touched && name?.invalid"
+      />
+      @if (name?.touched && name?.errors?.['required']) {
+      <small>
+        {{ "auth.required-field" | translate }}
+      </small>
+      }
+    </div>
+    <div class="form-group">
+      <label for="surname">{{ "auth.surname" | translate }}</label>
+      <input
+        type="text"
+        id="surname"
+        class="form-control"
+        formControlName="surname"
+        [class.is-invalid]="surname?.touched && surname?.invalid"
+      />
+      @if (surname?.touched && surname?.errors?.['required']) {
+      <small>
+        {{ "auth.required-field" | translate }}
+      </small>
+      }
+    </div>
+    <div class="form-group">
+      <label for="email">{{ "auth.email" | translate }}</label>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        formControlName="email"
+        [class.is-invalid]="email?.touched && email?.invalid"
+      />
+      @if (email?.touched && email?.errors?.['required']) {
+      <small>
+        {{ "auth.required-field" | translate }}
+      </small>
+      } @else if (email?.touched && email?.errors?.['email']) {
+      <small>
+        {{ "auth.email-invalid" | translate }}
+      </small>
+      }
+    </div>
+    <div class="form-group">
+      <label for="password">{{ "auth.password" | translate }}</label>
+      <input
+        type="password"
+        id="password"
+        class="form-control"
+        formControlName="password"
+        [class.is-invalid]="password?.touched && password?.invalid"
+      />
+      @if (password?.touched && password?.errors?.['required']) {
+      <small>
+        {{ "auth.required-field" | translate }}
+      </small>
+      } @if (password?.touched && password?.errors?.['minlength']) {
+      <small>
+        {{ "auth.password-minlength" | translate }}
+      </small>
+      }
+    </div>
+    <div class="form-group">
+      <label for="confirm-password">{{
+        "auth.confirm-password" | translate
+      }}</label>
+      <input
+        type="password"
+        id="confirm-password"
+        class="form-control"
+        formControlName="confirmPassword"
+        [class.is-invalid]="
+          confirmPassword?.touched && confirmPassword?.invalid
+        "
+      />
+      @if (confirmPassword?.touched && confirmPassword?.errors?.['required']) {
+      <small>
+        {{ "auth.required-field" | translate }}
+      </small>
+      } @if ( confirmPassword?.errors?.['passwordsMismatch']) {
+      <small>
+        {{ "auth.password-mismatch" | translate }}
+      </small>
+      }
+    </div>
+    <div class="form-group">
+      <label for="phone">{{ "auth.phone" | translate }}</label>
+      <input
+        type="text"
+        id="phone"
+        class="form-control"
+        formControlName="phone"
+        [class.is-invalid]="phone?.touched && phone?.invalid"
+      />
+      @if (phone?.touched && phone?.errors?.['required']) {
+      <small>
+        {{ "auth.required-field" | translate }}
+      </small>
+      } @if (phone?.touched && phone?.errors?.['invalidGeorgianPhone']) {
+      <small> {{ "auth.phone-invalid" | translate }} </small>
+      }
+    </div>
+    <button
+      type="submit"
+      class="btn"
+      [class.disabled]="registrationForm?.invalid"
+    >
+      {{ "auth.register" | translate }}
+    </button>
+  </form>
+</div>

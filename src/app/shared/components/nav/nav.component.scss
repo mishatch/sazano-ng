@@ -34,6 +34,7 @@ nav {
     position: absolute;
     left: 20px;
     top: 10px;
+    transition: opacity 0.3s ease;
   }
 
   > .links {
@@ -112,12 +113,12 @@ nav {
         &.login-desktop {
           display: block;
         }
-        > a {
+        > a,
+        > button {
           position: relative;
           font-size: $font-size-medium;
           color: $nav-links;
           cursor: pointer;
-
           &::before {
             content: "";
             position: absolute;
@@ -133,6 +134,10 @@ nav {
           &:hover::before {
             width: 50%;
           }
+        }
+        > button {
+          border: none;
+          background-color: transparent;
         }
       }
     }

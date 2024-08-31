@@ -13,6 +13,8 @@ import { LanguageClassDirective } from '../../directives/language-class.directiv
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterLink } from '@angular/router';
 import { ScrollService } from '../../../core/services/scroll.service';
+import { LoginComponent } from '../../../features/auth/login/login.component';
+import { AuthComponent } from '../../../features/auth/auth/auth.component';
 
 @Component({
   selector: 'app-nav',
@@ -23,6 +25,8 @@ import { ScrollService } from '../../../core/services/scroll.service';
     LanguageClassDirective,
     NgbDropdownModule,
     RouterLink,
+    LoginComponent,
+    AuthComponent,
   ],
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss'],
@@ -34,7 +38,8 @@ export class NavComponent implements AfterViewInit {
   @ViewChild('desktopLogo', { static: true }) desktopLogo!: ElementRef;
   @ViewChild('changeLang', { static: true }) changeLang!: ElementRef;
   @ViewChild('profile', { static: true }) profile!: ElementRef;
-
+  @ViewChild('authModal', { static: false })
+  auth!: AuthComponent;
   clicked = false;
   mobileNavDisable = false;
   currentLanguage: string = this.languageService.getCurrentLanguage();
@@ -73,6 +78,10 @@ export class NavComponent implements AfterViewInit {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       this.navBtn.nativeElement.click();
     }
+  }
+
+  openAuthModal() {
+    this.auth.openModal();
   }
 
   navigateToSection(sectionId: string) {

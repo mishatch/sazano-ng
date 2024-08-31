@@ -28,9 +28,9 @@
       </a>
     </li>
     <li class="login-desktop">
-      <a>
+      <button (click)="openAuthModal()">
         {{ "nav.login" | translate }}
-      </a>
+      </button>
     </li>
     <li>
       <a routerLink="/contact" class="contact-link" (click)="scrollOnTop()">
@@ -61,6 +61,7 @@
     height="24"
     viewBox="0 0 24 24"
     class="profile"
+    (click)="openAuthModal()"
   >
     <g
       fill="none"
@@ -112,3 +113,4 @@
     <div class="col"></div>
   </div>
 </nav>
+<app-auth #authModal></app-auth>

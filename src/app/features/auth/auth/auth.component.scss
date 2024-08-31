@@ -1,0 +1,23 @@
+@import "../../../../variables.scss";
+
+.modal-header {
+  > h5 {
+    margin: 0 auto;
+    color: $nav-links;
+  }
+  > .btn-close {
+    right: 20px;
+    position: absolute;
+    outline: none;
+    box-shadow: none;
+  }
+}
+.suggestion {
+  padding: 0 0 20px 20px;
+  span {
+    color: $nav-links;
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}

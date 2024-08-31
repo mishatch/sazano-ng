@@ -107,3 +107,7 @@ body {
     object-fit: cover;
   }
 }
+.modal-dialog-scrollable .modal-content {
+  max-height: 100%;
+  overflow: auto;
+}
