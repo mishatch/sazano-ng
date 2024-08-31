@@ -38,7 +38,11 @@
       </small>
       }
     </div>
-    <button type="submit" class="btn" [class.disabled]="loginForm?.invalid">
+    <button
+      type="submit"
+      class="submit-button"
+      [class.is-disabled]="loginForm.invalid"
+    >
       {{ "nav.login" | translate }}
     </button>
   </form>

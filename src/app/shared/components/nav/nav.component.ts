@@ -14,7 +14,7 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterLink } from '@angular/router';
 import { ScrollService } from '../../../core/services/scroll.service';
 import { LoginComponent } from '../../../features/auth/login/login.component';
-import { AuthComponent } from '../../../features/auth/auth/auth.component';
+import { AuthComponent } from '../../../features/auth/auth.component';
 
 @Component({
   selector: 'app-nav',

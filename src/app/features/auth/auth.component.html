@@ -1,4 +1,4 @@
-<ng-template #longContent let-modal>
+<ng-template #authModalTemplate let-modal>
   <div class="modal-header eng-primary">
     @if (isLoginMode) {
     <h5 [appLangClass]="'geo-primary, eng-primary, ru-primary'">
@@ -25,20 +25,23 @@
     class="suggestion"
     [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'"
   >
-    {{ "auth.not-registered" | translate }}
+    <p>{{ "auth.not-registered" | translate }}
     <span (click)="switchMode()">
       {{ "auth.register" | translate }}
     </span>
+    </p>
   </div>
   } @else {
   <div
     class="suggestion"
     [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'"
   >
+    <p>
     {{ "auth.already-registered" | translate }}
     <span (click)="switchMode()">
       {{ "nav.login" | translate }}
     </span>
+    </p>
   </div>
   }
 </ng-template>

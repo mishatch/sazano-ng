@@ -89,7 +89,8 @@
       <small>
         {{ "auth.required-field" | translate }}
       </small>
-      } @if ( confirmPassword?.errors?.['passwordsMismatch']) {
+      } @if (confirmPassword?.touched &&
+      confirmPassword?.errors?.['passwordsMismatch']) {
       <small>
         {{ "auth.password-mismatch" | translate }}
       </small>
@@ -114,8 +115,8 @@
     </div>
     <button
       type="submit"
-      class="btn"
-      [class.disabled]="registrationForm?.invalid"
+      class="submit-button"
+      [class.is-disabled]="registrationForm.invalid"
     >
       {{ "auth.register" | translate }}
     </button>

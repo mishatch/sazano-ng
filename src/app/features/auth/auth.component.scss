@@ -1,0 +1,40 @@
+@import "../../../variables";
+
+.modal-header {
+  > h5 {
+    margin: 0 auto;
+    color: $nav-links;
+    font-size: $font-size-xlarge;
+  }
+  > .btn-close {
+    position: absolute;
+    right: 20px;
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.suggestion {
+  padding: 0 0 20px 20px;
+  p {
+    font-size: $font-size-medium;
+    span {
+      color: $nav-links;
+      font-weight: bold;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}
+@media screen and (min-width: $desktop-large) {
+  .modal-header {
+    > h5 {
+      font-size: $font-size-xxlarge;
+    }
+  }
+  .suggestion {
+    p {
+      font-size: $font-size-xlarge;
+    }
+  }
+}
