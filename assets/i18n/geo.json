@@ -5,7 +5,8 @@
     "hotel": "სასტუმრო",
     "restaurant": "რესტორანი",
     "contact": "კონტაქტი",
-    "login": "შესვლა"
+    "login": "შესვლა",
+    "profile": "პროფილი"
   },
   "header": {
     "title": "საზანოს ღვინის მარანი და სასტუმრო",
@@ -101,6 +102,9 @@
     "register": "დარეგისტრირდი",
     "registration": "რეგისტრაცია",
     "not-registered": "არ გაქვთ ანგარიში?",
-    "already-registered": "უკვე გაქვთ ანგარიში?"
+    "already-registered": "უკვე გაქვთ ანგარიში?",
+    "success": "წარმატებული რეგისტრაცია",
+    "success-message": "რეგისტრაცია წარმატებით შესრულდა",
+    "success-button": "დახურვა"
   }
 }

@@ -5,7 +5,8 @@
     "hotel": "Hotel",
     "restaurant": "Restaurant",
     "contact": "Contact",
-    "login": "Login"
+    "login": "Login",
+    "profile": "Profile"
   },
   "header": {
     "title": "Sazano Wine Cellar & Hotel",
@@ -101,6 +102,9 @@
     "register": "Register",
     "registration": "Registration",
     "not-registered": "Don't have an account yet?",
-    "already-registered": "Already have an account?"
+    "already-registered": "Already have an account?",
+    "success": "Registration successful",
+    "success-message": "You have successfully registered",
+    "success-button": "Close"
   }
 }
