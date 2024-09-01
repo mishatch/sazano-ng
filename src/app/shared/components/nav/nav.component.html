@@ -28,8 +28,8 @@
       </a>
     </li>
     <li class="login-desktop">
-      <button (click)="openAuthModal()">
-        {{ "nav.login" | translate }}
+      <button (click)="handleLoginClick()">
+        {{ "nav.profile" | translate }}
       </button>
     </li>
     <li>
@@ -61,7 +61,7 @@
     height="24"
     viewBox="0 0 24 24"
     class="profile"
-    (click)="openAuthModal()"
+    (click)="handleLoginClick()"
   >
     <g
       fill="none"
@@ -110,7 +110,6 @@
         </div>
       </div>
     </div>
-    <div class="col"></div>
   </div>
 </nav>
 <app-auth #authModal></app-auth>

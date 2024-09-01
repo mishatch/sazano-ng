@@ -4,7 +4,7 @@ import { RoomService } from '../../services/room.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { LanguageClassDirective } from '../../../../shared/directives/language-class.directive';
 import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
-import { LanguageService } from '../../../../core/services/language.service';
+import { LanguageService } from '../../../../shared/services/language.service';
 import { Description } from '../../models/description.interface';
 import { Room } from '../../models/room.interface';
 import { Subscription } from 'rxjs';

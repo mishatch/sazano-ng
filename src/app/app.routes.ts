@@ -27,4 +27,11 @@ export const routes: Routes = [
         (m) => m.ContactComponent
       ),
   },
+  {
+    path: 'profile',
+    loadComponent: () =>
+      import('./features/profile/profile.component').then(
+        (m) => m.ProfileComponent
+      ),
+  },
 ];

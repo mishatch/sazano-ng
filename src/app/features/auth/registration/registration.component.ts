@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -9,6 +9,7 @@ import { LanguageClassDirective } from '../../../shared/directives/language-clas
 import { TranslateModule } from '@ngx-translate/core';
 import { confirmPasswordValidator } from '../validators/password-match.validator';
 import { georgianPhoneValidator } from '../validators/georgian-phone.validator';
+import {AuthService} from "../../../core/services/auth.service";
 
 @Component({
   selector: 'app-registration',
@@ -19,17 +20,17 @@ import { georgianPhoneValidator } from '../validators/georgian-phone.validator';
 })
 export class RegistrationComponent {
   registrationForm!: FormGroup;
-
-  constructor(private fb: FormBuilder) {}
+  @Output() registrationSuccess = new EventEmitter<void>();
+  constructor(private fb: FormBuilder, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.registrationForm = this.fb.group({
       name: ['', [Validators.required]],
-      surname: ['', [Validators.required]],
+      surName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required, confirmPasswordValidator]],
-      phone: ['+995', [Validators.required, georgianPhoneValidator]],
+      phoneNumber: ['+995', [Validators.required, georgianPhoneValidator]],
     });
   }
 
@@ -38,7 +39,7 @@ export class RegistrationComponent {
   }
 
   get surname() {
-    return this.registrationForm.get('surname');
+    return this.registrationForm.get('surName');
   }
 
   get email() {
@@ -51,15 +52,21 @@ export class RegistrationComponent {
     return this.registrationForm.get('confirmPassword');
   }
   get phone() {
-    return this.registrationForm.get('phone');
+    return this.registrationForm.get('phoneNumber');
   }
 
   onSubmit() {
     if (this.registrationForm.valid) {
       const { confirmPassword, ...formData } = this.registrationForm.value;
-      console.log('Form Submitted!', formData);
-    } else {
-      console.log('Form is invalid');
+      this.authService.registerUser(formData).subscribe(
+        (data) => {
+          console.log('User registered successfully');
+          this.registrationSuccess.emit(); // Emit the event on success
+        },
+        (error) => {
+          console.log('Error registering user');
+        }
+      );
     }
   }
 }

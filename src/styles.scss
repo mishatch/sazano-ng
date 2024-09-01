@@ -115,9 +115,9 @@ body {
 
 //Form global styles
 form {
+  font-size: $font-size-medium;
   .form-group {
     margin-bottom: 10px;
-
     input {
       border: 1px solid $roomCard-border;
 
@@ -148,7 +148,6 @@ form {
     border: none;
     border-radius: 5px;
     color: $white;
-    font-size: $font-size-medium;
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
@@ -160,5 +159,10 @@ form {
       opacity: 0.6;
       cursor: not-allowed;
     }
+  }
+}
+@media screen and (min-width: $desktop-large){
+  form {
+    font-size: $font-size-xlarge;
   }
 }

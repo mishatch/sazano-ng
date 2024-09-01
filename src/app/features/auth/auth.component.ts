@@ -5,6 +5,8 @@ import { LanguageClassDirective } from '../../shared/directives/language-class.d
 import { TranslateModule } from '@ngx-translate/core';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { AuthSuccessComponent } from './auth-success/auth-success.component';
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-auth',
@@ -15,6 +17,8 @@ import { RegistrationComponent } from './registration/registration.component';
     ReactiveFormsModule,
     LoginComponent,
     RegistrationComponent,
+    AuthSuccessComponent,
+    NgIf
   ],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.scss',
@@ -23,15 +27,29 @@ export class AuthComponent {
   @ViewChild('authModalTemplate', { static: true })
   authModalTemplate!: TemplateRef<any>;
   isLoginMode = true;
+  showSuccessMessage = false;
+
   constructor(private ngbModal: NgbModal) {}
 
   openModal() {
-    const modalRef = this.ngbModal.open(this.authModalTemplate, {
+    this.ngbModal.open(this.authModalTemplate, {
       scrollable: true,
       centered: true,
     });
   }
+
   switchMode() {
     this.isLoginMode = !this.isLoginMode;
+  }
+
+  onRegistrationSuccess() {
+    this.showSuccessMessage = true;
+  }
+  onCloseSuccessModal() {
+    this.ngbModal.dismissAll();
+    setTimeout(() => {
+      this.switchMode();
+      this.showSuccessMessage = false;
+    }, 1000);
   }
 }

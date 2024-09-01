@@ -2,7 +2,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { Component, OnDestroy, TemplateRef } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LanguageClassDirective } from '../../../../shared/directives/language-class.directive';
-import { LanguageService } from '../../../../core/services/language.service';
+import { LanguageService } from '../../../../shared/services/language.service';
 import { Subscription } from 'rxjs';
 
 @Component({

@@ -7,14 +7,15 @@ import {
   HostListener,
   AfterViewInit,
 } from '@angular/core';
-import { LanguageService } from '../../../core/services/language.service';
+import { LanguageService } from '../../services/language.service';
 import { CommonModule } from '@angular/common';
 import { LanguageClassDirective } from '../../directives/language-class.directive';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
-import { RouterLink } from '@angular/router';
-import { ScrollService } from '../../../core/services/scroll.service';
+import {Router, RouterLink} from '@angular/router';
+import { ScrollService } from '../../services/scroll.service';
 import { LoginComponent } from '../../../features/auth/login/login.component';
 import { AuthComponent } from '../../../features/auth/auth.component';
+import {AuthService} from "../../../core/services/auth.service";
 
 @Component({
   selector: 'app-nav',
@@ -43,6 +44,7 @@ export class NavComponent implements AfterViewInit {
   clicked = false;
   mobileNavDisable = false;
   currentLanguage: string = this.languageService.getCurrentLanguage();
+  isLoggedIn: boolean = false;
   languages = [
     { code: 'geo', flag: 'assets/images/flags/geo.png' },
     { code: 'en', flag: 'assets/images/flags/us.png' },
@@ -53,11 +55,18 @@ export class NavComponent implements AfterViewInit {
     private renderer: Renderer2,
     private languageService: LanguageService,
     private scrollService: ScrollService,
-    private el: ElementRef
+    private el: ElementRef,
+    private authService: AuthService,
+    private router: Router
   ) {
     this.languageService.language$.subscribe((lang: string) => {
       this.currentLanguage = lang;
     });
+
+    this.authService.isLoggedIn().subscribe(status => {
+      this.isLoggedIn = status;
+    });
+
   }
 
   @HostListener('window:scroll')
@@ -70,6 +79,14 @@ export class NavComponent implements AfterViewInit {
     } else {
       this.renderer.removeClass(dropdown, 'hide-dropdown');
       this.renderer.removeClass(profile, 'hide-dropdown');
+    }
+  }
+
+  handleLoginClick(): void {
+    if (this.isLoggedIn) {
+      this.router.navigate(['/profile']);
+    } else {
+      this.openAuthModal();
     }
   }
 

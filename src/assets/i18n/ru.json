@@ -5,7 +5,8 @@
     "hotel": "Гостиница",
     "restaurant": "Ресторан",
     "contact": "Контакт",
-    "login": "Войти"
+    "login": "Войти",
+    "profile": "Профиль"
   },
   "header": {
     "title": "Sazano Wine Cellar & Hotel",
@@ -101,6 +102,10 @@
     "register": "Регистрация",
     "registration": "Регистрация",
     "not-registered": "У вас еще нет аккаунта?",
-    "already-registered": "У вас уже есть аккаунт?"
+    "already-registered": "У вас уже есть аккаунт?",
+    "success": "Регистрация успешна",
+    "success-message": "Вы успешно зарегистрировались",
+    "home": "Вернуться на главную",
+    "success-button": "Закрыть"
   }
 }

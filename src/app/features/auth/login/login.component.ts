@@ -7,6 +7,9 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { AuthService } from '../../../core/services/auth.service';
+import { Router } from '@angular/router';
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-login',
@@ -18,7 +21,12 @@ import {
 export class LoginComponent {
   loginForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+              private fb: FormBuilder,
+              private authService: AuthService,
+              private router: Router,
+              private ngbModal: NgbModal
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -36,9 +44,17 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      console.log('Form Submitted!', this.loginForm.value);
-    } else {
-      console.log('Form is invalid');
+      this.authService.loginUser(this.loginForm.value).subscribe(
+        (response) => {
+          console.log('Login successful', response);
+          this.router.navigate(['/profile']);
+          this.ngbModal.dismissAll();
+        },
+        (error) => {
+          console.log('Login failed', error);
+          // Handle login error (e.g., show an error message)
+        }
+      );
     }
   }
 }

@@ -20,12 +20,12 @@
       }
     </div>
     <div class="form-group">
-      <label for="surname">{{ "auth.surname" | translate }}</label>
+      <label for="surName">{{ "auth.surname" | translate }}</label>
       <input
         type="text"
-        id="surname"
+        id="surName"
         class="form-control"
-        formControlName="surname"
+        formControlName="surName"
         [class.is-invalid]="surname?.touched && surname?.invalid"
       />
       @if (surname?.touched && surname?.errors?.['required']) {
@@ -97,12 +97,12 @@
       }
     </div>
     <div class="form-group">
-      <label for="phone">{{ "auth.phone" | translate }}</label>
+      <label for="phoneNumber">{{ "auth.phone" | translate }}</label>
       <input
         type="text"
-        id="phone"
+        id="phoneNumber"
         class="form-control"
-        formControlName="phone"
+        formControlName="phoneNumber"
         [class.is-invalid]="phone?.touched && phone?.invalid"
       />
       @if (phone?.touched && phone?.errors?.['required']) {

@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 50 50"
+    xml:space="preserve"
+    aria-labelledby="title desc"
+    role="img"
+  >
+  <title id="title">Green Circle with Checkmark</title>
+    <desc id="desc">A green circle with a white checkmark in the center</desc>
+    <circle fill="#4c0027" cx="25" cy="25" r="25"/>
+    <polyline fill="none" stroke="#f5e6ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="38,15 22,33 12,25"/>
+</svg>
+<p class="success-message" [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'">
+  {{ "auth.success-message" | translate }}
+</p>
+  <button
+    [appLangClass]="'geo-primary, eng-primary, ru-primary'"
+    (click)="onClose()"
+  >
+    {{ "auth.success-button" | translate }}
+  </button>
+</div>
