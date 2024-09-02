@@ -20,7 +20,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 })
 export class LoginComponent {
   loginForm!: FormGroup;
-
+  error: string | null = null;
   constructor(
               private fb: FormBuilder,
               private authService: AuthService,
@@ -44,15 +44,14 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
+      this.error = null;
       this.authService.loginUser(this.loginForm.value).subscribe(
         (response) => {
-          console.log('Login successful', response);
           this.router.navigate(['/profile']);
           this.ngbModal.dismissAll();
         },
         (error) => {
-          console.log('Login failed', error);
-          // Handle login error (e.g., show an error message)
+          this.error = error.error
         }
       );
     }

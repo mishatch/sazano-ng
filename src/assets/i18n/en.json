@@ -96,6 +96,9 @@
     "email-invalid": "Please enter a valid email",
     "password": "Password",
     "password-minlength": "Password must be at least 6 characters",
+    "password-uppercase": "Password must contain at least one uppercase letter",
+    "password-number": "Password must contain at least one number",
+    "password-special": "Password must contain at least one special character(!@#$%^&*)",
     "confirm-password": "Confirm Password",
     "password-mismatch": "Passwords do not match",
     "no-account": "Don't have an account?",
@@ -105,6 +108,7 @@
     "already-registered": "Already have an account?",
     "success": "Registration successful",
     "success-message": "You have successfully registered",
-    "success-button": "Close"
+    "success-button": "Close",
+    "login-failed": "Incorrect email or password"
   }
 }
