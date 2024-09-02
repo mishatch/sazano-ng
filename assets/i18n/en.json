@@ -114,6 +114,7 @@
     "unexpected-error": "An unexpected error occurred, please try again",
     "confirm-email": "Please confirm your email address",
     "confirm-email-message": "Use the link sent to your email to finish the confirmation process",
-    "resend-link": "Send Again"
+    "resend-link": "Send Again",
+    "back-to-home": "Back to home page"
   }
 }

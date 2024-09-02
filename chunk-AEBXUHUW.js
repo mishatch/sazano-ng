@@ -1,2 +1,0 @@
-import{e as c}from"./chunk-EEM2MVBH.js";import"./chunk-CPZIBQGM.js";import{Cb as s,ea as o,hb as i,ib as r,yb as a}from"./chunk-LXGTM6MR.js";var u=(()=>{let e=class e{};e.\u0275fac=function(n){return new(n||e)},e.\u0275cmp=o({type:e,selectors:[["app-registration-successful"]],standalone:!0,features:[s],decls:4,vars:0,consts:[[1,"container"],["routerLink","/"]],template:function(n,d){n&1&&(i(0,"div",0),a(1,` registraciam chaiara uteslesad
-`),r(),i(2,"a",1),a(3,"mtavar gverdze igi"),r())},dependencies:[c]});let t=e;return t})();export{u as RegistrationSuccessfulComponent};
