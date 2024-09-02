@@ -6,12 +6,14 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  > svg {
-    width: 40%;
+  > h5 {
+    text-align: center;
+    font-size: $font-size-xlarge;
   }
-  >p {
+  > p {
     text-align: center;
     margin-top: 20px;
+    font-size: $font-size-medium;
   }
   button {
     width: 100%;
@@ -26,6 +28,15 @@
     &:hover {
       opacity: 0.8;
     }
-
+  }
+}
+@media screen and (min-width: $desktop-large) {
+  .wrapper {
+    > h5 {
+      font-size: $font-size-xxlarge;
+    }
+    > p {
+      font-size: $font-size-xlarge;
+    }
   }
 }

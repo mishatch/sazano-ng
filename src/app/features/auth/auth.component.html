@@ -1,51 +1,57 @@
 <ng-template #authModalTemplate let-modal>
   <div class="modal-header eng-primary">
     @if (isLoginMode) {
-      <h5 [appLangClass]="'geo-primary, eng-primary, ru-primary'">
-        {{ "nav.login" | translate }}
-      </h5>
+    <h5 [appLangClass]="'geo-primary, eng-primary, ru-primary'">
+      {{ "nav.login" | translate }}
+    </h5>
     } @else {
-      <h5 [appLangClass]="'geo-primary, eng-primary, ru-primary'">
-        {{ "auth.registration" | translate }}
-      </h5>
+    <h5 [appLangClass]="'geo-primary, eng-primary, ru-primary'">
+      {{ "auth.registration" | translate }}
+    </h5>
     }
     <button
       type="button"
       class="btn-close btn-close-black"
       aria-label="Close"
-      (click)="showSuccessMessage ? onCloseSuccessModal() : modal.dismiss('Cross click')"
+      (click)="
+        showSuccessMessage
+          ? onCloseSuccessModal()
+          : modal.dismiss('Cross click')
+      "
     ></button>
   </div>
 
-  @if (!showSuccessMessage) {
-    @if (isLoginMode) {
-      <app-login></app-login>
-    } @else {
-      <app-registration (registrationSuccess)="onRegistrationSuccess()"></app-registration>
-    }
+  @if (!showSuccessMessage) { @if (isLoginMode) {
+  <app-login></app-login>
   } @else {
-    <app-auth-success (closeModal)="onCloseSuccessModal()"></app-auth-success>
-  }
-
-  @if (!showSuccessMessage) {
-    @if (isLoginMode) {
-      <div class="suggestion" [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'">
-        <p>
-          {{ "auth.not-registered" | translate }}
-          <span (click)="switchMode()">
-            {{ "auth.register" | translate }}
-          </span>
-        </p>
-      </div>
-    } @else {
-      <div class="suggestion" [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'">
-        <p>
-          {{ "auth.already-registered" | translate }}
-          <span (click)="switchMode()">
-            {{ "nav.login" | translate }}
-          </span>
-        </p>
-      </div>
-    }
-  }
+  <app-registration
+    (registrationSuccess)="onRegistrationSuccess()"
+  ></app-registration>
+  } } @else {
+  <app-email-verification (closeModal)="onCloseSuccessModal()"></app-email-verification>
+  } @if (!showSuccessMessage) { @if (isLoginMode) {
+  <div
+    class="suggestion"
+    [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'"
+  >
+    <p>
+      {{ "auth.not-registered" | translate }}
+      <span (click)="switchMode()">
+        {{ "auth.register" | translate }}
+      </span>
+    </p>
+  </div>
+  } @else {
+  <div
+    class="suggestion"
+    [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'"
+  >
+    <p>
+      {{ "auth.already-registered" | translate }}
+      <span (click)="switchMode()">
+        {{ "nav.login" | translate }}
+      </span>
+    </p>
+  </div>
+  } }
 </ng-template>

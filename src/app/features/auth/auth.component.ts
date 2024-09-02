@@ -5,7 +5,7 @@ import { LanguageClassDirective } from '../../shared/directives/language-class.d
 import { TranslateModule } from '@ngx-translate/core';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
-import { AuthSuccessComponent } from './auth-success/auth-success.component';
+import { EmailVerificationComponent } from './email-verification/email-verification.component';
 import {NgIf} from "@angular/common";
 
 @Component({
@@ -17,7 +17,7 @@ import {NgIf} from "@angular/common";
     ReactiveFormsModule,
     LoginComponent,
     RegistrationComponent,
-    AuthSuccessComponent,
+    EmailVerificationComponent,
     NgIf
   ],
   templateUrl: './auth.component.html',

@@ -109,6 +109,12 @@
     "success": "Registration successful",
     "success-message": "You have successfully registered",
     "success-button": "Close",
-    "login-failed": "Incorrect email or password"
+    "login-failed": "Incorrect email or password",
+    "user-exists": "User with this email already exists",
+    "unexpected-error": "An unexpected error occurred, please try again",
+    "confirm-email": "Please confirm your email address",
+    "confirm-email-message": "Use the link sent to your email to finish the confirmation process",
+    "resend-link": "Send Again",
+    "back-to-home": "Back to home page"
   }
 }

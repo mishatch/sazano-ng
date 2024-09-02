@@ -9,30 +9,53 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth.service';
 import { Router } from '@angular/router';
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { LoadingComponent } from '../../../shared/components/loading/loading.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [TranslateModule, LanguageClassDirective, ReactiveFormsModule],
+  imports: [
+    TranslateModule,
+    LanguageClassDirective,
+    ReactiveFormsModule,
+    LoadingComponent,
+  ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
   loginForm!: FormGroup;
   error: string | null = null;
+  isLoading = false;
+
   constructor(
-              private fb: FormBuilder,
-              private authService: AuthService,
-              private router: Router,
-              private ngbModal: NgbModal
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+    private ngbModal: NgbModal
   ) {}
 
   ngOnInit(): void {
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
-    });
+    this.initLoginForm();
+  }
+
+  onSubmit() {
+    if (this.loginForm.valid) {
+      this.isLoading = true;
+      this.error = null;
+      this.authService.loginUser(this.loginForm.value).subscribe(
+        (response) => {
+          this.router.navigate(['/profile']);
+          this.ngbModal.dismissAll();
+          this.isLoading = false;
+        },
+        (error) => {
+          this.error = error.error;
+          this.isLoading = false;
+        }
+      );
+    }
   }
 
   get email() {
@@ -42,18 +65,10 @@ export class LoginComponent {
     return this.loginForm.get('password');
   }
 
-  onSubmit() {
-    if (this.loginForm.valid) {
-      this.error = null;
-      this.authService.loginUser(this.loginForm.value).subscribe(
-        (response) => {
-          this.router.navigate(['/profile']);
-          this.ngbModal.dismissAll();
-        },
-        (error) => {
-          this.error = error.error
-        }
-      );
-    }
+  private initLoginForm() {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
+    });
   }
 }

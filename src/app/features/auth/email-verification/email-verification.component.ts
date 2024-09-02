@@ -4,17 +4,17 @@ import {TranslateModule} from "@ngx-translate/core";
 import {LanguageClassDirective} from "../../../shared/directives/language-class.directive";
 
 @Component({
-  selector: 'app-auth-success',
+  selector: 'app-email-verification',
   standalone: true,
   imports: [
     RouterLink,
     TranslateModule,
     LanguageClassDirective
   ],
-  templateUrl: './auth-success.component.html',
-  styleUrl: './auth-success.component.scss'
+  templateUrl: './email-verification.component.html',
+  styleUrl: './email-verification.component.scss'
 })
-export class AuthSuccessComponent {
+export class EmailVerificationComponent {
   @Output() closeModal = new EventEmitter<void>();
 
   onClose() {

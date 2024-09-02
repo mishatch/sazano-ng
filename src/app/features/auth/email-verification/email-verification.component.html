@@ -1,0 +1,14 @@
+<div class="wrapper">
+  <h5 [appLangClass]="'geo-primary, eng-primary, ru-primary'">
+    {{ "auth.confirm-email" | translate }}
+  </h5>
+  <p
+    class="success-message"
+    [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'"
+  >
+    {{ "auth.confirm-email-message" | translate }}
+  </p>
+    <button (click)="onClose()" [appLangClass]="'geo-primary, eng-primary, ru-primary'">
+      {{ "auth.success-button" | translate }}
+    </button>
+</div>

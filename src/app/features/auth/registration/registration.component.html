@@ -15,11 +15,10 @@
         autocomplete="name"
       />
       @if (name?.touched && name?.errors?.['required']) {
-      <small>
-        {{ "auth.required-field" | translate }}
-      </small>
+      <small>{{ "auth.required-field" | translate }}</small>
       }
     </div>
+
     <div class="form-group">
       <label for="surName">{{ "auth.surname" | translate }}</label>
       <input
@@ -31,11 +30,10 @@
         autocomplete="family-name"
       />
       @if (surname?.touched && surname?.errors?.['required']) {
-      <small>
-        {{ "auth.required-field" | translate }}
-      </small>
+      <small>{{ "auth.required-field" | translate }}</small>
       }
     </div>
+
     <div class="form-group">
       <label for="email">{{ "auth.email" | translate }}</label>
       <input
@@ -43,19 +41,16 @@
         id="email"
         class="form-control"
         formControlName="email"
-        [class.is-invalid]="email?.touched && email?.invalid"
+        [class.is-invalid]="(email?.touched || email?.dirty) && email?.invalid"
         autocomplete="email"
       />
       @if (email?.touched && email?.errors?.['required']) {
-      <small>
-        {{ "auth.required-field" | translate }}
-      </small>
-      } @else if (email?.touched && email?.errors?.['email']) {
-      <small>
-        {{ "auth.email-invalid" | translate }}
-      </small>
+      <small>{{ "auth.required-field" | translate }}</small>
+      } @else if (email?.dirty && email?.errors?.['email']) {
+      <small>{{ "auth.email-invalid" | translate }}</small>
       }
     </div>
+
     <div class="form-group">
       <label for="password">{{ "auth.password" | translate }}</label>
       <input
@@ -63,17 +58,19 @@
         id="password"
         class="form-control"
         formControlName="password"
-        [class.is-invalid]="password?.touched && password?.invalid"
+        [class.is-invalid]="
+          (password?.touched || password?.dirty) && password?.invalid
+        "
         autocomplete="current-password"
       />
-      @if (password?.dirty && password?.errors || password?.touched &&
-      password?.errors) {
+      @if ((password?.dirty && password?.invalid) || (password?.touched &&
+      password?.invalid)) {
       <ul>
         <li>
           <small
             [ngStyle]="{
-          'color': password?.errors?.['minlength'] || password?.errors?.['required'] ? '#c62828' : '#28a745'
-          }"
+                'color': password?.errors?.['minlength'] || password?.errors?.['required'] ? '#c62828' : '#28a745'
+              }"
           >
             {{ "auth.password-minlength" | translate }}
           </small>
@@ -81,8 +78,8 @@
         <li>
           <small
             [ngStyle]="{
-          'color': password?.errors?.['uppercaseLetter'] ? '#c62828' : '#28a745'
-          }"
+                'color': password?.errors?.['uppercaseLetter'] ? '#c62828' : '#28a745'
+              }"
           >
             {{ "auth.password-uppercase" | translate }}
           </small>
@@ -90,8 +87,8 @@
         <li>
           <small
             [ngStyle]="{
-          'color': password?.errors?.['oneDigit'] ? '#c62828' : '#28a745'
-          }"
+                'color': password?.errors?.['oneDigit'] ? '#c62828' : '#28a745'
+              }"
           >
             {{ "auth.password-number" | translate }}
           </small>
@@ -99,8 +96,8 @@
         <li>
           <small
             [ngStyle]="{
-          'color': password?.errors?.['nonAlphanumeric'] ? '#c62828' : '#28a745'
-          }"
+                'color': password?.errors?.['nonAlphanumeric'] ? '#c62828' : '#28a745'
+              }"
           >
             {{ "auth.password-special" | translate }}
           </small>
@@ -108,6 +105,7 @@
       </ul>
       }
     </div>
+
     <div class="form-group">
       <label for="confirm-password">{{
         "auth.confirm-password" | translate
@@ -117,21 +115,20 @@
         id="confirm-password"
         class="form-control"
         formControlName="confirmPassword"
-        [class.is-invalid]="confirmPassword?.touched && confirmPassword?.invalid"
+        [class.is-invalid]="
+          (confirmPassword?.touched || confirmPassword?.dirty) &&
+          confirmPassword?.invalid
+        "
         autocomplete="current-password"
       />
       @if (confirmPassword?.touched && confirmPassword?.errors?.['required']) {
-      <small>
-        {{ "auth.required-field" | translate }}
-      </small>
-      } @if ( (confirmPassword?.dirty &&
-      confirmPassword?.errors?.['passwordsMismatch']) &&
-      !confirmPassword?.errors?.['required'] ) {
-      <small>
-        {{ "auth.password-mismatch" | translate }}
-      </small>
+      <small>{{ "auth.required-field" | translate }}</small>
+      } @else if (confirmPassword?.dirty &&
+      confirmPassword?.errors?.['passwordsMismatch']) {
+      <small>{{ "auth.password-mismatch" | translate }}</small>
       }
     </div>
+
     <div class="form-group">
       <label for="phone">{{ "auth.phone" | translate }}</label>
       <input
@@ -139,22 +136,27 @@
         formControlName="phoneNumber"
         id="phone"
         class="form-control"
-        [class.is-invalid]="phone?.touched && phone?.invalid"
+        [class.is-invalid]="(phone?.touched || phone?.dirty) && phone?.invalid"
         autocomplete="tel"
-      >
+        placeholder="555 55 55 55"
+      />
       @if (phone?.touched && phone?.errors?.['required']) {
-      <small>
-        {{ "auth.required-field" | translate }}
-      </small>
-      } @if (phone?.touched && phone?.errors?.['invalidGeorgianPhone']) {
-      <small> {{ "auth.phone-invalid" | translate }} </small>
+      <small>{{ "auth.required-field" | translate }}</small>
+      } @else if (phone?.dirty && phone?.errors?.['invalidGeorgianPhone']) {
+      <small>{{ "auth.phone-invalid" | translate }}</small>
       }
     </div>
-    @if (errorMessage){
+
+    @if (userExists) {
     <div class="alert alert-danger" role="alert">
-      {{ errorMessage }}
+      {{ "auth.user-exists" | translate }}
+    </div>
+    } @else if(unexpectedError) {
+    <div class="alert alert-danger" role="alert">
+      {{ "auth.unexpected-error" | translate }}
     </div>
     }
+
     <button
       type="submit"
       class="submit-button"
@@ -164,3 +166,7 @@
     </button>
   </form>
 </div>
+
+@if (isLoading) {
+<app-loading></app-loading>
+}

@@ -34,4 +34,11 @@ export const routes: Routes = [
         (m) => m.ProfileComponent
       ),
   },
+  {
+    path: 'registration-successful',
+    loadComponent: () =>
+      import('./features/auth/registration-successful/registration-successful.component').then(
+        (m) => m.RegistrationSuccessfulComponent
+      ),
+  },
 ];
