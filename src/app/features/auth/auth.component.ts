@@ -27,7 +27,7 @@ export class AuthComponent {
   @ViewChild('authModalTemplate', { static: true })
   authModalTemplate!: TemplateRef<any>;
   isLoginMode = true;
-  showSuccessMessage = false;
+  emailVerification = false;
 
   constructor(private ngbModal: NgbModal) {}
 
@@ -43,13 +43,13 @@ export class AuthComponent {
   }
 
   onRegistrationSuccess() {
-    this.showSuccessMessage = true;
+    this.emailVerification = true;
   }
   onCloseSuccessModal() {
     this.ngbModal.dismissAll();
     setTimeout(() => {
       this.switchMode();
-      this.showSuccessMessage = false;
+      this.emailVerification = false;
     }, 1000);
   }
 }

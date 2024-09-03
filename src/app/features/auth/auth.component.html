@@ -14,14 +14,14 @@
       class="btn-close btn-close-black"
       aria-label="Close"
       (click)="
-        showSuccessMessage
+        emailVerification
           ? onCloseSuccessModal()
           : modal.dismiss('Cross click')
       "
     ></button>
   </div>
 
-  @if (!showSuccessMessage) { @if (isLoginMode) {
+  @if (!emailVerification) { @if (isLoginMode) {
   <app-login></app-login>
   } @else {
   <app-registration
@@ -29,7 +29,7 @@
   ></app-registration>
   } } @else {
   <app-email-verification (closeModal)="onCloseSuccessModal()"></app-email-verification>
-  } @if (!showSuccessMessage) { @if (isLoginMode) {
+  } @if (!emailVerification) { @if (isLoginMode) {
   <div
     class="suggestion"
     [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'"
