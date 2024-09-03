@@ -1,10 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { Component, EventEmitter, OnInit, OnDestroy, Output } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LanguageClassDirective } from '../../../shared/directives/language-class.directive';
 import { TranslateModule } from '@ngx-translate/core';
 import { georgianPhoneValidator } from '../validators/georgian-phone.validator';
@@ -17,6 +12,7 @@ import {
 } from '../validators/password.validator';
 import { NgStyle } from '@angular/common';
 import { LoadingComponent } from '../../../shared/components/loading/loading.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-registration',
@@ -29,15 +25,16 @@ import { LoadingComponent } from '../../../shared/components/loading/loading.com
     LoadingComponent,
   ],
   templateUrl: './registration.component.html',
-  styleUrl: './registration.component.scss',
+  styleUrls: ['./registration.component.scss'],
 })
-export class RegistrationComponent implements OnInit {
+export class RegistrationComponent implements OnInit, OnDestroy {
   @Output() registrationSuccess = new EventEmitter<void>();
 
   registrationForm!: FormGroup;
   userExists: boolean = false;
   unexpectedError: boolean = false;
   isLoading = false;
+  private subscription: Subscription = new Subscription();
 
   constructor(private fb: FormBuilder, private authService: AuthService) {}
 
@@ -51,7 +48,7 @@ export class RegistrationComponent implements OnInit {
       this.userExists = false;
       this.unexpectedError = false;
       const { confirmPassword, ...formData } = this.registrationForm.value;
-      this.authService.registerUser(formData).subscribe(
+      const registerSub = this.authService.registerUser(formData).subscribe(
         (data) => {
           this.registrationSuccess.emit();
           this.isLoading = false;
@@ -65,7 +62,12 @@ export class RegistrationComponent implements OnInit {
           this.isLoading = false;
         }
       );
+      this.subscription.add(registerSub);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   get name() {

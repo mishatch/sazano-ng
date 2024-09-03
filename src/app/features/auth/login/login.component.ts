@@ -1,16 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { LanguageClassDirective } from '../../../shared/directives/language-class.directive';
-import {
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoadingComponent } from '../../../shared/components/loading/loading.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -24,10 +20,11 @@ import { LoadingComponent } from '../../../shared/components/loading/loading.com
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit, OnDestroy {
   loginForm!: FormGroup;
   error: string | null = null;
   isLoading = false;
+  private subscription: Subscription = new Subscription();
 
   constructor(
     private fb: FormBuilder,
@@ -44,7 +41,7 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.isLoading = true;
       this.error = null;
-      this.authService.loginUser(this.loginForm.value).subscribe(
+      const loginSub = this.authService.loginUser(this.loginForm.value).subscribe(
         (response) => {
           this.router.navigate(['/profile']);
           this.ngbModal.dismissAll();
@@ -55,12 +52,18 @@ export class LoginComponent {
           this.isLoading = false;
         }
       );
+      this.subscription.add(loginSub);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   get email() {
     return this.loginForm.get('email');
   }
+
   get password() {
     return this.loginForm.get('password');
   }
