@@ -1,5 +1,9 @@
 <div class="wrapper">
-  <p>profile works!</p>
+  <h5 class="eng-primary">{{userName}} {{surname}}</h5>
+  <div class="orders">
+    <p>No Orders</p>
+  </div>
   <button (click)="logOut()">Log Out</button>
-
+  <a routerLink="/buy-wine">Buy Wine</a>
+  <a routerLink="/add-wine">Add Wine</a>
 </div>

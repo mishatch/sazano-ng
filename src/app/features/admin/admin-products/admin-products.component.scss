@@ -1,0 +1,10 @@
+.wrapper {
+  padding: 80px 20px;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  > table {
+    width: 50%;
+  }
+}

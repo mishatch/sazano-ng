@@ -9,7 +9,7 @@ export class RoomService {
   private apiUrl: string = 'https://sazanowine-api-dev.azurewebsites.net/api/rooms';
 
   constructor(private http: HttpClient) { }
-  getRooms(): Observable<any> {
-    return this.http.get(this.apiUrl);
+  getRooms(): Observable<Room[]> {
+    return this.http.get<Room[]>(`${this.apiUrl}`);
   }
 }

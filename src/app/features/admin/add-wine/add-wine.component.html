@@ -1,0 +1,126 @@
+<div class="wrapper geo-secondary">
+  <form [formGroup]="addWineForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">ღვინის დასახელება (ინგლისურად)</label>
+      <input
+        type="text"
+        formControlName="name"
+        class="form-control"
+        id="name"
+        [class.is-invalid]="name?.touched && name?.invalid"
+      >
+      @if (name?.touched && name?.errors?.['required']) {
+        <small>ეს ველი სავალდებულოა</small>
+      }
+    </div>
+    <div class="form-group">
+      <label for="year">გამოშვების წელი</label>
+      <input
+        type="number"
+        formControlName="vintageYear"
+        class="form-control"
+        id="year"
+        [class.is-invalid]="vintageYear?.touched && vintageYear?.invalid"
+      >
+      @if (vintageYear?.touched && vintageYear?.errors?.['required']) {
+        <small>ეს ველი სავალდებულოა</small>
+      }
+    </div>
+    <div class="form-group">
+      <label for="price">ფასი ₾</label>
+      <input
+        type="number"
+        formControlName="price"
+        class="form-control"
+        id="price"
+        [class.is-invalid]="price?.touched && price?.invalid"
+      >
+      @if (price?.touched && price?.errors?.['required']) {
+        <small>ეს ველი სავალდებულოა</small>
+        <br>
+      }
+
+      @if (price?.touched && price?.errors?.['invalidNumber']) {
+        <small>ფასი უნდა იყოს 0-ზე მეტი</small>
+      }
+    </div>
+    <div class="form-group">
+      <label for="quantity">რაოდენობა</label>
+      <input
+        type="number"
+        formControlName="stockQuantity"
+        class="form-control"
+        id="quantity"
+        [class.is-invalid]="stockQuantity?.touched && stockQuantity?.invalid"
+      >
+      @if (stockQuantity?.touched && stockQuantity?.errors?.['required']) {
+        <small>ეს ველი სავალდებულოა</small>
+        <br>
+      }
+
+      @if (stockQuantity?.touched && stockQuantity?.errors?.['invalidNumber']) {
+        <small>რაოდენობა უნდა იყოს 0-ზე მეტი</small>
+      }
+    </div>
+    <div class="form-group">
+      <label for="imageUrl">ფოტოს ლინკი</label>
+      <input
+        type="text"
+        formControlName="imageUrl"
+        class="form-control"
+        id="imageUrl"
+        [class.is-invalid]="imageUrl?.touched && imageUrl?.invalid"
+      >
+      @if (imageUrl?.touched && imageUrl?.errors?.['required']) {
+        <small>ეს ველი სავალდებულოა</small>
+        <br>
+      }
+      @if (imageUrl?.dirty && imageUrl?.errors?.['invalidUrl']) {
+        <small>ლინკი არასწორია</small>
+      }
+    </div>
+    <div class="form-group">
+    <label for="description">მოკლე აღწერა</label>
+    <textarea formControlName="description" class="form-control" id="description" rows="3"></textarea>
+  </div>
+    @if (errorMessage) {
+      <div class="alert alert-danger" role="alert">
+        {{errorMessage}}
+      </div>
+    }
+    @if (successMessage) {
+      <div class="alert alert-success" role="alert">
+        {{successMessage}}
+      </div>
+    }
+  <button type="submit" class="submit-button" [class.is-disabled]="addWineForm.invalid">ღვინის დამატება</button>
+  </form>
+  <div class="form-preview">
+    <div class="wine-image">
+      @if (imageUrl?.value) {
+        <img [src]="imageUrl?.value" alt="wine-image">
+      }
+    </div>
+    <div class="wine-description">
+      <h5 class="eng-primary"> {{name?.value}} </h5>
+      @if (vintageYear?.value) {
+        <p class="eng-primary vintage-year">
+          {{vintageYear?.value}}
+        </p>
+      }
+      @if (name?.value && vintageYear?.value) {
+        <p class="geo-primary">
+          საზანოს ღვინო
+        </p>
+      }
+      @if (price?.value) {
+        <p class="eng-primary">
+          {{price?.value}} ₾
+        </p>
+      }
+    </div>
+  </div>
+</div>
+@if (isLoading) {
+  <app-loading></app-loading>
+}

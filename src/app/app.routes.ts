@@ -43,4 +43,32 @@ export const routes: Routes = [
         (m) => m.RegistrationSuccessfulComponent
       ),
   },
+  {
+    path: 'buy-wine',
+    loadComponent: () =>
+      import('./features/buy-wine/buy-wine.component').then(
+        (m) => m.BuyWineComponent
+      ),
+  },
+  {
+    path: 'add-wine',
+    loadComponent: () =>
+      import('./features/admin/add-wine/add-wine.component').then(
+        (m) => m.AddWineComponent
+      ),
+  },
+  {
+    path: 'shopping-cart',
+    loadComponent: () =>
+      import('./features/buy-wine/components/shopping-cart/shopping-cart.component').then(
+        (m) => m.ShoppingCartComponent
+      ),
+  },
+  {
+    path: 'admin-products',
+    loadComponent: () =>
+      import('./features/admin/admin-products/admin-products.component').then(
+        (m) => m.AdminProductsComponent
+      ),
+  },
 ];

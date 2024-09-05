@@ -1,3 +1,16 @@
+@import "../../../variables";
+
 .wrapper {
   padding: 80px 20px;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  button {
+    width: 300px;
+  }
+}
+@media screen and (min-width: $tablet) {
+  .wrapper {
+    padding: 20px 20px;
+  }
 }

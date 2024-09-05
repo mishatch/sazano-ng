@@ -10,4 +10,8 @@ import {TranslateModule} from "@ngx-translate/core";
   templateUrl: './wines.component.html',
   styleUrl: './wines.component.scss',
 })
-export class WinesComponent {}
+export class WinesComponent {
+  scrollOnTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}

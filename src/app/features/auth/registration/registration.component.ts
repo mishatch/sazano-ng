@@ -42,6 +42,10 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     this.registrationFormInit();
   }
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
   onSubmit() {
     if (this.registrationForm.valid) {
       this.isLoading = true;
@@ -64,10 +68,6 @@ export class RegistrationComponent implements OnInit, OnDestroy {
       );
       this.subscription.add(registerSub);
     }
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
   }
 
   get name() {

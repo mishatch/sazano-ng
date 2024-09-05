@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map, take } from 'rxjs/operators';
-import {AuthService} from "../services/auth.service";
+import { Observable, of } from 'rxjs';
+import { map, tap, catchError } from 'rxjs/operators';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +15,13 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> {
+    if (this.authService.isTokenExpired()) {
+      this.authService.logout();
+      this.router.navigate(['/']);
+      return of(false);
+    }
+
     return this.authService.isLoggedIn().pipe(
-      take(1),
       map((isLoggedIn: boolean) => {
         if (isLoggedIn) {
           return true;
@@ -24,6 +29,10 @@ export class AuthGuard implements CanActivate {
           this.router.navigate(['/']);
           return false;
         }
+      }),
+      catchError(() => {
+        this.router.navigate(['/']);
+        return of(false);
       })
     );
   }

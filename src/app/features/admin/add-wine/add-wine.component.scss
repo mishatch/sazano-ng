@@ -1,0 +1,54 @@
+@import "../../../../variables";
+
+.wrapper {
+  padding: 80px 20px 0 20px;
+  display: flex;
+  align-items: center;
+  min-height: 80vh;
+  >form {
+    width: 100%;
+  }
+  >div {
+    display: none;
+  }
+}
+
+@media screen and (min-width: $tablet) {
+  .wrapper {
+    padding: 20px 40px;
+    gap: 10%;
+    >form {
+      width: 45%;
+    }
+    > div {
+      width: 45%;
+      display: flex;
+      gap: 4%;
+      > div {
+        &:first-of-type {
+          width: 28%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          > img {
+            width: 100%;
+          }
+        }
+        &:last-of-type {
+          width: 68%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          .vintage-year {
+            background-color: #4c0027;
+            padding-top: 5px;
+            width: 60px;
+            text-align: center;
+            color: white;
+            border-radius: 8px;
+          }
+        }
+      }
+    }
+  }
+}

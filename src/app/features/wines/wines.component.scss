@@ -49,6 +49,20 @@
       }
     }
   }
+  .buy-wine {
+    width: 300px;
+    padding: 20px 10px;
+    background-color: $nav-links;
+    text-align: center;
+    text-decoration: none;
+    color: $body-bg;
+    border-radius: 8px;
+    margin: 0 auto;
+    transition: .3s;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 }
 
 @media screen and (min-width: $tablet) {

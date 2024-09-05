@@ -1,0 +1,43 @@
+<div class="wrapper">
+  <table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+    <tr>
+      <th>ღვინის სახელოდება</th>
+      <th>წარმოების წელი</th>
+      <th>ფასი</th>
+      <th>რაოდენობა მარაგში</th>
+      <th>ჩასწორება</th>
+      <th>წაშლა</th>
+    </tr>
+    </thead>
+    <tbody>
+      @for(wine of wines; track wine){
+        <tr>
+          <td>{{ wine.name }}</td>
+          <td>{{ wine.vintageYear }}</td>
+          <td>{{ wine.price }} ₾</td>
+          <td>{{ wine.stockQuantity }}</td>
+          <td>
+            <button class="btn btn-warning btn-sm" >Edit</button>
+          </td>
+          <td>
+            <button class="btn btn-danger btn-sm" (click)="openModal(content, wine?.id)" >Delete</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">დარწმუნებული ხართ რომ გსურთ ღვინის წაშლა?</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <p>ღვინის ინფორმაცია წაიშლება მონაცემთა ბაზიდან</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="deleteWine(); modal.close()">დიახ</button>
+    <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">არა</button>
+  </div>
+</ng-template>

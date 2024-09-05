@@ -1,0 +1,37 @@
+<div class="wrapper">
+  <a class="shopping-cart" routerLink="/shopping-cart">cart</a>
+  @for(wine of wines; track wine) {
+    <div class="wine-card">
+      <div class="bottle-image">
+        <img [src]="wine.imageUrl" alt="Wine">
+      </div>
+      <div class="wine-details">
+        <h5 class="eng-primary">{{ wine.name }}</h5>
+        <span></span>
+        <p class="eng-primary year">{{ wine.vintageYear }}</p>
+        <p class="geo-primary" [appLangClass]="'geo-primary, eng-secondary, eng-secondary'">
+          {{ "sazano-wine" | translate }}
+        </p>
+        <p class="eng-primary">{{ wine.price }} ₾</p>
+
+        @if(getWineQuantity(wine) === 0) {
+          <button class="primary-btn" [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'"
+                  (click)="addToCart(wine)">
+            {{ "cart.add-to-cart" | translate }}
+          </button>
+        } @else {
+          <div class="adjust-quantity eng-secondary">
+            <button (click)="removeFromCart(wine)" class="primary-btn">-</button>
+            <span>{{ getWineQuantity(wine) }}</span>
+            <button (click)="addToCart(wine)" class="primary-btn">+</button>
+          </div>
+        }
+      </div>
+    </div>
+  }
+</div>
+
+
+  @if (isLoading) {
+    <app-loading></app-loading>
+  }

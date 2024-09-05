@@ -1,0 +1,39 @@
+ @if(cartItems.length > 0){
+   <div class="cart-container">
+     <h2>{{ 'cart.title' | translate }}</h2>
+
+     @for(item of cartItems; track item){
+       <div class="cart-item">
+         <div class="item-info">
+           <img [src]="item.wine.imageUrl" alt="{{ item.wine.name }}">
+           <div class="item-details">
+             <h4>{{ item.wine.name }}</h4>
+             <p>{{ item.wine.vintageYear }}</p>
+             <p>{{ item.wine.price }} ₾</p>
+           </div>
+         </div>
+         <div class="item-quantity">
+           <button (click)="decreaseQuantity(item.wine)">-</button>
+           <span>{{ item.quantity }}</span>
+           <button (click)="increaseQuantity(item.wine)">+</button>
+         </div>
+         <div class="item-total">
+           <p>{{ item.wine.price * item.quantity }} ₾</p>
+         </div>
+       </div>
+     }
+
+     <div class="cart-footer">
+       <button class="clear-cart-btn" (click)="clearCart()">
+         {{ 'cart.clear-cart' | translate }}
+       </button>
+       <div class="total-amount">
+         <p>{{ 'cart.total' | translate }}: {{ getTotalAmount() }} ₾</p>
+       </div>
+     </div>
+   </div>
+ } @else {
+   <div>
+     <p>{{ 'cart.empty' | translate }}</p>
+   </div>
+ }

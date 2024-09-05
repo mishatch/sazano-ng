@@ -35,6 +35,11 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initLoginForm();
+
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   onSubmit() {
@@ -46,6 +51,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.router.navigate(['/profile']);
           this.ngbModal.dismissAll();
           this.isLoading = false;
+          console.log(this.authService.decodeToken());
         },
         (error) => {
           this.error = error.error;
@@ -54,10 +60,6 @@ export class LoginComponent implements OnInit, OnDestroy {
       );
       this.subscription.add(loginSub);
     }
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
   }
 
   get email() {
