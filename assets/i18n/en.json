@@ -120,10 +120,12 @@
   },
   "sazano-wine": "Sazano Wine",
   "cart": {
-    "title": "Your Shopping Cart",
+    "title": "Shopping Cart",
+    "items": "Items",
     "clear-cart": "Clear Cart",
     "total": "Total",
     "empty": "Your cart is empty",
-    "add-to-cart": "Add to Cart"
+    "add-to-cart": "Add to Cart",
+    "checkout": "Checkout"
   }
 }
