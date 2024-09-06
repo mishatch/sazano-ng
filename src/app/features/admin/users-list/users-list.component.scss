@@ -1,0 +1,43 @@
+@import "../../../../variables";
+
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+  padding: 80px 20px;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  .buttons-wrapper {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+    >button, input {
+      font-size: $font-size-medium;
+      width: 300px;
+    }
+    > input {
+      border: 1px solid black;
+    }
+  }
+  .table-wrapper {
+    width: 100%;
+    overflow: auto;
+    table {
+      width: 100%;
+      overflow: auto;
+      font-size: $font-size-medium;
+      button {
+        font-size: $font-size-medium;
+        width: 100%;
+      }
+      td {
+        font-family: sans-serif;
+      }
+    }
+  }
+}

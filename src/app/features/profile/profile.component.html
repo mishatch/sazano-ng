@@ -1,9 +1,14 @@
 <div class="wrapper">
-  <h5 class="eng-primary">{{userName}} {{surname}}</h5>
-  <div class="orders">
-    <p>No Orders</p>
-  </div>
+  @if(isAdmin){
+    <h5 class="eng-primary">{{userName}} {{surname}} <span>ადმინისტრატორი</span></h5>
+    <a routerLink="/admin/products">პროდუქტები</a>
+    <a routerLink="/admin/users-list">მომხმარებლები</a>
+    <a routerLink="/admin/orders">შეკვეთები</a>
+  } @else {
+    <div class="orders">
+      <p>No Orders</p>
+      <a routerLink="/buy-wine">Buy Wine</a>
+    </div>
+  }
   <button (click)="logOut()">Log Out</button>
-  <a routerLink="/buy-wine">Buy Wine</a>
-  <a routerLink="/add-wine">Add Wine</a>
 </div>

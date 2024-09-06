@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './features/home/home.component';
 import {AuthGuard} from "./core/guards/auth.guard";
+import {AdminGuard} from "./features/admin/guards/admin.guard";
 
 export const routes: Routes = [
   {
@@ -51,13 +52,6 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'add-wine',
-    loadComponent: () =>
-      import('./features/admin/add-wine/add-wine.component').then(
-        (m) => m.AddWineComponent
-      ),
-  },
-  {
     path: 'shopping-cart',
     loadComponent: () =>
       import('./features/buy-wine/components/shopping-cart/shopping-cart.component').then(
@@ -65,10 +59,35 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'admin-products',
+    path: 'admin/products',
+    canActivate: [AdminGuard, AuthGuard],
     loadComponent: () =>
       import('./features/admin/admin-products/admin-products.component').then(
         (m) => m.AdminProductsComponent
+      ),
+  },
+  {
+    path: 'admin/add-wine',
+    canActivate: [AdminGuard, AuthGuard],
+    loadComponent: () =>
+      import('./features/admin/add-wine/add-wine.component').then(
+        (m) => m.AddWineComponent
+      ),
+  },
+  {
+    path: 'admin/wine/edit/:id',
+    canActivate: [AdminGuard, AuthGuard],
+    loadComponent: () =>
+      import('./features/admin/add-wine/add-wine.component').then(
+        (m) => m.AddWineComponent
+      ),
+  },
+  {
+    path: 'admin/users-list',
+    canActivate: [AdminGuard, AuthGuard],
+    loadComponent: () =>
+      import('./features/admin/users-list/users-list.component').then(
+        (m) => m.UsersListComponent
       ),
   },
 ];

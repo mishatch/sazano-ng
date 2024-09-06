@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../models/user.model';
+import {LoggedInUser, User} from '../models/user.model';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { jwtDecode } from "jwt-decode";
@@ -19,7 +19,7 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/register`, user);
   }
 
-  loginUser(user: User): Observable<any> {
+  loginUser(user: LoggedInUser): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, user).pipe(
       tap((response: any) => {
         if (response && response.token) {
@@ -64,5 +64,12 @@ export class AuthService {
       return expirationDate < new Date();
     }
     return true;
+  }
+  isUserAdmin(): boolean {
+    const decodedToken = this.decodeToken();
+    if (decodedToken && Array.isArray(decodedToken.roles)) {
+      return decodedToken.roles.includes('Admin');
+    }
+    return false;
   }
 }

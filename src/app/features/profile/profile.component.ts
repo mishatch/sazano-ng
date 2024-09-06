@@ -14,12 +14,14 @@ import {RouterLink} from "@angular/router";
 export class ProfileComponent {
   public userName!: string;
   public surname!: string;
+  isAdmin!: boolean;
   constructor(private authService: AuthService) {
     const decodedToken = this.authService.decodeToken();
     if (decodedToken) {
       this.userName = decodedToken.name;
       this.surname = decodedToken.surName;
     }
+    this.isAdmin = this.authService.isUserAdmin();
   }
   logOut() {
     this.authService.logout();

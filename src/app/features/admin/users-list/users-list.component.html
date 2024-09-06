@@ -1,0 +1,43 @@
+<div class="wrapper geo-primary">
+  <div class="buttons-wrapper">
+    <button class="btn btn-primary" (click)="showNormalUsers()">მომხმარებლები</button>
+    <button class="btn btn-secondary" (click)="showAdmins()">ადმინისტრატორები</button>
+    <button class="btn btn-info" (click)="resetFilter()">ყველა მომხმარებელი</button>
+    <input type="text" class="form-control" placeholder="ძებნა" [(ngModel)]="searchTerm" />
+  </div>
+
+  <div class="table-wrapper">
+    <table class="table table-striped table-bordered">
+      <thead class="thead-dark">
+      <tr>
+        <th>სახელი</th>
+        <th>გვარი</th>
+        <th>ელ. ფოსტა</th>
+        <th>ტელეფონის ნომერი</th>
+        <th>როლი</th>
+        <th>სტატუსის შეცვლა</th>
+      </tr>
+      </thead>
+      <tbody>
+        @for (user of filteredUsers(); track user) {
+          <tr>
+            <td>{{ user.name }}</td>
+            <td>{{ user.surName }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.phoneNumber }}</td>
+            <td>{{ user.roles.join(', ') }}</td>
+            <td>
+              <button class="btn" [ngClass]="user.roles.includes('Admin') ? 'btn-danger' : 'btn-success'"
+                      (click)="toggleAdminStatus(user)">
+                {{ user.roles.includes('Admin') ? 'ადმინის წაშლა' : 'ადმინის მინიჭება' }}
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+@if(isLoading){
+  <app-loading></app-loading>
+}

@@ -1,32 +1,40 @@
-<div class="wrapper">
-  <table class="table table-striped table-bordered">
-    <thead class="thead-dark">
-    <tr>
-      <th>ღვინის სახელოდება</th>
-      <th>წარმოების წელი</th>
-      <th>ფასი</th>
-      <th>რაოდენობა მარაგში</th>
-      <th>ჩასწორება</th>
-      <th>წაშლა</th>
-    </tr>
-    </thead>
-    <tbody>
-      @for(wine of wines; track wine){
-        <tr>
-          <td>{{ wine.name }}</td>
-          <td>{{ wine.vintageYear }}</td>
-          <td>{{ wine.price }} ₾</td>
-          <td>{{ wine.stockQuantity }}</td>
-          <td>
-            <button class="btn btn-warning btn-sm" >Edit</button>
-          </td>
-          <td>
-            <button class="btn btn-danger btn-sm" (click)="openModal(content, wine?.id)" >Delete</button>
-          </td>
-        </tr>
-      }
-    </tbody>
-  </table>
+<div class="wrapper geo-primary">
+  <div>
+    <a routerLink="/admin/add-wine" >ახალი პროდუქტის დამატება</a>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="ძებნა" [(ngModel)]="searchTerm" />
+    </div>
+  </div>
+  <div class="table-wrapper">
+    <table class="table table-striped table-bordered">
+      <thead class="thead-dark">
+      <tr>
+        <th>პროდუქტის სახელოდება</th>
+        <th>წარმოების წელი</th>
+        <th>ფასი</th>
+        <th>რაოდენობა მარაგში</th>
+        <th>ჩასწორება</th>
+        <th>წაშლა</th>
+      </tr>
+      </thead>
+      <tbody>
+        @for(wine of filteredWines(); track wine){
+          <tr class="eng-primary">
+            <td>{{ wine.name }}</td>
+            <td>{{ wine.vintageYear }}</td>
+            <td>{{ wine.price }} ₾</td>
+            <td>{{ wine.stockQuantity }}</td>
+            <td>
+              <button class="btn btn-warning btn-sm" (click)="editWine(wine?.id)" >Edit</button>
+            </td>
+            <td>
+              <button class="btn btn-danger btn-sm" (click)="openModal(content, wine?.id)" >Delete</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
 </div>
 <ng-template #content let-modal>
   <div class="modal-header">
@@ -41,3 +49,6 @@
     <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">არა</button>
   </div>
 </ng-template>
+@if(isLoading){
+  <app-loading></app-loading>
+}
