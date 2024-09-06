@@ -38,6 +38,10 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     this.cartService.decreaseQuantity(wine);
   }
 
+  removeFromCart(wine: Wine) {
+    this.cartService.removeFromCart(wine);
+  }
+
   clearCart() {
     this.cartService.clearCart();
   }
@@ -45,7 +49,9 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   getTotalAmount(): number {
     return this.cartItems.reduce((sum, item) => sum + (item.wine.price * item.quantity), 0);
   }
-
+  getTotalQuantity(): number {
+    return this.cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  }
   private getCartItems() {
     this.cartSubscription = this.cartService.cartItems$.subscribe(items => {
       this.cartItems = items;

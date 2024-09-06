@@ -1,39 +1,69 @@
- @if(cartItems.length > 0){
-   <div class="cart-container">
-     <h2>{{ 'cart.title' | translate }}</h2>
 
-     @for(item of cartItems; track item){
-       <div class="cart-item">
-         <div class="item-info">
-           <img [src]="item.wine.imageUrl" alt="{{ item.wine.name }}">
-           <div class="item-details">
-             <h4>{{ item.wine.name }}</h4>
-             <p>{{ item.wine.vintageYear }}</p>
-             <p>{{ item.wine.price }} ₾</p>
-           </div>
-         </div>
-         <div class="item-quantity">
-           <button (click)="decreaseQuantity(item.wine)">-</button>
-           <span>{{ item.quantity }}</span>
-           <button (click)="increaseQuantity(item.wine)">+</button>
-         </div>
-         <div class="item-total">
-           <p>{{ item.wine.price * item.quantity }} ₾</p>
-         </div>
-       </div>
-     }
-
-     <div class="cart-footer">
-       <button class="clear-cart-btn" (click)="clearCart()">
-         {{ 'cart.clear-cart' | translate }}
-       </button>
-       <div class="total-amount">
-         <p>{{ 'cart.total' | translate }}: {{ getTotalAmount() }} ₾</p>
-       </div>
-     </div>
-   </div>
- } @else {
-   <div>
-     <p>{{ 'cart.empty' | translate }}</p>
-   </div>
- }
+@if(cartItems.length > 0){
+  <div class="wrapper">
+    <div>
+      <p (click)="clearCart()" [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'">
+      <span>
+        <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path id="icon" d="M3 18C2.45 18 1.97917 17.8042 1.5875 17.4125C1.19583 17.0208 1 16.55 1 16V3H0V1H5V0H11V1H16V3H15V16C15 16.55 14.8042 17.0208 14.4125 17.4125C14.0208 17.8042 13.55 18 13 18H3ZM13 3H3V16H13V3ZM5 14H7V5H5V14ZM9 14H11V5H9V14Z" fill="#999999"/>
+        </svg>
+      </span>
+      {{ "cart.clear-cart" | translate }}
+        </p>
+      @for(item of cartItems; track item){
+        <div class="item-card">
+          <div class="wine-name">
+            <img [src]="item.wine.imageUrl" alt="Wine">
+            <div class="eng-primary">
+              <h5>{{ item.wine.name }}</h5>
+              <p>{{ item.wine.vintageYear }}</p>
+            </div>
+          </div>
+          <div class="wine-options">
+            <div>
+              <p class="eng-primary">{{ item.wine.price * item.quantity }} ₾</p>
+              <div>
+                <div class="buttons">
+                  <button (click)="decreaseQuantity(item.wine)">
+                    <svg  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M6 12L18 12" stroke="#4c0027" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                  <span class="eng-primary">{{ item.quantity }}</span>
+                  <button (click)="increaseQuantity(item.wine)">
+                    <svg  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4 12H20M12 4V20" stroke="#4c0027" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div>
+              <svg width="20" height="24" viewBox="0 0 22 26" fill="none" xmlns="http://www.w3.org/2000/svg" (click)="removeFromCart(item.wine)" >
+                <path id="icon" d="M4.125 25.5C3.36875 25.5 2.72135 25.228 2.18281 24.684C1.64427 24.14 1.375 23.4861 1.375 22.7222V4.66667H0V1.88889H6.875V0.5H15.125V1.88889H22V4.66667H20.625V22.7222C20.625 23.4861 20.3557 24.14 19.8172 24.684C19.2786 25.228 18.6313 25.5 17.875 25.5H4.125ZM17.875 4.66667H4.125V22.7222H17.875V4.66667Z" fill="#999999"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+    <div class="receipt">
+      <div>
+        <h5 [appLangClass]="'geo-primary, eng-primary, ru-primary'">{{ "cart.title" | translate }}</h5>
+        <p [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'">{{ getTotalQuantity() }} {{ "cart.items" | translate }}</p>
+      </div>
+      <hr>
+      <div>
+        <h6 [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'">{{"cart.total" | translate}}</h6>
+        <p class="eng-primary">{{ getTotalAmount() }} ₾</p>
+      </div>
+      <button [appLangClass]="'geo-primary, eng-primary, ru-primary'">
+        {{ "cart.checkout" | translate }}
+      </button>
+    </div>
+  </div>
+} @else {
+  <div class="wrapper">
+    <h5>კალათა ცარიელია</h5>
+  </div>
+}

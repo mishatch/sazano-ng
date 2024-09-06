@@ -1,3 +1,175 @@
+@import "../../../../../variables";
+.wrapper {
+  padding: 80px 40px 20px 40px;
+  min-height: 60vh;
+  >div {
+    &:first-of-type {
+      min-height: 40vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
+      > p {
+        text-align: right;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 0 -10px 0;
+        color: #999999;
+      }
+      > .item-card {
+        padding: 20px;
+        width: 100%;
+        max-width: 300px;
+        aspect-ratio: 1 / 1;
+        border-radius: 35px;
+        box-shadow: 0 7px 20px 0 rgba(0, 0, 0, 0.25);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        >.wine-name {
+          display: flex;
+          gap: 20px;
+          >img {
+            width: 80px;
+          }
+        }
+        >.wine-options {
+          padding-top: 10px;
+          display: flex;
+          width: 100%;
+          justify-content: space-between;
+          align-items: center;
+          >div:first-of-type {
+            >div {
+              background-color: #D6C4CD;
+              width: 80px;
+              height: 30px;
+              border-radius: 35px;
+              padding-left: 3px;
+              padding-right: 3px;
+              >div {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: 100%;
+                >button {
+                  width: 24px;
+                  height: 24px;
+                  border: none;
+                  border-radius: 50%;
+                  background-color: white;
+                  >svg {
+                    margin-bottom: 5px;
+                    &:last-of-type {
+                      width: 20px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          >div:last-of-type {
+            display: flex;
+            align-items: end;
+            height: 100%;
+          }
+        }
+      }
+    }
+    &:last-of-type {
+      padding: 20px;
+      width: 100%;
+      max-width: 345px;
+      aspect-ratio: 1 / 1;
+      border-radius: 35px;
+      border: 2px solid #4c0027;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      >hr {
+        border: 2px solid $nav-links;
+        border-radius: 5px;
+      }
+      >div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        p, h5 {
+          margin: 0;
+        }
+      }
+      button {
+        width: 100%;
+        padding: 10px 20px;
+        background-color: $nav-links;
+        border: none;
+        border-radius: 5px;
+        color: $white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: $tablet){
+  .wrapper {
+    display: flex;
+    gap: 4%;
+    padding: 40px 40px 20px 40px;
+    >div {
+      &:first-of-type {
+        width: 68%;
+        > p {
+          max-width: 100%;
+        }
+        > .item-card {
+          max-width: 100%;
+          height: 200px;
+          flex-direction: row;
+          >div {
+            width: 100%;
+          }
+          >.wine-name {
+            >img {
+              margin-top: auto;
+              margin-bottom: auto;
+              flex-shrink: 0;
+            }
+          }
+          >.wine-options {
+            >div:first-of-type {
+              display: flex;
+              flex-direction: row-reverse;
+              gap: 20px;
+              p {
+                margin: 0;
+              }
+            }
+            >div:last-of-type {
+              align-items: center;
+            }
+          }
+        }
+
+      }
+      &:last-of-type {
+        width: 28%;
+        height: 350px;
+      }
+    }
+  }
+}
+
+
 .cart-container {
   max-width: 600px;
   margin: 0 auto;
