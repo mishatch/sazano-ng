@@ -1,5 +1,5 @@
 import { TranslateModule } from '@ngx-translate/core';
-import { Component, OnDestroy } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { LanguageClassDirective } from '../../../../shared/directives/language-class.directive';
 import { LanguageService } from '../../../../shared/services/language.service';
 import { Subscription } from 'rxjs';
@@ -11,25 +11,30 @@ import { Subscription } from 'rxjs';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnDestroy {
+export class HeaderComponent implements OnInit, OnDestroy {
   mobileHeaderUrl: string = '';
   desktopHeaderUrl: string = '';
   private currentLanguage: string = '';
-  private languageSubscription: Subscription;
+  private languageSubscription!: Subscription;
 
-  constructor(private languageService: LanguageService) {
+  constructor(private languageService: LanguageService) {}
+
+  ngOnInit(): void {
+    this.getCurrentLanguage();
+    this.updateHeaderUrls();
+  }
+
+  ngOnDestroy() {
+    this.languageSubscription.unsubscribe();
+  }
+
+  private getCurrentLanguage() {
     this.languageSubscription = this.languageService.language$.subscribe(
       (lang: string) => {
         this.currentLanguage = lang;
         this.updateHeaderUrls();
       }
     );
-
-    this.updateHeaderUrls();
-  }
-
-  ngOnDestroy() {
-    this.languageSubscription.unsubscribe();
   }
 
   private updateHeaderUrls() {

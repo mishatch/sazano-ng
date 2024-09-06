@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initLoginForm();
-
   }
 
   ngOnDestroy(): void {

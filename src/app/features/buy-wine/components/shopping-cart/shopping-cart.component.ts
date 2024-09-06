@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import {CartService} from "../../services/cart.service";
-import {Wine} from "../../../../core/models/wine.model";
-import {NgFor, NgIf} from "@angular/common";
-import {TranslateModule} from "@ngx-translate/core";
-import {LanguageClassDirective} from "../../../../shared/directives/language-class.directive";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { CartService } from "../../services/cart.service";
+import { Wine } from "../../../../core/models/wine.model";
+import { TranslateModule } from "@ngx-translate/core";
+import { LanguageClassDirective } from "../../../../shared/directives/language-class.directive";
 
 @Component({
   selector: 'app-shopping-cart',
@@ -12,13 +12,22 @@ import {LanguageClassDirective} from "../../../../shared/directives/language-cla
   templateUrl: './shopping-cart.component.html',
   styleUrl: './shopping-cart.component.scss'
 })
-export class ShoppingCartComponent {
+export class ShoppingCartComponent implements OnInit, OnDestroy {
+
   cartItems: { wine: Wine, quantity: number }[] = [];
 
-  constructor(private cartService: CartService) {
-    this.cartService.cartItems$.subscribe(items => {
-      this.cartItems = items;
-    });
+  private cartSubscription: Subscription | undefined;
+
+  constructor(private cartService: CartService) {}
+
+  ngOnInit() {
+    this.getCartItems();
+  }
+
+  ngOnDestroy() {
+    if (this.cartSubscription) {
+      this.cartSubscription.unsubscribe();
+    }
   }
 
   increaseQuantity(wine: Wine) {
@@ -35,5 +44,11 @@ export class ShoppingCartComponent {
 
   getTotalAmount(): number {
     return this.cartItems.reduce((sum, item) => sum + (item.wine.price * item.quantity), 0);
+  }
+
+  private getCartItems() {
+    this.cartSubscription = this.cartService.cartItems$.subscribe(items => {
+      this.cartItems = items;
+    });
   }
 }

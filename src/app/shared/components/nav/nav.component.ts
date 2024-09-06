@@ -5,7 +5,7 @@ import {
   Renderer2,
   ViewChild,
   HostListener,
-  AfterViewInit,
+  AfterViewInit, OnInit, OnDestroy,
 } from '@angular/core';
 import { LanguageService } from '../../services/language.service';
 import { CommonModule } from '@angular/common';
@@ -32,7 +32,7 @@ import {AuthService} from "../../../core/services/auth.service";
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss'],
 })
-export class NavComponent implements AfterViewInit {
+export class NavComponent implements OnInit, AfterViewInit {
   @ViewChild('nav', { static: true }) nav!: ElementRef;
   @ViewChild('links', { static: true }) links!: ElementRef;
   @ViewChild('navBtn', { static: true }) navBtn!: ElementRef;
@@ -58,15 +58,14 @@ export class NavComponent implements AfterViewInit {
     private el: ElementRef,
     private authService: AuthService,
     private router: Router
-  ) {
-    this.languageService.language$.subscribe((lang: string) => {
-      this.currentLanguage = lang;
-    });
+  ) {}
+  ngOnInit() {
+    this.getCurrentLanguage();
+    this.checkLoginStatus();
+  }
 
-    this.authService.isLoggedIn().subscribe(status => {
-      this.isLoggedIn = status;
-    });
-
+  ngAfterViewInit() {
+    this.checkScreenWidth();
   }
 
   @HostListener('window:scroll')
@@ -115,10 +114,6 @@ export class NavComponent implements AfterViewInit {
     return language ? language.flag : '';
   }
 
-  ngAfterViewInit() {
-    this.checkScreenWidth();
-  }
-
   @HostListener('window:resize', ['$event'])
   onResize() {
     this.checkScreenWidth();
@@ -130,6 +125,18 @@ export class NavComponent implements AfterViewInit {
     }
 
     this.clicked ? this.closeNav() : this.openNav();
+  }
+
+  private getCurrentLanguage() {
+    this.languageService.language$.subscribe((lang: string) => {
+      this.currentLanguage = lang;
+    });
+  }
+
+  private checkLoginStatus() {
+    this.authService.isLoggedIn().subscribe(status => {
+      this.isLoggedIn = status;
+    });
   }
 
   private checkScreenWidth() {

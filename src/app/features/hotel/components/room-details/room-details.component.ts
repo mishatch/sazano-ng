@@ -31,6 +31,12 @@ export class RoomDetailsComponent {
   @ViewChild('carousel', { static: true }) carousel!: NgbCarousel;
   @ViewChild('longContent', { static: true }) longContent!: TemplateRef<any>;
 
+  paused = false;
+  unpauseOnArrow = false;
+  pauseOnIndicator = false;
+  pauseOnHover = true;
+  pauseOnFocus = true;
+
   constructor(private modalService: NgbModal, config: NgbCarouselConfig) {
     config.showNavigationIndicators = false;
   }
@@ -38,12 +44,6 @@ export class RoomDetailsComponent {
   openModal() {
     this.modalService.open(this.longContent, { scrollable: true, centered: true, size: 'lg' });
   }
-
-  paused = false;
-  unpauseOnArrow = false;
-  pauseOnIndicator = false;
-  pauseOnHover = true;
-  pauseOnFocus = true;
 
   togglePaused() {
     if (this.paused) {

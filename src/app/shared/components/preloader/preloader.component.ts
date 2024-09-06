@@ -1,4 +1,4 @@
-import { Component, Renderer2 } from '@angular/core';
+import {AfterViewInit, Component, OnInit, Renderer2} from '@angular/core';
 import { ScrollService } from '../../services/scroll.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { ScrollService } from '../../services/scroll.service';
   templateUrl: './preloader.component.html',
   styleUrls: ['./preloader.component.scss'],
 })
-export class PreloaderComponent {
+export class PreloaderComponent implements OnInit, AfterViewInit{
   constructor(
     private renderer: Renderer2,
     private scrollService: ScrollService

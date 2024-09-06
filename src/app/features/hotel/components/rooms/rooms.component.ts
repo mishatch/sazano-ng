@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnDestroy } from '@angular/core';
+import {Component, ViewChild, OnDestroy, OnInit} from '@angular/core';
 import { RoomDetailsComponent } from '../room-details/room-details.component';
 import { RoomService } from '../../services/room.service';
 import { TranslateModule } from '@ngx-translate/core';
@@ -21,13 +21,14 @@ import { Language } from '../../models/language.type';
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.scss'],
 })
-export class RoomsComponent implements OnDestroy {
+export class RoomsComponent implements OnInit, OnDestroy {
   rooms: Room[] = [];
   isLoading = true;
   description!: string;
 
   private currentLanguage!: Language;
-  private languageSubscription: Subscription;
+  private languageSubscription!: Subscription;
+  private roomsSubscription!: Subscription;
 
   @ViewChild('roomDetailsModal', { static: false })
   roomDetails!: RoomDetailsComponent;
@@ -35,31 +36,16 @@ export class RoomsComponent implements OnDestroy {
   constructor(
     private roomService: RoomService,
     private languageService: LanguageService
-  ) {
+  ) {}
+
+  ngOnInit() {
     this.fetchRooms();
-    this.languageSubscription = this.languageService.language$.subscribe(
-      (lang: string) => {
-        this.currentLanguage = lang as Language;
-      }
-    );
+    this.getCurrentLanguage();
   }
 
   ngOnDestroy() {
     this.languageSubscription.unsubscribe();
-  }
-
-  fetchRooms() {
-    this.isLoading = true;
-    this.roomService.getRooms().subscribe(
-      (data: Room[]) => {
-        this.rooms = data;
-        this.isLoading = false;
-      },
-      (error: any) => {
-        this.isLoading = false;
-        console.error('Error fetching rooms:', error);
-      }
-    );
+    this.roomsSubscription.unsubscribe();
   }
 
   openRoomDetails(description: Description, images: string[], name: string) {
@@ -74,5 +60,26 @@ export class RoomsComponent implements OnDestroy {
 
     this.roomDetails.description = descriptions[this.currentLanguage];
     this.roomDetails.openModal();
+  }
+
+  private fetchRooms() {
+    this.isLoading = true;
+    this.roomsSubscription = this.roomService.getRooms().subscribe(
+      (data: Room[]) => {
+        this.rooms = data;
+        this.isLoading = false;
+      },
+      (error: any) => {
+        this.isLoading = false;
+        console.error('Error fetching rooms:', error);
+      }
+    );
+  }
+  private getCurrentLanguage() {
+    this.languageSubscription = this.languageService.language$.subscribe(
+      (lang: string) => {
+        this.currentLanguage = lang as Language;
+      }
+    );
   }
 }

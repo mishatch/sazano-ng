@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Wine } from "../../../core/models/wine.model";
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
+
   private cartItems = new BehaviorSubject<{ wine: Wine, quantity: number }[]>(this.loadCartFromLocalStorage());
+
   cartItems$ = this.cartItems.asObservable();
 
   constructor() {
@@ -51,6 +54,12 @@ export class CartService {
 
   getItem(wine: Wine): { wine: Wine, quantity: number } | undefined {
     return this.cartItems.getValue().find(item => item.wine.id === wine.id);
+  }
+
+  getTotalQuantity() {
+    return this.cartItems$.pipe(
+      map(items => items.reduce((total, item) => total + item.quantity, 0))
+    );
   }
 
   private saveCartToLocalStorage(items: { wine: Wine, quantity: number }[]) {
