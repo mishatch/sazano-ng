@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import {AuthService} from "../../core/services/auth.service";
 import {TranslateModule} from "@ngx-translate/core";
 import {LanguageClassDirective} from "../../shared/directives/language-class.directive";
-import {RouterLink} from "@angular/router";
+import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [TranslateModule, LanguageClassDirective, RouterLink],
+  imports: [TranslateModule, LanguageClassDirective, RouterLink, RouterOutlet, RouterLinkActive],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })

@@ -5,6 +5,82 @@
   min-height: 80vh;
   display: flex;
   flex-direction: column;
+  h5 {
+    font-size: $font-size-large;
+  }
+  p, span {
+    font-size: $font-size-medium-large;
+  }
+  > div:first-of-type {
+    > div.profile {
+      box-shadow: 0 7px 20px 0 rgba(0, 0, 0, 0.25);
+      border-radius: 15px;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    >.links {
+      a {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        background-color: transparent;
+        height: 45px;
+        border-radius: 15px;
+        padding: 0 10px;
+        color: $nav-links;
+        transition: 0.3s;
+        div:first-of-type {
+          margin-right: 10px;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          svg {
+            transition: 0.3s;
+            height: 50%;
+            margin: auto 0;
+            fill: $nav-links;
+            g.profile-icon-g {
+              transition: 0.3s;
+              stroke: $nav-links;
+            }
+          }
+        }
+        div:last-of-type {
+          margin-left: auto;
+        }
+        &.is-active {
+          background-color: $nav-links;
+          color: $body-bg;
+          div:first-of-type {
+            svg {
+              fill: $body-bg;
+              g.profile-icon-g {
+                stroke: $body-bg;
+              }
+            }
+          }
+        }
+      }
+      button {
+        border: none;
+        background-color: transparent;
+        text-align: start;
+        width: auto;
+        padding-left: 12px;
+        color: $nav-links;
+        >svg {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
   button {
     width: 300px;
   }
@@ -12,5 +88,15 @@
 @media screen and (min-width: $tablet) {
   .wrapper {
     padding: 20px 20px;
+  }
+}
+@media screen and (min-width: $desktop-large) {
+  .wrapper {
+    h5 {
+      font-size: $font-size-xxlarge;
+    }
+    p, span {
+      font-size: $font-size-xlarge;
+    }
   }
 }

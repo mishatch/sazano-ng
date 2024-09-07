@@ -83,7 +83,7 @@ export class NavComponent implements OnInit, AfterViewInit {
 
   handleLoginClick(): void {
     if (this.isLoggedIn) {
-      this.router.navigate(['/profile']);
+      this.router.navigate(['/profile/profile-info']);
     } else {
       this.openAuthModal();
     }

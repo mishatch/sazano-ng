@@ -127,5 +127,12 @@
     "empty": "Your cart is empty",
     "add-to-cart": "Add to Cart",
     "checkout": "Checkout"
+  },
+  "profile": {
+    "my-profile": "My Profile",
+    "profile": "Profile",
+    "orders": "Orders",
+    "logout": "Logout",
+    "address": "Addresses"
   }
 }

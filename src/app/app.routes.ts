@@ -32,6 +32,23 @@ export const routes: Routes = [
   {
     path: 'profile',
     canActivate: [AuthGuard],
+    children: [
+      { path: 'orders', loadComponent: () =>
+          import('./features/profile/orders/orders.component').then(
+            (m) => m.OrdersComponent
+          ),
+      },
+      { path: 'profile-info', loadComponent: () =>
+          import('./features/profile/profile-info/profile-info.component').then(
+            (m) => m.ProfileInfoComponent
+          ),
+      },
+      { path: 'address', loadComponent: () =>
+          import('./features/profile/address/address.component').then(
+            (m) => m.AddressComponent
+          ),
+      },
+    ],
     loadComponent: () =>
       import('./features/profile/profile.component').then(
         (m) => m.ProfileComponent

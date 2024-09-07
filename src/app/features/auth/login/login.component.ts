@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.error = null;
       const loginSub = this.authService.loginUser(this.loginForm.value).subscribe(
         (response) => {
-          this.router.navigate(['/profile']);
+          this.router.navigate(['/profile/profile-info']);
           this.ngbModal.dismissAll();
           this.isLoading = false;
           console.log(this.authService.decodeToken());
