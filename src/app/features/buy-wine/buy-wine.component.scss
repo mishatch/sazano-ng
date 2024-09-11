@@ -5,7 +5,7 @@
   flex-direction: column;
   padding: 70px 20px 0 20px;
   gap: 20px;
-  min-height: 80vh;
+  min-height: calc(100vh - 373px);
   position: relative;
   font-size: $font-size-medium;
 
@@ -105,7 +105,7 @@
     flex-wrap: wrap;
     padding: 20px 60px;
     gap: 60px;
-
+    min-height: calc(100vh - 436px);
     > div.wine-card {
       width: calc(50% - 30px);
     }
@@ -125,10 +125,10 @@
 
 @media screen and (min-width: $desktop-large) {
   .wrapper {
+    min-height: calc(100vh - 474px);
     gap: 70px;
     padding: 40px 12%;
     font-size: $font-size-medium-large;
-
     > div.wine-card {
       width: calc(25% - 53px);
     }

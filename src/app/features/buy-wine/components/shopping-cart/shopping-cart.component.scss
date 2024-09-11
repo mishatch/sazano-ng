@@ -1,7 +1,7 @@
 @import "../../../../../variables";
 .wrapper {
   padding: 80px 40px 20px 40px;
-  min-height: 60vh;
+  min-height: calc(100vh - 358px);
   >div {
     &:first-of-type {
       min-height: 40vh;
@@ -125,6 +125,7 @@
     display: flex;
     gap: 4%;
     padding: 40px 40px 20px 40px;
+    min-height: calc(100vh - 436px);
     >div {
       &:first-of-type {
         width: 68%;
@@ -170,3 +171,8 @@
 }
 
 
+@media screen and (min-width: $desktop-large){
+  .wrapper {
+    min-height: calc(100vh - 474px);
+  }
+}

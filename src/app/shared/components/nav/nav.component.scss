@@ -51,7 +51,7 @@ nav {
       &.login-desktop {
         display: none;
       }
-      > a {
+      > a, > button {
         position: relative;
         font-size: $font-size-small;
         text-decoration: none;
@@ -148,7 +148,7 @@ nav {
   nav {
     > .links {
       > li {
-        > a {
+        > a, > button {
           font-size: $font-size-large;
         }
       }

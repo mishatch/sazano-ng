@@ -1,6 +1,6 @@
 <div class="wrapper">
   <div class="shopping-cart-icon">
-    <a routerLink="/shopping-cart">
+    <a (click)="scrollOnTop()" routerLink="/shopping-cart">
       @if(totalQuantity){
         <div>{{ totalQuantity }}</div>
       }

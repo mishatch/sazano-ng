@@ -37,6 +37,10 @@ export class BuyWineComponent implements OnInit, OnDestroy {
     this.subscriptions.unsubscribe();
   }
 
+  public   scrollOnTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   public addToCart(wine: Wine): void {
     this.cartService.addToCart(wine);
   }
