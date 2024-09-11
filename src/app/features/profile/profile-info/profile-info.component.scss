@@ -1,0 +1,27 @@
+@import "../../../../variables";
+
+.desktop-hr {
+  display: none;
+}
+@media screen and (min-width: $desktop) {
+  form{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    >div {
+      width: 40%;
+    }
+    >button {
+      width: 40%;
+    }
+    .alert-danger {
+      margin-top: 20px;
+    }
+  }
+  .desktop-hr {
+    display: block;
+  }
+  .mobile-hr {
+    display: none;
+  }
+}

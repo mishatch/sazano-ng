@@ -50,7 +50,6 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.router.navigate(['/profile/profile-info']);
           this.ngbModal.dismissAll();
           this.isLoading = false;
-          console.log(this.authService.decodeToken());
         },
         (error) => {
           this.error = error.error;

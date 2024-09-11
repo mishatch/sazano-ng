@@ -97,7 +97,6 @@ export class AddWineComponent implements OnInit {
       this.errorMessage = null;
 
       const wineData = this.addWineForm.value;
-
       if (this.editMode && this.wineId) {
         this.wineService.updateWine(this.wineId, wineData).subscribe(
           () => {

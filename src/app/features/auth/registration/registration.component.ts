@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, OnDestroy, Output } from '@angular/cor
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LanguageClassDirective } from '../../../shared/directives/language-class.directive';
 import { TranslateModule } from '@ngx-translate/core';
-import { georgianPhoneValidator } from '../validators/georgian-phone.validator';
+import { georgianPhoneValidator } from '../../../shared/validators/georgian-phone.validator';
 import { AuthService } from '../../../core/services/auth.service';
 import {
   nonAlphanumericValidator,
@@ -30,10 +30,11 @@ import { Subscription } from 'rxjs';
 export class RegistrationComponent implements OnInit, OnDestroy {
   @Output() registrationSuccess = new EventEmitter<void>();
 
-  registrationForm!: FormGroup;
-  userExists: boolean = false;
-  unexpectedError: boolean = false;
-  isLoading = false;
+  public registrationForm!: FormGroup;
+  public userExists: boolean = false;
+  public unexpectedError: boolean = false;
+  public isLoading = false;
+
   private subscription: Subscription = new Subscription();
 
   constructor(private fb: FormBuilder, private authService: AuthService) {}

@@ -1,1 +1,100 @@
-<p>profile-info works!</p>
+<div class="wrapper">
+  <hr class="mobile-hr">
+  <h5 [appLangClass]="'geo-primary, eng-primary, ru-primary'">
+    {{ "profile.account-info" | translate }}
+  </h5>
+  <hr class="desktop-hr">
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name" [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'">{{ "auth.name" | translate }}</label>
+      <input
+        type="text"
+        class="form-control eng-secondary"
+        id="name"
+        formControlName="name"
+        [class.is-invalid]="name?.touched && name?.invalid"
+      >
+      @if(name?.touched && name?.errors?.['required']){
+        <small [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'">
+          {{ "auth.required-field" | translate }}
+        </small>
+      }
+    </div>
+    <div class="form-group">
+      <label for="surname" [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'">
+        {{ "auth.surname" | translate }}
+      </label>
+      <input
+        type="text"
+        class="form-control eng-secondary"
+        id="surname"
+        formControlName="surname"
+        [class.is-invalid]="userSurname?.touched && userSurname?.invalid"
+      >
+      @if(userSurname?.touched && userSurname?.errors?.['required']){
+        <small [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'">
+          {{ "auth.required-field" | translate }}
+        </small>
+      }
+    </div>
+    <div class="form-group">
+      <label for="email" [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'">
+        {{ "auth.email" | translate }}
+      </label>
+      <input
+        type="email"
+        class="form-control eng-secondary"
+        id="email"
+        formControlName="email"
+        [class.is-invalid]="(userEmail?.touched || userEmail?.dirty) && userEmail?.invalid"
+      >
+      @if (userEmail?.touched){
+        <div class="alert alert-danger" role="alert" [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'">
+          {{ "profile.email-danger-alert" | translate }}
+        </div>
+      }
+      @if(userEmail?.touched && userEmail?.errors?.['required']){
+        <small [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'">
+          {{ "auth.required-field" | translate }}
+        </small>
+      } @else if(userEmail?.dirty && userEmail?.errors?.['email']){
+        <small [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'">
+          {{ "auth.email-invalid" | translate }}
+        </small>
+      }
+    </div>
+    <div class="form-group">
+      <label for="phone" [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'">
+        {{ "auth.phone" | translate }}
+      </label>
+      <input
+        type="number"
+        class="form-control eng-primary"
+        id="phone"
+        formControlName="phone"
+        [class.is-invalid]="(userPhone?.touched || userPhone?.dirty) && userPhone?.invalid"
+      >
+      @if (userPhone?.touched && userPhone?.errors?.['required']){
+        <small [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'">
+          {{ "auth.required-field" | translate }}
+        </small>
+      } @else if (userPhone?.dirty && userPhone?.errors?.['invalidGeorgianPhone']){
+        <small [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'">
+          {{ "auth.phone-invalid" | translate }}
+        </small>
+      }
+    </div>
+    <button
+      type="submit"
+      class="primary-btm submit-button"
+      [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'"
+      [class.is-disabled]="profileForm.invalid"
+    >
+      {{ "auth.save" | translate }}
+    </button>
+  </form>
+  @if (isLoading){
+    <app-loading></app-loading>
+  }
+
+</div>

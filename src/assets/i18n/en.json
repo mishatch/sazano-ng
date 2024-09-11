@@ -116,7 +116,8 @@
     "confirm-email": "Please confirm your email address",
     "confirm-email-message": "Use the link sent to your email to finish the confirmation process",
     "resend-link": "Send Again",
-    "back-to-home": "Back to home page"
+    "back-to-home": "Back to home page",
+    "save": "Save"
   },
   "sazano-wine": "Sazano Wine",
   "cart": {
@@ -133,6 +134,8 @@
     "profile": "Profile",
     "orders": "Orders",
     "logout": "Logout",
-    "address": "Addresses"
+    "address": "Addresses",
+    "account-info": "Account Information",
+    "email-danger-alert": "In case of changing your email, you will not be able to access your account with the current email and you will be required to use the new email address."
   }
 }
