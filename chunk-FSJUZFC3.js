@@ -1,1 +1,0 @@
-import{Hb as p,fa as o,ib as i,jb as r,zb as a}from"./chunk-VVLVZ75C.js";var c=(()=>{let e=class e{};e.\u0275fac=function(n){return new(n||e)},e.\u0275cmp=o({type:e,selectors:[["app-profile-info"]],standalone:!0,features:[p],decls:2,vars:0,template:function(n,s){n&1&&(i(0,"p"),a(1,"profile-info works!"),r())}});let t=e;return t})();export{c as ProfileInfoComponent};
