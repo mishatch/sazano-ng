@@ -47,8 +47,12 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.error = null;
       const loginSub = this.authService.loginUser(this.loginForm.value).subscribe(
         (response) => {
-          this.router.navigate(['/profile/profile-info']);
           this.ngbModal.dismissAll();
+          if(this.router.url === '/shopping-cart') {
+            this.router.navigate(['/checkout']);
+          } else {
+            this.router.navigate(['/profile/profile-info']);
+          }
           this.isLoading = false;
         },
         (error) => {

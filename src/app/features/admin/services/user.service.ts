@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../../../core/models/user.model';
 
@@ -11,24 +11,15 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  private getAuthHeaders(): HttpHeaders {
-    const token = localStorage.getItem('token') || '';
-    return new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
-  }
-
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.apiUrl}/users`, { headers: this.getAuthHeaders() });
+    return this.http.get<User[]>(`${this.apiUrl}/users`);
   }
 
   deleteAdminRole(user: {
     userEmail: string;
     roleName: string;
   }) {
-    const headers = this.getAuthHeaders();
     return this.http.delete(`${this.apiUrl}/userRole`, {
-      headers,
       body: user
     });
   }
@@ -36,7 +27,6 @@ export class UserService {
     userEmail: string;
     roleName: string;
   }) {
-    const headers = this.getAuthHeaders();
-    return this.http.post(`${this.apiUrl}/userRole`, user, { headers });
+    return this.http.post(`${this.apiUrl}/userRole`, user);
   }
 }

@@ -64,7 +64,8 @@
         align-items: center;
 
         > img {
-          max-width: 100%;
+          width: 100%;
+          max-width: 150px;
         }
       }
 
@@ -103,7 +104,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 20px 60px;
+    padding: 40px 60px 0 60px;
     gap: 60px;
     min-height: calc(100vh - 436px);
     > div.wine-card {
@@ -115,7 +116,7 @@
 @media screen and (min-width: $desktop) {
   .wrapper {
     gap: 50px;
-    padding: 20px 80px;
+    padding: 40px 80px 0 80px;
 
     > div.wine-card {
       width: calc(33% - 31px);
@@ -127,7 +128,7 @@
   .wrapper {
     min-height: calc(100vh - 474px);
     gap: 70px;
-    padding: 40px 12%;
+    padding: 40px 12% 0 12%;
     font-size: $font-size-medium-large;
     > div.wine-card {
       width: calc(25% - 53px);

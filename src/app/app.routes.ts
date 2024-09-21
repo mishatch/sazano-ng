@@ -107,4 +107,12 @@ export const routes: Routes = [
         (m) => m.UsersListComponent
       ),
   },
+  {
+    path: 'checkout',
+    canActivate: [AuthGuard],
+    loadComponent: () =>
+      import('./features/buy-wine/components/checkout/checkout.component').then(
+        (m) => m.CheckoutComponent
+      ),
+  },
 ];

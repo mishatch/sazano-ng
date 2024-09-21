@@ -1,5 +1,5 @@
 import { TranslateModule } from '@ngx-translate/core';
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LanguageClassDirective } from '../../../../shared/directives/language-class.directive';
 import { LanguageService } from '../../../../shared/services/language.service';
 import { Subscription } from 'rxjs';

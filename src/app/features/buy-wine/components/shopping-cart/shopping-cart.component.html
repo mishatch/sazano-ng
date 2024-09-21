@@ -57,7 +57,7 @@
         <h6 [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'">{{"cart.total" | translate}}</h6>
         <p class="eng-primary">{{ getTotalAmount() }} ₾</p>
       </div>
-      <button [appLangClass]="'geo-primary, eng-primary, ru-primary'">
+      <button [appLangClass]="'geo-primary, eng-primary, ru-primary'" (click)="handleCheckout()">
         {{ "cart.checkout" | translate }}
       </button>
     </div>
@@ -67,3 +67,4 @@
     <h5>კალათა ცარიელია</h5>
   </div>
 }
+<app-auth #authModal></app-auth>
