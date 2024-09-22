@@ -182,13 +182,23 @@
         @if(getWineQuantity(wine) === 0) {
           <button class="primary-btn" [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'"
                   (click)="addToCart(wine)">
-            {{ "cart.add-to-cart" | translate }}
+            <span>
+              {{ "cart.add-to-cart" | translate }}
+            </span>
           </button>
         } @else {
           <div class="adjust-quantity eng-secondary">
-            <button (click)="removeFromCart(wine)" class="primary-btn">-</button>
+            <button (click)="removeFromCart(wine)" class="primary-btn">
+              <span>
+                -
+              </span>
+            </button>
             <span>{{ getWineQuantity(wine) }}</span>
-            <button (click)="addToCart(wine)" class="primary-btn">+</button>
+            <button (click)="addToCart(wine)" class="primary-btn">
+              <span>
+                +
+              </span>
+            </button>
           </div>
         }
       </div>

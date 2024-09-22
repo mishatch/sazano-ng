@@ -45,6 +45,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.isAdmin = this.authService.isUserAdmin();
 
     const userInfo = this.authService.decodeToken();
+    console.log(userInfo);
     const userInfoFromStorage = this.storageService.getUserData();
 
     if (userInfoFromStorage) {

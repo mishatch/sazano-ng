@@ -137,5 +137,20 @@
     "address": "Addresses",
     "account-info": "Account Information",
     "email-danger-alert": "In case of changing your email, you will not be able to access your account with the current email and you will be required to use the new email address."
+  },
+  "checkout": {
+    "title": "Payment Details",
+    "description": "Complete your purchase by entering your payment details.",
+    "card-number": "Card Number",
+    "expiry-date": "Expiration Date",
+    "cvc": "CVC",
+    "address": "Address",
+    "address-placeholder": "Tsotne Dadiani St. 1",
+    "city": "City",
+    "city-placeholder": "Tbilisi",
+    "zip": "ZIP",
+    "comment": "Additional Comment",
+    "comment-placeholder": "Next to the grocery store",
+    "submit": "Confirm Payment"
   }
 }

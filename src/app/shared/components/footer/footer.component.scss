@@ -8,6 +8,7 @@ footer {
   margin-top: 40px;
   padding: 25px 20px;
   background-color: $nav-links;
+  height: 319px;
 
   > .footer-top {
     display: flex;
@@ -117,6 +118,7 @@ footer {
 
 @media screen and (min-width: $tablet) {
   footer {
+    height: 326px;
     .footer-top {
       > p {
         font-size: $font-size-small;
@@ -127,6 +129,7 @@ footer {
 
 @media screen and (min-width: $desktop-large) {
   footer {
+    height: 364px;
     .footer-top {
       > .footer-title {
         margin-bottom: 15px;
