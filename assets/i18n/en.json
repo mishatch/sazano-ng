@@ -89,6 +89,7 @@
   },
   "auth": {
     "required-field": "This field is required",
+    "invalid-field": "Please enter a valid value",
     "name": "Name",
     "surname": "Surname",
     "phone": "Phone",
@@ -144,6 +145,7 @@
     "card-number": "Card Number",
     "expiry-date": "Expiration Date",
     "cvc": "CVC",
+    "name": "Cardholder Name",
     "address": "Address",
     "address-placeholder": "Tsotne Dadiani St. 1",
     "city": "City",
@@ -151,6 +153,14 @@
     "zip": "ZIP",
     "comment": "Additional Comment",
     "comment-placeholder": "Next to the grocery store",
-    "submit": "Confirm Payment"
+    "submit": "Confirm Payment",
+    "success-message": "Your order has been successfully placed",
+    "see-orders": "See Orders"
+  },
+  "orders": {
+    "order-date": "Order Date",
+    "order-status": "Order Status",
+    "order-total": "Order Total",
+    "order-details": "Details"
   }
 }
