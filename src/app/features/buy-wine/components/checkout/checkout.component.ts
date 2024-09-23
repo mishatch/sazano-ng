@@ -97,6 +97,9 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   public getTotalAmount(): number {
     return this.cartItems.reduce((sum, item) => sum + (item.wine.price * item.quantity), 0);
   }
+  public   scrollOnTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   public getTotalQuantity(): number {
     return this.cartItems.reduce((sum, item) => sum + item.quantity, 0);

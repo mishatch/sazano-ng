@@ -41,6 +41,9 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     }
   }
 
+  public   scrollOnTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
   public increaseQuantity(wine: Wine) {
     this.cartService.addToCart(wine);
   }

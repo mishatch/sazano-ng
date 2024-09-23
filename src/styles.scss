@@ -192,3 +192,28 @@ button.primary-btn, a.primary-btn {
     font-size: $font-size-large;
   }
 }
+* {
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $nav-links;
+    border-radius: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    transition: 0.3s;
+    &:hover {
+      background-color: #c8528f;
+    }
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: $body-bg;
+  }
+}
+
+

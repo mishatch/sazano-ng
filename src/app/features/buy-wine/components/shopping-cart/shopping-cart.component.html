@@ -57,7 +57,7 @@
         <h6 [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'">{{"cart.total" | translate}}</h6>
         <p class="eng-primary">{{ getTotalAmount() }} ₾</p>
       </div>
-      <button [appLangClass]="'geo-primary, eng-primary, ru-primary'" (click)="handleCheckout()" class="primary-btn">
+      <button [appLangClass]="'geo-primary, eng-primary, ru-primary'" (click)="handleCheckout(); scrollOnTop()" class="primary-btn">
         <span>
           {{ "cart.checkout" | translate }}
         </span>
