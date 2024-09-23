@@ -141,38 +141,24 @@ form {
     color: $invalid;
   }
 
-  > button.submit-button {
-    width: 100%;
-    padding: 10px 20px;
-    background-color: $nav-links;
-    border: none;
-    border-radius: 5px;
-    color: $white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-
-    &:hover {
-      opacity: 0.8;
-    }
-    &.is-disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-  }
 }
-button.primary-btn {
+a.primary-btn {
+  display: block;
+  text-align: center;
+}
+button.primary-btn, a.primary-btn {
   width: 100%;
   padding: 10px 20px;
   background-color: $nav-links;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   color: $white;
   font-weight: bold;
   cursor: pointer;
   transition: 0.8s;
   position: relative;
   overflow: hidden;
+  text-decoration: none;
   > * {
     position: relative;
     z-index: 2;
@@ -192,7 +178,13 @@ button.primary-btn {
   &:hover::before {
     height: 180%;
   }
-
+  &.is-disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    &:hover::before {
+      height: 0;
+    }
+  }
 
 }
 @media screen and (min-width: $desktop-large){

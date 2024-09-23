@@ -1,0 +1,16 @@
+<div class="wrapper">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" aria-labelledby="title desc" role="img">
+    <title id="title">Green Circle with Checkmark</title>
+    <desc id="desc">A green circle with a white checkmark in the center</desc>
+    <circle fill="#4c0027" cx="25" cy="25" r="25"></circle>
+    <polyline fill="none" stroke="#f5e6ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="38,15 22,33 12,25"></polyline>
+  </svg>
+  <h5 [appLangClass]="'geo-primary, eng-primary, ru-primary'">
+    {{ 'checkout.success-message' | translate }}
+  </h5>
+  <a routerLink="/profile/orders" class="primary-btn" [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'">
+    <span>
+      {{ 'checkout.see-orders' | translate }}
+    </span>
+  </a>
+</div>

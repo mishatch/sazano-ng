@@ -86,11 +86,13 @@
     </div>
     <button
       type="submit"
-      class="primary-btm submit-button"
+      class="primary-btn"
       [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'"
       [class.is-disabled]="profileForm.invalid"
     >
-      {{ "auth.save" | translate }}
+      <span>
+        {{ "auth.save" | translate }}
+      </span>
     </button>
   </form>
   @if (isLoading){

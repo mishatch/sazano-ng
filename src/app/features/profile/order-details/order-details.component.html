@@ -1,0 +1,16 @@
+<div class="wrapper">
+
+  <div class="receipt">
+    @for (item of order.items; track item){
+      <div>
+        <h6 class="eng-primary">{{ item.wine.name }} {{item.quantity}}x</h6>
+        <p class="eng-primary">{{ item.wine.price * item.quantity }} ₾</p>
+      </div>
+    }
+    <hr>
+    <div>
+      <h6 [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'">{{"cart.total" | translate}}</h6>
+      <p class="eng-primary">{{ order.orderPrice }} ₾</p>
+    </div>
+  </div>
+</div>

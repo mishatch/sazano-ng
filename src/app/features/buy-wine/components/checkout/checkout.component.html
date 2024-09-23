@@ -35,7 +35,15 @@
         name="card-number"
         class="form-control"
         formControlName="cardNumber"
+        placeholder="1234 1234 1234 1234"
+        (input)="formatCardNumber($event)"
+        maxlength="19"
       >
+      @if (cardNumber?.touched && cardNumber?.errors?.['required']) {
+        <small>{{ "auth.required-field" | translate }}</small>
+      } @else if (cardNumber?.dirty && cardNumber?.errors?.['pattern']) {
+        <small>{{ "auth.invalid-field" | translate }}</small>
+      }
     </div>
     <div class="split">
       <div class="form-group">
@@ -47,7 +55,13 @@
           placeholder="MM/YY"
           class="form-control"
           formControlName="expiryDate"
+          (input)="formatExpiryDate($event)"
         >
+        @if (expiryDate?.touched && expiryDate?.errors?.['required']) {
+          <small>{{ "auth.required-field" | translate }}</small>
+        } @else if (expiryDate?.dirty && expiryDate?.errors?.['pattern']) {
+        <small>{{ "auth.invalid-field" | translate }}</small>
+      }
       </div>
       <div class="form-group">
         <label for="cvc" >{{ "checkout.cvc" | translate }}</label>
@@ -59,7 +73,27 @@
           class="form-control"
           formControlName="cvv"
         >
+        @if (cvv?.touched && cvv?.errors?.['required']) {
+          <small>{{ "auth.required-field" | translate }}</small>
+        } @else if (cvv?.dirty && cvv?.errors?.['pattern']) {
+          <small>{{ "auth.invalid-field" | translate }}</small>
+        }
       </div>
+    </div>
+    <div class="form-group">
+      <label for="name">
+        {{ "checkout.name" | translate }}
+      </label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        class="form-control"
+        formControlName="cardHolderName"
+      >
+      @if (name?.touched && name?.errors?.['required']) {
+        <small>{{ "auth.required-field" | translate }}</small>
+      }
     </div>
     <div class="form-group">
       <label for="address">
@@ -80,14 +114,22 @@
         <label for="city">
           {{ "checkout.city" | translate }}
         </label>
-        <input
-          type="text"
+        <select
           id="city"
           name="city"
           class="form-control"
           formControlName="city"
-          [placeholder]="'checkout.city-placeholder' | translate"
         >
+          @for (city of cities; track city){
+            <option value="{{city.name_ka}}">
+              @if (isGeorgian){
+                {{city.name_ka}}
+              }@else {
+                {{city.name_en}}
+              }
+            </option>
+          }
+        </select>
       </div>
       <div class="form-group">
         <label for="zip">
@@ -100,6 +142,11 @@
           class="form-control"
           formControlName="zip"
         >
+        @if (zip?.touched && zip?.errors?.['required']) {
+          <small>{{ "auth.required-field" | translate }}</small>
+        } @else if (zip?.dirty && zip?.errors?.['pattern']) {
+          <small>{{ "auth.invalid-field" | translate }}</small>
+        }
       </div>
     </div>
     <div class="form-group">
@@ -117,6 +164,7 @@
       type="submit"
       class="primary-btn"
       [appLangClass]="'geo-primary, eng-primary, ru-primary'"
+      [class.is-disabled]="checkoutForm.invalid"
     >
       <span>
         {{ "checkout.submit" | translate }}
@@ -124,3 +172,6 @@
     </button>
   </form>
 </div>
+@if (isLoading){
+  <app-loading></app-loading>
+}

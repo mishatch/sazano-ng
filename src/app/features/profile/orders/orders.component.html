@@ -1,1 +1,36 @@
-<p>orders works!</p>
+<div class="wrapper">
+  <table class="table table-striped" [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'" >
+    <thead>
+    <tr>
+      <th scope="col">{{ "orders.order-date" | translate }}</th>
+      <th scope="col">{{ "orders.order-status" | translate }}</th>
+      <th scope="col">{{ "orders.order-total" | translate }}</th>
+      <th scope="col">{{ "orders.order-details" | translate }}</th>
+    </tr>
+    </thead>
+    <tbody>
+      @for (order of orders; track order) {
+        <tr>
+          <td class="align-middle">{{ order.orderDate | date: 'M/d/yy' }}</td>
+          <td class="align-middle">
+            {{ order.status }}
+          </td>
+          <td class="align-middle">
+            {{ order.orderPrice }} ₾
+          </td>
+          <td>
+            <button href="#" class="primary-btn" (click)="viewOrderDetails(order)">
+            <span>
+              {{ "orders.order-details" | translate }}
+            </span>
+            </button>
+          </td>
+        </tr>
+      }
+
+    </tbody>
+  </table>
+</div>
+@if (isLoading) {
+  <app-loading></app-loading>
+}

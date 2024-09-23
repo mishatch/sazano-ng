@@ -1,0 +1,40 @@
+@import "../../../../../variables";
+
+.wrapper {
+  width: 100%;
+  min-height: $wrapper-min-height-mobile;
+  padding: 80px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  >svg {
+    width: 80px;
+    margin-bottom: 40px;
+  }
+  >h5 {
+    font-size: $font-size-xlarge;
+    text-align: center;
+  }
+  >a {
+    text-align: center;
+    width: auto;
+  }
+}
+@media screen and (min-width: $tablet){
+  .wrapper {
+    min-height: $wrapper-min-height-tablet;
+  }
+}
+
+@media screen and (min-width: $desktop-large){
+  .wrapper {
+    min-height: $wrapper-min-height-desktop-large;
+    >h5 {
+      font-size: $font-size-xxlarge;
+    }
+    >a {
+      font-size: $font-size-xlarge;
+    }
+  }
+}

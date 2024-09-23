@@ -18,18 +18,6 @@
       gap: 20px;
       flex-direction: column;
       align-items: start;
-      a {
-        padding: 10px 10px;
-        background-color: $nav-links;
-        text-align: center;
-        text-decoration: none;
-        color: $body-bg;
-        border-radius: 8px;
-        transition: .3s;
-        &:hover {
-          opacity: 0.8;
-        }
-      }
       input {
         border: 1px solid black;
       }

@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './features/home/home.component';
 import {AuthGuard} from "./core/guards/auth.guard";
 import {AdminGuard} from "./features/admin/guards/admin.guard";
+import {OrderDetailsComponent} from "./features/profile/order-details/order-details.component";
 
 export const routes: Routes = [
   {
@@ -46,6 +47,11 @@ export const routes: Routes = [
       { path: 'address', loadComponent: () =>
           import('./features/profile/address/address.component').then(
             (m) => m.AddressComponent
+          ),
+      },
+      { path: 'order/:id', loadComponent: () =>
+          import('./features/profile/order-details/order-details.component').then(
+            (m) => m.OrderDetailsComponent
           ),
       },
     ],
@@ -113,6 +119,14 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/buy-wine/components/checkout/checkout.component').then(
         (m) => m.CheckoutComponent
+      ),
+  },
+  {
+    path: 'checkout-success',
+    canActivate: [AuthGuard],
+    loadComponent: () =>
+      import('./features/buy-wine/components/checkout-success/checkout-success.component').then(
+        (m) => m.CheckoutSuccessComponent
       ),
   },
 ];

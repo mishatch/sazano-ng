@@ -159,10 +159,12 @@
 
     <button
       type="submit"
-      class="submit-button"
+      class="primary-btn"
       [class.is-disabled]="registrationForm.invalid"
     >
-      {{ "auth.register" | translate }}
+      <span>
+        {{ "auth.register" | translate }}
+      </span>
     </button>
   </form>
 </div>
