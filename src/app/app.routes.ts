@@ -129,4 +129,12 @@ export const routes: Routes = [
         (m) => m.CheckoutSuccessComponent
       ),
   },
+  {
+    path: 'admin/orders',
+    canActivate: [AuthGuard, AdminGuard],
+    loadComponent: () =>
+      import('./features/admin/admin-orders/admin-orders.component').then(
+        (m) => m.AdminOrdersComponent
+      ),
+  },
 ];

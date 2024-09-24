@@ -33,8 +33,8 @@
     }
   }
   .suggestion {
-    p {
-      font-size: $font-size-xlarge;
+    p, span {
+      font-size: $font-size-large;
     }
   }
 }

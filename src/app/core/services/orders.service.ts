@@ -16,4 +16,12 @@ export class OrdersService {
   public getUserOrders(): Observable<UserOrder[]> {
     return this.http.get<UserOrder[]>(`${this.apiUrl}/identity/userOrders`);
   }
+  public getAllOrders(): any {
+    return this.http.get(`${this.apiUrl}/orders`);
+  }
+  public updateOrderStatus(id: number, status: {
+    status: string
+  }) {
+    return this.http.patch(`${this.apiUrl}/orders/${id}`, status);
+  }
 }

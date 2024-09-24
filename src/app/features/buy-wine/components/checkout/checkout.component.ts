@@ -129,7 +129,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   }
 
   get zip() {
-    return this.checkoutForm.get('zip');
+    return this.checkoutForm.get('zipCode');
   }
 
   get name() {
@@ -151,7 +151,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       cardHolderName: ['', [Validators.required]],
       address: ['', [Validators.required]],
       city: ['', Validators.required],
-      zip: ['', [Validators.required, Validators.pattern(/^\d{5}$/)]],
+      zipCode: ['', [Validators.required, Validators.pattern(/^\d{5}$/)]],
       comment: [''],
       items: this.fb.array(this.cartItems.map(item => this.fb.group({
         wineId: item.wine.id,
