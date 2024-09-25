@@ -1,10 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {OrdersService} from "../../../core/services/orders.service";
+import {OrdersService} from "../../../../core/services/orders.service";
 import {DatePipe} from "@angular/common";
 import {TranslateModule} from "@ngx-translate/core";
 import {RouterLink, RouterOutlet} from "@angular/router";
-import {Order} from "../../../core/models/order.model";
-import {LoadingComponent} from "../../../shared/components/loading/loading.component";
+import {Order} from "../../../../core/models/order.model";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-admin-orders',
@@ -14,14 +14,14 @@ import {LoadingComponent} from "../../../shared/components/loading/loading.compo
     TranslateModule,
     RouterOutlet,
     RouterLink,
-    LoadingComponent
   ],
   templateUrl: './admin-orders.component.html',
   styleUrl: './admin-orders.component.scss'
 })
 export class AdminOrdersComponent implements OnInit, OnDestroy{
   public orders: Order[] = [];
-  public isLoading = true;
+
+  private subscription = new Subscription();
 
   constructor(private orderService: OrdersService) {}
 
@@ -29,24 +29,22 @@ export class AdminOrdersComponent implements OnInit, OnDestroy{
    this.getAllOrders();
   }
   ngOnDestroy() {
-
+    this.subscription.unsubscribe();
   }
 
 
   private getAllOrders() {
-    this.orderService.getAllOrders().subscribe(
-      (res: any) => {
-        this.orders = res;
-        this.orderService.storeOrders(res);
-        this.isLoading = false;
-    },
-      (error) => {
-        console.log(error);
-        this.isLoading = false;
-      }
+    this.subscription.add(
+      this.orderService.getAllOrders().subscribe(
+        (res: Order[]) => {
+          this.orders = res;
+          this.orderService.storeOrders(res);
+        },
+        (error) => {
+          console.log(error);
+        }
+      )
     );
   }
-
-
 
 }

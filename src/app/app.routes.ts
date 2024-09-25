@@ -85,7 +85,7 @@ export const routes: Routes = [
     path: 'admin/products',
     canActivate: [AdminGuard, AuthGuard],
     loadComponent: () =>
-      import('./features/admin/admin-products/admin-products.component').then(
+      import('./features/admin/components/admin-products/admin-products.component').then(
         (m) => m.AdminProductsComponent
       ),
   },
@@ -93,7 +93,7 @@ export const routes: Routes = [
     path: 'admin/add-wine',
     canActivate: [AdminGuard, AuthGuard],
     loadComponent: () =>
-      import('./features/admin/add-wine/add-wine.component').then(
+      import('./features/admin/components/add-wine/add-wine.component').then(
         (m) => m.AddWineComponent
       ),
   },
@@ -101,7 +101,7 @@ export const routes: Routes = [
     path: 'admin/wine/edit/:id',
     canActivate: [AdminGuard, AuthGuard],
     loadComponent: () =>
-      import('./features/admin/add-wine/add-wine.component').then(
+      import('./features/admin/components/add-wine/add-wine.component').then(
         (m) => m.AddWineComponent
       ),
   },
@@ -109,7 +109,7 @@ export const routes: Routes = [
     path: 'admin/users-list',
     canActivate: [AdminGuard, AuthGuard],
     loadComponent: () =>
-      import('./features/admin/users-list/users-list.component').then(
+      import('./features/admin/components/users-list/users-list.component').then(
         (m) => m.UsersListComponent
       ),
   },
@@ -134,18 +134,18 @@ export const routes: Routes = [
     canActivate: [AuthGuard, AdminGuard],
     children: [
       { path: 'pending', loadComponent: () =>
-          import('./features/admin/admin-orders/pending-orders/pending-orders.component').then(
+          import('./features/admin/components/admin-orders/pending-orders/pending-orders.component').then(
             (m) => m.PendingOrdersComponent
           ),
       },
       { path: 'completed', loadComponent: () =>
-          import('./features/admin/admin-orders/completed-orders/completed-orders.component').then(
+          import('./features/admin/components/admin-orders/completed-orders/completed-orders.component').then(
             (m) => m.CompletedOrdersComponent
           ),
       },
       ],
     loadComponent: () =>
-      import('./features/admin/admin-orders/admin-orders.component').then(
+      import('./features/admin/components/admin-orders/admin-orders.component').then(
         (m) => m.AdminOrdersComponent
       ),
   },

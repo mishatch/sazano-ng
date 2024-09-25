@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {BehaviorSubject, Observable, tap} from "rxjs";
+import {BehaviorSubject, finalize, Observable, tap} from "rxjs";
 import {Order, UserOrder} from "../models/order.model";
+import {LoadingService} from "./loading.service";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class OrdersService {
     this.ordersSubject.next(orders);
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private loadingService: LoadingService) { }
 
   public addOrder(order: any) {
     return this.http.post(`${this.apiUrl}/orders`, order);
@@ -27,10 +28,17 @@ export class OrdersService {
   }
 
   public getAllOrders(): Observable<Order[]> {
-    return this.http.get<Order[]>(`${this.apiUrl}/orders`);
+    this.loadingService.show();
+    return this.http.get<Order[]>(`${this.apiUrl}/orders`).pipe(
+      tap(() => {}),
+      finalize(() => {
+        this.loadingService.hide();
+      })
+    );
   }
 
   public updateOrderStatus(id: number, status: { status: string }) {
+    this.loadingService.show();
     return this.http.patch(`${this.apiUrl}/orders/${id}`, status).pipe(
       tap(() => {
         const updatedOrders = this.ordersSubject.getValue().map(order => {
@@ -40,6 +48,9 @@ export class OrdersService {
           return order;
         });
         this.ordersSubject.next(updatedOrders);
+      }),
+      finalize(() => {
+        this.loadingService.hide();
       })
     );
   }

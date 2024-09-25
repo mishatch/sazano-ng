@@ -93,7 +93,11 @@
         {{successMessage}}
       </div>
     }
-  <button type="submit" class="submit-button" [class.is-disabled]="addWineForm.invalid">ღვინის დამატება</button>
+  <button type="submit" class="primary-btn" [class.is-disabled]="addWineForm.invalid">
+    <span>
+      ღვინის დამატება
+    </span>
+  </button>
   </form>
   <div class="form-preview">
     <div class="wine-image">
@@ -121,6 +125,3 @@
     </div>
   </div>
 </div>
-@if (isLoading) {
-  <app-loading></app-loading>
-}

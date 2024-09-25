@@ -1,9 +1,9 @@
 import {Component, Input} from '@angular/core';
-import {Order} from "../../../../core/models/order.model";
+import {Order} from "../../../../../core/models/order.model";
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {DatePipe, NgClass} from "@angular/common";
-import {OrdersService} from "../../../../core/services/orders.service";
-import {LoadingComponent} from "../../../../shared/components/loading/loading.component";
+import {OrdersService} from "../../../../../core/services/orders.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-order-details',
@@ -11,7 +11,6 @@ import {LoadingComponent} from "../../../../shared/components/loading/loading.co
   imports: [
     DatePipe,
     NgClass,
-    LoadingComponent
   ],
   templateUrl: './order-details.component.html',
   styleUrl: './order-details.component.scss'
@@ -19,7 +18,7 @@ import {LoadingComponent} from "../../../../shared/components/loading/loading.co
 export class OrderDetailsComponent {
   @Input() order!: Order;
 
-  public isLoading = false;
+  private subscription = new Subscription();
 
   constructor(private orderService: OrdersService, public activeModal: NgbActiveModal) {}
 
@@ -27,16 +26,15 @@ export class OrderDetailsComponent {
     const newStatus = status === 'Pending' ? 'Sent' : 'Pending';
     const updatedData = { status: newStatus };
 
-    this.isLoading = true;
-    this.orderService.updateOrderStatus(id, updatedData).subscribe(
-      () => {
-        this.activeModal.close();
-        this.isLoading = false;
+    this.subscription.add(
+      this.orderService.updateOrderStatus(id, updatedData).subscribe(
+        () => {
+          this.activeModal.close();
         },
-      (error: any) => {
-        console.log(error);
-        this.isLoading = false;
-      }
+        (err) => {
+          console.log('Error updating order status', err);
+        }
+      )
     );
   }
 }

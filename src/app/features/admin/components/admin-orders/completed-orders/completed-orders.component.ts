@@ -1,26 +1,23 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {OrdersService} from "../../../../core/services/orders.service";
+import {OrdersService} from "../../../../../core/services/orders.service";
 import {DatePipe} from "@angular/common";
 import {TranslateModule} from "@ngx-translate/core";
-import {Order} from "../../../../core/models/order.model";
+import {Order} from "../../../../../core/models/order.model";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {OrderDetailsComponent} from "../order-details/order-details.component";
 import {Subscription} from "rxjs";
-import {LoadingComponent} from "../../../../shared/components/loading/loading.component";
 @Component({
   selector: 'app-completed-orders',
   standalone: true,
   imports: [
     DatePipe,
-    TranslateModule,
-    LoadingComponent
+    TranslateModule
   ],
   templateUrl: './completed-orders.component.html',
   styleUrl: './completed-orders.component.scss'
 })
 export class CompletedOrdersComponent implements OnInit, OnDestroy {
   public completedOrders: Order[] = [];
-  public isLoading = false;
 
   private subscription = new Subscription();
 
@@ -29,6 +26,7 @@ export class CompletedOrdersComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.getSentOrders();
   }
+
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
@@ -38,20 +36,16 @@ export class CompletedOrdersComponent implements OnInit, OnDestroy {
     modalRef.componentInstance.order = order;
   }
 
-
   public changeOrderStatus(id: number) {
     const newStatus = 'Pending';
     const updatedData = { status: newStatus };
-    this.isLoading = true;
     this.subscription.add(
       this.orderService.updateOrderStatus(id, updatedData).subscribe(
         () => {
           this.getSentOrders();
-          this.isLoading = false;
         },
         (error) => {
           console.log('Error updating order status:', error);
-          this.isLoading = false;
         }
       )
     );

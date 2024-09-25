@@ -28,7 +28,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   public cities: City[] = [];
   public isGeorgian: boolean = false;
   public isLoading: boolean = false;
-  private cartSubscription!: Subscription;
+
+  private subscription = new Subscription();
 
   constructor(
     private cartService: CartService,
@@ -47,9 +48,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.cartSubscription) {
-      this.cartSubscription.unsubscribe();
-    }
+    this.subscription.unsubscribe();
   }
 
   public onSubmit() {
@@ -61,16 +60,19 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     delete formData.expiryDate;
 
     this.isLoading = true;
-    this.orderService.addOrder(formData).subscribe(
-      (res) => {
-        this.isLoading = false;
-        this.cartService.clearCart();
-        this.router.navigate(['/checkout-success']);
-      },
-      (error) => console.error(error)
+    this.subscription.add(
+      this.orderService.addOrder(formData).subscribe(
+        () => {
+          this.isLoading = false;
+          this.cartService.clearCart();
+          this.router.navigate(['/checkout-success']);
+        },
+        (error) => console.error(error)
+      )
     );
   }
-  formatCardNumber(event: Event): void {
+
+  public formatCardNumber(event: Event): void {
     const input = event.target as HTMLInputElement;
     let value = input.value.replace(/\s+/g, '');
 
@@ -97,6 +99,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   public getTotalAmount(): number {
     return this.cartItems.reduce((sum, item) => sum + (item.wine.price * item.quantity), 0);
   }
+
   public   scrollOnTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
@@ -108,6 +111,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   get cardNumber() {
     return this.checkoutForm.get('cardNumber');
   }
+
   get expiryDate() {
     return this.checkoutForm.get('expiryDate');
   }
@@ -136,11 +140,12 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     return this.checkoutForm.get('cardHolderName');
   }
 
-
   private getCartItems() {
-    this.cartSubscription = this.cartService.cartItems$.subscribe(items => {
-      this.cartItems = items;
-    });
+    this.subscription.add(
+      this.cartService.cartItems$.subscribe(items => {
+        this.cartItems = items;
+      })
+    );
   }
 
   private initCheckoutForm() {
@@ -151,7 +156,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       cardHolderName: ['', [Validators.required]],
       address: ['', [Validators.required]],
       city: ['', Validators.required],
-      zipCode: ['', [Validators.required, Validators.pattern(/^\d{5}$/)]],
+      zipCode: ['', [Validators.required, Validators.pattern(/^\d{4}$/)]],
       comment: [''],
       items: this.fb.array(this.cartItems.map(item => this.fb.group({
         wineId: item.wine.id,
@@ -159,20 +164,25 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       })))
     });
   }
+
   private getCities() {
-    this.citiesService.getCities().subscribe(
-      (cities: {
-        cities: City[]
-      }) => {
-        this.cities = cities.cities;
-        console.log(this.cities);
-      },
-      (error) => console.error(error)
+    this.subscription.add(
+      this.citiesService.getCities().subscribe(
+        (cities: {
+          cities: City[]
+        }) => {
+          this.cities = cities.cities;
+        },
+        (error) => console.error(error)
+      )
     );
   }
+
   private checkLanguage() {
-    this.languageService.language$.subscribe(lang => {
-      this.isGeorgian = lang === 'geo';
-    });
+    this.subscription.add(
+      this.languageService.language$.subscribe(lang => {
+        this.isGeorgian = lang === 'geo';
+      })
+    );
   }
 }
