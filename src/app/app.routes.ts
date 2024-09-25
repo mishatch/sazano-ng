@@ -132,6 +132,18 @@ export const routes: Routes = [
   {
     path: 'admin/orders',
     canActivate: [AuthGuard, AdminGuard],
+    children: [
+      { path: 'pending', loadComponent: () =>
+          import('./features/admin/admin-orders/pending-orders/pending-orders.component').then(
+            (m) => m.PendingOrdersComponent
+          ),
+      },
+      { path: 'completed', loadComponent: () =>
+          import('./features/admin/admin-orders/completed-orders/completed-orders.component').then(
+            (m) => m.CompletedOrdersComponent
+          ),
+      },
+      ],
     loadComponent: () =>
       import('./features/admin/admin-orders/admin-orders.component').then(
         (m) => m.AdminOrdersComponent

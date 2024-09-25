@@ -3,4 +3,19 @@
 .wrapper {
   min-height: $wrapper-min-height-mobile;
   padding: 80px 20px 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  >.buttons-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+    >button {
+      width: 300px;
+    }
+  }
+  >.routes-wrapper {
+    overflow-x: scroll;
+  }
 }

@@ -1,0 +1,52 @@
+<div class="wrapper">
+  <h5>
+    შესრულებული შეკვეთები
+  </h5>
+  @if (completedOrders.length === 0) {
+    შესრულებელი შეკვეთები არ არის
+  } @else {
+    <table class="table table-striped" >
+      <thead>
+      <tr>
+        <th scope="col">{{ "orders.order-date" | translate }}</th>
+        <th scope="col">{{ "orders.order-status" | translate }}</th>
+        <th scope="col">{{ "orders.order-total" | translate }}</th>
+        <th scope="col">{{ "orders.order-details" | translate }}</th>
+        <th scope="col">სტატუსის შეცვლა</th>
+      </tr>
+      </thead>
+      <tbody>
+        @for (order of completedOrders; track order) {
+          <tr>
+            <td class="align-middle">{{ order.orderDate | date: 'M/d/yy' }}</td>
+            <td class="align-middle text-success">
+              შესრულებული
+            </td>
+            <td class="align-middle">
+              {{ order.orderPrice }} ₾
+            </td>
+            <td>
+              <button class="primary-btn" (click)="viewOrderDetails(order)">
+            <span>
+              {{ "orders.order-details" | translate }}
+            </span>
+              </button>
+            </td>
+            <td>
+              <button class="primary-btn" (click)="changeOrderStatus(order.id)">
+              <span>
+                შესასრულებლად მონიშვნა
+              </span>
+              </button>
+            </td>
+          </tr>
+        }
+
+      </tbody>
+    </table>
+  }
+</div>
+
+@if (isLoading) {
+  <app-loading></app-loading>
+}

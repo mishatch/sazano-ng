@@ -1,0 +1,47 @@
+
+<div class="modal-header">
+  <h4 class="modal-title">შეკვეთის დეტალები</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+<div class="modal-body">
+  <p><strong>მისამართი:</strong> {{ order.city }}, {{order.address}}, {{order.comment}} </p>
+  <p><strong>საფოსტო ინდექსი:</strong> {{ order.zipCode }}</p>
+  <p><strong>მომხმარებელი:</strong> {{order.customer.name}} {{order.customer.surName}} </p>
+  <p><strong>ტელეფონი:</strong> {{order.customer.phoneNumber}}</p>
+  <p><strong>ელ-ფოსტა:</strong> {{order.customer.email}}</p>
+  <div>
+    <strong>
+      შეძენილი ნივთები
+    </strong>
+    <ul>
+
+      @for (item of order.items; track item){
+        <li>
+          {{ item.wine.name }} - {{ item.quantity }} ბოთლი
+        </li>
+      }
+    </ul>
+  </div>
+  <p><strong>გადახდილი თანხა: </strong>{{ order.orderPrice }} ₾</p>
+  <p><strong>გადახდის თარიღი:</strong> {{ order.orderDate | date: 'medium'  }} </p>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn"
+    [ngClass]="{'btn-success': order.status === 'Pending', 'btn-danger': order.status === 'Sent'}"
+    (click)="changeOrderStatus(order.id, order.status)"
+  >
+    @if (order.status === 'Pending') {
+      შესრულებულად მონიშვნა
+    } @else {
+      შესასრულებლად მონიშვნა
+    }
+  </button>
+  <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">დახურვა</button>
+</div>
+
+
+@if (isLoading) {
+  <app-loading></app-loading>
+}
