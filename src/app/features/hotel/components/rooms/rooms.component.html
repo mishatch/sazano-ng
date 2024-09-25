@@ -1,6 +1,3 @@
-@if(isLoading){
-<app-loading></app-loading>
-} @else {
 <div class="wrapper">
   @for(room of rooms; track room){
   <div class="card">
@@ -18,6 +15,5 @@
   </div>
   }
 </div>
-}
 
 <app-room-details #roomDetailsModal></app-room-details>

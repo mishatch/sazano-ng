@@ -13,8 +13,8 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./restaurant.component.scss'],
 })
 export class RestaurantComponent implements OnInit, OnDestroy {
-  menuFoodUrl: string = '';
-  menuDrinksUrl: string = '';
+  public menuFoodUrl: string = '';
+  public menuDrinksUrl: string = '';
 
   private currentLanguage: string = '';
   private languageSubscription!: Subscription;
@@ -32,7 +32,7 @@ export class RestaurantComponent implements OnInit, OnDestroy {
     this.languageSubscription.unsubscribe();
   }
 
-  openScrollableContent(longContent: TemplateRef<any>) {
+  public openScrollableContent(longContent: TemplateRef<any>) {
     this.modalService.open(longContent, {
       scrollable: true,
       centered: true,

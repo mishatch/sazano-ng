@@ -1,21 +1,18 @@
-
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import { AuthService } from "../../../core/services/auth.service";
-import {StorageService} from "../services/storage.service";
-import {ProfileService} from "../services/profile.service";
+import { AuthService } from "../../../../core/services/auth.service";
+import {StorageService} from "../../services/storage.service";
+import {ProfileService} from "../../services/profile.service";
 import {Subscription} from "rxjs";
-import {LoadingComponent} from "../../../shared/components/loading/loading.component";
-import {LanguageClassDirective} from "../../../shared/directives/language-class.directive";
+import {LanguageClassDirective} from "../../../../shared/directives/language-class.directive";
 import {TranslateModule} from "@ngx-translate/core";
-import {georgianPhoneValidator} from "../../../shared/validators/georgian-phone.validator";
+import {georgianPhoneValidator} from "../../../../shared/validators/georgian-phone.validator";
 
 @Component({
   selector: 'app-profile-info',
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    LoadingComponent,
     LanguageClassDirective,
     TranslateModule
   ],
@@ -25,13 +22,12 @@ import {georgianPhoneValidator} from "../../../shared/validators/georgian-phone.
 export class ProfileInfoComponent implements OnInit, OnDestroy {
 
   public profileForm!: FormGroup;
-  public isLoading = false;
 
   private userName!: string | null;
   private surname!: string | null;
   private phone!: string | null;
   private email!: string | null;
-  private subscription!: Subscription;
+  private subscription = new Subscription();
 
   constructor(
     private fb: FormBuilder,
@@ -46,17 +42,11 @@ export class ProfileInfoComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
-
+    this.subscription.unsubscribe();
   }
 
-  onSubmit() {
+  public onSubmit() {
     if (this.profileForm.valid) {
-
-      this.isLoading = true;
-
       const updatedUserInfo = {
         name: this.profileForm.get('name')?.value,
         surName: this.profileForm.get('surname')?.value,
@@ -67,26 +57,22 @@ export class ProfileInfoComponent implements OnInit, OnDestroy {
       this.profileService.setUserInfo(updatedUserInfo);
       this.storageService.setUserData(updatedUserInfo);
 
-      this.subscription = this.profileService.updateUserInfo(updatedUserInfo).subscribe(
-        () => {
-          this.isLoading = false;
-        },
-        error => {
-          this.isLoading = false;
-        }
-      );
+      this.subscription.add(this.profileService.updateUserInfo(updatedUserInfo).subscribe());
     }
   }
 
   get name(){
     return this.profileForm.get('name');
   }
+
   get userSurname(){
     return this.profileForm.get('surname');
   }
+
   get userPhone(){
     return this.profileForm.get('phone');
   }
+
   get userEmail(){
     return this.profileForm.get('email');
   }
@@ -99,7 +85,6 @@ export class ProfileInfoComponent implements OnInit, OnDestroy {
       phone: [this.phone, [Validators.required, georgianPhoneValidator]],
     });
   }
-
 
   private getUserInfo() {
       const userInfo = this.authService.decodeToken();

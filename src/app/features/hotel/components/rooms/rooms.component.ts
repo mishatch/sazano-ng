@@ -3,7 +3,6 @@ import { RoomDetailsComponent } from '../room-details/room-details.component';
 import { RoomService } from '../../services/room.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { LanguageClassDirective } from '../../../../shared/directives/language-class.directive';
-import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
 import { LanguageService } from '../../../../shared/services/language.service';
 import { Description } from '../../models/description.interface';
 import { Room } from '../../models/room.interface';
@@ -16,15 +15,14 @@ import { Language } from '../../models/language.type';
     RoomDetailsComponent,
     TranslateModule,
     LanguageClassDirective,
-    LoadingComponent,
   ],
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.scss'],
 })
 export class RoomsComponent implements OnInit, OnDestroy {
-  rooms: Room[] = [];
-  isLoading = true;
-  description!: string;
+  public rooms: Room[] = [];
+
+  public description!: string;
 
   private currentLanguage!: Language;
   private languageSubscription!: Subscription;
@@ -48,7 +46,7 @@ export class RoomsComponent implements OnInit, OnDestroy {
     this.roomsSubscription.unsubscribe();
   }
 
-  openRoomDetails(description: Description, images: string[], name: string) {
+  public openRoomDetails(description: Description, images: string[], name: string) {
     this.roomDetails.images = images;
     this.roomDetails.name = name;
 
@@ -63,14 +61,11 @@ export class RoomsComponent implements OnInit, OnDestroy {
   }
 
   private fetchRooms() {
-    this.isLoading = true;
     this.roomsSubscription = this.roomService.getRooms().subscribe(
       (data: Room[]) => {
         this.rooms = data;
-        this.isLoading = false;
       },
-      (error: any) => {
-        this.isLoading = false;
+      (error) => {
         console.error('Error fetching rooms:', error);
       }
     );

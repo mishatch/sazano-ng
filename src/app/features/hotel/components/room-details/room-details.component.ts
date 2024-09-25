@@ -31,21 +31,21 @@ export class RoomDetailsComponent {
   @ViewChild('carousel', { static: true }) carousel!: NgbCarousel;
   @ViewChild('longContent', { static: true }) longContent!: TemplateRef<any>;
 
-  paused = false;
-  unpauseOnArrow = false;
-  pauseOnIndicator = false;
-  pauseOnHover = true;
-  pauseOnFocus = true;
+  public paused = false;
+  public unpauseOnArrow = false;
+  public pauseOnIndicator = false;
+  public pauseOnHover = true;
+  public pauseOnFocus = true;
 
   constructor(private modalService: NgbModal, config: NgbCarouselConfig) {
     config.showNavigationIndicators = false;
   }
 
-  openModal() {
+  public openModal() {
     this.modalService.open(this.longContent, { scrollable: true, centered: true, size: 'lg' });
   }
 
-  togglePaused() {
+  public togglePaused() {
     if (this.paused) {
       this.carousel.cycle();
     } else {
@@ -54,7 +54,7 @@ export class RoomDetailsComponent {
     this.paused = !this.paused;
   }
 
-  onSlide(slideEvent: NgbSlideEvent) {
+  public onSlide(slideEvent: NgbSlideEvent) {
     if (
       this.unpauseOnArrow &&
       slideEvent.paused &&

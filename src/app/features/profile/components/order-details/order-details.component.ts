@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {UserOrder} from "../../../core/models/order.model";
+import {UserOrder} from "../../../../core/models/order.model";
 import {Router, RouterLink} from "@angular/router";
 import {TranslateModule} from "@ngx-translate/core";
-import {LanguageClassDirective} from "../../../shared/directives/language-class.directive";
+import {LanguageClassDirective} from "../../../../shared/directives/language-class.directive";
 @Component({
   selector: 'app-order-details',
   standalone: true,
@@ -17,7 +17,7 @@ import {LanguageClassDirective} from "../../../shared/directives/language-class.
 export class OrderDetailsComponent implements OnInit {
   public order!: UserOrder;
 
-  constructor(private router: Router) {}
+  constructor() {}
 
   ngOnInit(): void {
     this.getOrderDetails();

@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './features/home/home.component';
 import {AuthGuard} from "./core/guards/auth.guard";
 import {AdminGuard} from "./features/admin/guards/admin.guard";
-import {OrderDetailsComponent} from "./features/profile/order-details/order-details.component";
+import {OrderDetailsComponent} from "./features/profile/components/order-details/order-details.component";
 
 export const routes: Routes = [
   {
@@ -35,22 +35,17 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: 'orders', loadComponent: () =>
-          import('./features/profile/orders/orders.component').then(
+          import('./features/profile/components/orders/orders.component').then(
             (m) => m.OrdersComponent
           ),
       },
       { path: 'profile-info', loadComponent: () =>
-          import('./features/profile/profile-info/profile-info.component').then(
+          import('./features/profile/components/profile-info/profile-info.component').then(
             (m) => m.ProfileInfoComponent
           ),
       },
-      { path: 'address', loadComponent: () =>
-          import('./features/profile/address/address.component').then(
-            (m) => m.AddressComponent
-          ),
-      },
       { path: 'order/:id', loadComponent: () =>
-          import('./features/profile/order-details/order-details.component').then(
+          import('./features/profile/components/order-details/order-details.component').then(
             (m) => m.OrderDetailsComponent
           ),
       },

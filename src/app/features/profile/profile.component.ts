@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   public surname!: string | null;
   public isAdmin!: boolean;
 
-  private subscription!: Subscription;
+  private subscription = new Subscription();
 
   constructor(
     private authService: AuthService,
@@ -36,16 +36,15 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.profileService.clearUserInfo();
   }
 
-  logOut() {
+  public logOut() {
     this.authService.logout();
     this.storageService.clearUserData();
   }
 
   private initProfileInfo(){
-    this.isAdmin = this.authService.isUserAdmin();
 
+    this.isAdmin = this.authService.isUserAdmin();
     const userInfo = this.authService.decodeToken();
-    console.log(userInfo);
     const userInfoFromStorage = this.storageService.getUserData();
 
     if (userInfoFromStorage) {
@@ -56,11 +55,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.surname = userInfo.surName;
     }
 
-    this.subscription = this.profileService.userInfo$.subscribe((info) => {
-      if (info) {
-        this.userName = info.name;
-        this.surname = info.surName;
-      }
-    });
+    this.subscription.add(
+      this.profileService.userInfo$.subscribe((info) => {
+        if (info) {
+          this.userName = info.name;
+          this.surname = info.surName;
+        }
+      })
+    );
   }
 }
