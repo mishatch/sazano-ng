@@ -1,0 +1,1 @@
+import{Cb as i,Lb as s,fa as o,ib as a,jb as r}from"./chunk-PT4IFWSI.js";var m=(()=>{let e=class e{};e.\u0275fac=function(n){return new(n||e)},e.\u0275cmp=o({type:e,selectors:[["app-address"]],standalone:!0,features:[s],decls:2,vars:0,template:function(n,p){n&1&&(a(0,"p"),i(1,"address works!"),r())}});let t=e;return t})();export{m as AddressComponent};
