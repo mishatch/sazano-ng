@@ -4,6 +4,7 @@ import {LoggedInUser, User} from '../models/user.model';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { jwtDecode } from "jwt-decode";
+import {LoadingService} from "./loading.service";
 
 @Injectable({
   providedIn: 'root',
@@ -13,37 +14,45 @@ export class AuthService {
     'https://sazanowine-api-dev.azurewebsites.net/api/identity';
   private loggedInStatus = new BehaviorSubject<boolean>(this.checkToken());
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private loadingService: LoadingService) {}
 
-  registerUser(user: User): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, user);
-  }
-
-  loginUser(user: LoggedInUser): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, user).pipe(
-      tap((response: any) => {
-        if (response && response.token) {
-          localStorage.setItem('token', response.token);
-          this.loggedInStatus.next(true);
-        }
+  public registerUser(user: User): Observable<any> {
+    this.loadingService.show();
+    return this.http.post(`${this.apiUrl}/register`, user).pipe(
+      tap({
+        next: () => this.loadingService.hide(),
+        error: () => this.loadingService.hide()
       })
     );
   }
 
-  logout(): void {
+  public loginUser(user: LoggedInUser): Observable<any> {
+    this.loadingService.show();
+    return this.http.post(`${this.apiUrl}/login`, user).pipe(
+      tap({
+        next: (response: any) => {
+          this.loadingService.hide();
+          if (response && response.token) {
+            localStorage.setItem('token', response.token);
+            this.loggedInStatus.next(true);
+          }
+        },
+        error: () => this.loadingService.hide()
+      })
+    );
+  }
+
+  public logout(): void {
     localStorage.removeItem('token');
     this.loggedInStatus.next(false);
     this.router.navigate(['/']);
   }
 
-  isLoggedIn(): Observable<boolean> {
+  public isLoggedIn(): Observable<boolean> {
     return this.loggedInStatus.asObservable();
   }
 
-  private checkToken(): boolean {
-    return !!localStorage.getItem('token');
-  }
-  decodeToken(): any {
+  public decodeToken(): any {
     const token = localStorage.getItem('token');
     if (token) {
       try {
@@ -56,7 +65,8 @@ export class AuthService {
     }
     return null;
   }
-  isTokenExpired(): boolean {
+
+  public isTokenExpired(): boolean {
     const decodedToken = this.decodeToken();
     if (decodedToken && decodedToken.exp) {
       const expirationDate = new Date(0);
@@ -65,11 +75,16 @@ export class AuthService {
     }
     return true;
   }
-  isUserAdmin(): boolean {
+
+  public isUserAdmin(): boolean {
     const decodedToken = this.decodeToken();
     if (decodedToken && Array.isArray(decodedToken.roles)) {
       return decodedToken.roles.includes('Admin');
     }
     return false;
+  }
+
+  private checkToken(): boolean {
+    return !!localStorage.getItem('token');
   }
 }

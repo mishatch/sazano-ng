@@ -17,7 +17,7 @@ import {LanguageClassDirective} from "../../../shared/directives/language-class.
 export class EmailVerificationComponent {
   @Output() closeModal = new EventEmitter<void>();
 
-  onClose() {
+  public onClose() {
     this.closeModal.emit();
   }
 }

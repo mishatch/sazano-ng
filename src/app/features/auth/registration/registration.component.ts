@@ -11,7 +11,6 @@ import {
   confirmPasswordValidator,
 } from '../validators/password.validator';
 import { NgStyle } from '@angular/common';
-import { LoadingComponent } from '../../../shared/components/loading/loading.component';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -22,7 +21,6 @@ import { Subscription } from 'rxjs';
     LanguageClassDirective,
     TranslateModule,
     NgStyle,
-    LoadingComponent,
   ],
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss'],
@@ -33,7 +31,6 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   public registrationForm!: FormGroup;
   public userExists: boolean = false;
   public unexpectedError: boolean = false;
-  public isLoading = false;
 
   private subscription: Subscription = new Subscription();
 
@@ -47,16 +44,14 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  onSubmit() {
+  public onSubmit() {
     if (this.registrationForm.valid) {
-      this.isLoading = true;
       this.userExists = false;
       this.unexpectedError = false;
       const { confirmPassword, ...formData } = this.registrationForm.value;
       const registerSub = this.authService.registerUser(formData).subscribe(
-        (data) => {
+        () => {
           this.registrationSuccess.emit();
-          this.isLoading = false;
         },
         (error) => {
           if (error.error.errors) {
@@ -64,7 +59,6 @@ export class RegistrationComponent implements OnInit, OnDestroy {
           } else {
             this.unexpectedError = true;
           }
-          this.isLoading = false;
         }
       );
       this.subscription.add(registerSub);

@@ -35,20 +35,6 @@
     margin-top: 20px;
     font-size: $font-size-medium;
   }
-  button {
-    width: 100%;
-    padding: 10px 20px;
-    background-color: $nav-links;
-    border: none;
-    border-radius: 5px;
-    color: $white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-    &:hover {
-      opacity: 0.8;
-    }
-  }
 }
 
 @media screen and (min-width: $tablet) {

@@ -15,7 +15,6 @@ import { Subscription } from 'rxjs';
     TranslateModule,
     LanguageClassDirective,
     ReactiveFormsModule,
-    LoadingComponent,
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
@@ -23,7 +22,6 @@ import { Subscription } from 'rxjs';
 export class LoginComponent implements OnInit, OnDestroy {
   loginForm!: FormGroup;
   error: string | null = null;
-  isLoading = false;
   private subscription: Subscription = new Subscription();
 
   constructor(
@@ -41,23 +39,20 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  onSubmit() {
+  public onSubmit() {
     if (this.loginForm.valid) {
-      this.isLoading = true;
       this.error = null;
       const loginSub = this.authService.loginUser(this.loginForm.value).subscribe(
-        (response) => {
+        () => {
           this.ngbModal.dismissAll();
           if(this.router.url === '/shopping-cart') {
             this.router.navigate(['/checkout']);
           } else {
             this.router.navigate(['/profile/profile-info']);
           }
-          this.isLoading = false;
         },
         (error) => {
           this.error = error.error;
-          this.isLoading = false;
         }
       );
       this.subscription.add(loginSub);

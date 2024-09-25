@@ -30,7 +30,9 @@
   >
     {{ "auth.confirm-email-message" | translate }}
   </p>
-    <button (click)="onClose()" [appLangClass]="'geo-primary, eng-primary, ru-primary'">
-      {{ "auth.success-button" | translate }}
+    <button (click)="onClose()" [appLangClass]="'geo-primary, eng-primary, ru-primary'" class="primary-btn">
+      <span>
+        {{ "auth.success-button" | translate }}
+      </span>
     </button>
 </div>
