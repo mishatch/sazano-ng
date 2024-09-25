@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { LanguageClassDirective } from '../../../shared/directives/language-class.directive';
+import { LanguageClassDirective } from '../../../../shared/directives/language-class.directive';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthService } from '../../../core/services/auth.service';
+import { AuthService } from '../../../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { LoadingComponent } from '../../../shared/components/loading/loading.component';
+import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
 import { Subscription } from 'rxjs';
 
 @Component({

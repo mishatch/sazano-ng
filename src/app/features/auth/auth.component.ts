@@ -3,9 +3,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LanguageClassDirective } from '../../shared/directives/language-class.directive';
 import { TranslateModule } from '@ngx-translate/core';
-import { LoginComponent } from './login/login.component';
-import { RegistrationComponent } from './registration/registration.component';
-import { EmailVerificationComponent } from './email-verification/email-verification.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { EmailVerificationComponent } from './components/email-verification/email-verification.component';
 
 @Component({
   selector: 'app-auth',

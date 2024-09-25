@@ -13,7 +13,7 @@ import { LanguageClassDirective } from '../../directives/language-class.directiv
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import {Router, RouterLink} from '@angular/router';
 import { ScrollService } from '../../services/scroll.service';
-import { LoginComponent } from '../../../features/auth/login/login.component';
+import { LoginComponent } from '../../../features/auth/components/login/login.component';
 import { AuthComponent } from '../../../features/auth/auth.component';
 import {AuthService} from "../../../core/services/auth.service";
 

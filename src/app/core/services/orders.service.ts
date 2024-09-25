@@ -19,12 +19,24 @@ export class OrdersService {
 
   constructor(private http: HttpClient, private loadingService: LoadingService) { }
 
-  public addOrder(order: any) {
-    return this.http.post(`${this.apiUrl}/orders`, order);
+  public addOrder(order: any): Observable<any> {
+    this.loadingService.show();
+    return this.http.post(`${this.apiUrl}/orders`, order).pipe(
+      tap({
+        next: () => this.loadingService.hide(),
+        error: () => this.loadingService.hide()
+      })
+    );
   }
 
   public getUserOrders(): Observable<UserOrder[]> {
-    return this.http.get<UserOrder[]>(`${this.apiUrl}/identity/userOrders`);
+    this.loadingService.show();
+    return this.http.get<UserOrder[]>(`${this.apiUrl}/identity/userOrders`).pipe(
+      tap({
+        next: () => this.loadingService.hide(),
+        error: () => this.loadingService.hide()
+      })
+    );
   }
 
   public getAllOrders(): Observable<Order[]> {

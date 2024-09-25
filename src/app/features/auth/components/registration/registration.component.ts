@@ -1,15 +1,15 @@
 import { Component, EventEmitter, OnInit, OnDestroy, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { LanguageClassDirective } from '../../../shared/directives/language-class.directive';
+import { LanguageClassDirective } from '../../../../shared/directives/language-class.directive';
 import { TranslateModule } from '@ngx-translate/core';
-import { georgianPhoneValidator } from '../../../shared/validators/georgian-phone.validator';
-import { AuthService } from '../../../core/services/auth.service';
+import { georgianPhoneValidator } from '../../../../shared/validators/georgian-phone.validator';
+import { AuthService } from '../../../../core/services/auth.service';
 import {
   nonAlphanumericValidator,
   oneDigitValidator,
   uppercaseLetterValidator,
   confirmPasswordValidator,
-} from '../validators/password.validator';
+} from '../../validators/password.validator';
 import { NgStyle } from '@angular/common';
 import { Subscription } from 'rxjs';
 

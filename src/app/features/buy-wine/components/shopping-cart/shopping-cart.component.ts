@@ -17,8 +17,8 @@ import {Router} from "@angular/router";
 })
 export class ShoppingCartComponent implements OnInit, OnDestroy {
 
-  cartItems: { wine: Wine, quantity: number }[] = [];
-  isLoggedIn: boolean = false;
+  public cartItems: { wine: Wine, quantity: number }[] = [];
+  public isLoggedIn: boolean = false;
 
   @ViewChild('authModal') authModal!: AuthComponent;
 

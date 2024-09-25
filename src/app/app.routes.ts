@@ -63,7 +63,7 @@ export const routes: Routes = [
   {
     path: 'registration-successful',
     loadComponent: () =>
-      import('./features/auth/registration-successful/registration-successful.component').then(
+      import('./features/auth/components/registration-successful/registration-successful.component').then(
         (m) => m.RegistrationSuccessfulComponent
       ),
   },

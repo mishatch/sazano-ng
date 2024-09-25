@@ -10,13 +10,14 @@ import {CitiesService} from "../../services/cities.service";
 import {City} from "../../models/city.model";
 import {LanguageService} from "../../../../shared/services/language.service";
 import {Router} from "@angular/router";
-import {LoadingComponent} from "../../../../shared/components/loading/loading.component";
 
 @Component({
   selector: 'app-checkout',
   standalone: true,
   imports: [
-    TranslateModule, LanguageClassDirective, ReactiveFormsModule, LoadingComponent
+    TranslateModule,
+    LanguageClassDirective,
+    ReactiveFormsModule
   ],
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.scss'
@@ -27,7 +28,6 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   public cartItems: { wine: Wine, quantity: number }[] = [];
   public cities: City[] = [];
   public isGeorgian: boolean = false;
-  public isLoading: boolean = false;
 
   private subscription = new Subscription();
 
@@ -59,11 +59,9 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     delete formData.cvv;
     delete formData.expiryDate;
 
-    this.isLoading = true;
     this.subscription.add(
       this.orderService.addOrder(formData).subscribe(
         () => {
-          this.isLoading = false;
           this.cartService.clearCart();
           this.router.navigate(['/checkout-success']);
         },
@@ -126,10 +124,6 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
   get address() {
     return this.checkoutForm.get('address');
-  }
-
-  get city() {
-    return this.checkoutForm.get('city');
   }
 
   get zip() {
