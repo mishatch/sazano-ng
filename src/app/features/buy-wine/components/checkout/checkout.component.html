@@ -4,12 +4,12 @@
       <h5 [appLangClass]="'geo-primary, eng-primary, ru-primary'">{{ "cart.title" | translate }}</h5>
       <p [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'">{{ getTotalQuantity() }} {{ "cart.items" | translate }}</p>
     </div>
-      @for (item of cartItems; track item){
-        <div>
-          <h6 class="eng-primary">{{ item.wine.name }} {{item.quantity}}x</h6>
-          <p class="eng-primary">{{ item.wine.price * item.quantity }} ₾</p>
-        </div>
-      }
+    @for (item of cartItems; track item){
+      <div>
+        <h6 class="eng-primary">{{ item.wine.name }} {{item.quantity}}x</h6>
+        <p class="eng-primary">{{ item.wine.price * item.quantity }} ₾</p>
+      </div>
+    }
     <hr>
     <div>
       <h6 [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'">{{"cart.total" | translate}}</h6>
@@ -27,6 +27,7 @@
     <p>
       {{ "checkout.description" | translate }}
     </p>
+
     <div class="form-group">
       <label for="card-number">{{ "checkout.card-number" | translate }}</label>
       <input
@@ -38,6 +39,8 @@
         placeholder="1234 1234 1234 1234"
         (input)="formatCardNumber($event)"
         maxlength="19"
+        onkeydown="return event.key >= '0' && event.key <= '9' || event.key === 'Backspace'"
+        autocomplete="cc-number"
       >
       @if (cardNumber?.touched && cardNumber?.errors?.['required']) {
         <small>{{ "auth.required-field" | translate }}</small>
@@ -45,6 +48,7 @@
         <small>{{ "auth.invalid-field" | translate }}</small>
       }
     </div>
+
     <div class="split">
       <div class="form-group">
         <label for="expiry-date">{{ "checkout.expiry-date" | translate }}</label>
@@ -56,15 +60,17 @@
           class="form-control"
           formControlName="expiryDate"
           (input)="formatExpiryDate($event)"
+          autocomplete="cc-exp"
         >
         @if (expiryDate?.touched && expiryDate?.errors?.['required']) {
           <small>{{ "auth.required-field" | translate }}</small>
         } @else if (expiryDate?.dirty && expiryDate?.errors?.['pattern']) {
-        <small>{{ "auth.invalid-field" | translate }}</small>
-      }
+          <small>{{ "auth.invalid-field" | translate }}</small>
+        }
       </div>
+
       <div class="form-group">
-        <label for="cvc" >{{ "checkout.cvc" | translate }}</label>
+        <label for="cvc">{{ "checkout.cvc" | translate }}</label>
         <input
           type="text"
           id="cvc"
@@ -72,6 +78,7 @@
           placeholder="CVC"
           class="form-control"
           formControlName="cvv"
+          autocomplete="cc-csc"
         >
         @if (cvv?.touched && cvv?.errors?.['required']) {
           <small>{{ "auth.required-field" | translate }}</small>
@@ -80,25 +87,26 @@
         }
       </div>
     </div>
+
+
     <div class="form-group">
-      <label for="name">
-        {{ "checkout.name" | translate }}
-      </label>
+      <label for="name">{{ "checkout.name" | translate }}</label>
       <input
         type="text"
         id="name"
         name="name"
         class="form-control"
         formControlName="cardHolderName"
+        autocomplete="cc-name"
       >
       @if (name?.touched && name?.errors?.['required']) {
         <small>{{ "auth.required-field" | translate }}</small>
       }
     </div>
+
+
     <div class="form-group">
-      <label for="address">
-        {{ "checkout.address" | translate }}
-      </label>
+      <label for="address">{{ "checkout.address" | translate }}</label>
       <input
         type="text"
         id="address"
@@ -106,41 +114,45 @@
         class="form-control"
         formControlName="address"
         [placeholder]="'checkout.address-placeholder' | translate"
+        autocomplete="address-line1"
       >
-
+      @if (address?.touched && address?.errors?.['required']) {
+        <small>{{ "auth.required-field" | translate }}</small>
+      }
     </div>
+
     <div class="split">
       <div class="form-group">
-        <label for="city">
-          {{ "checkout.city" | translate }}
-        </label>
+        <label for="city">{{ "checkout.city" | translate }}</label>
         <select
           id="city"
           name="city"
           class="form-control"
           formControlName="city"
+          autocomplete="address-level2"
         >
-          @for (city of cities; track city){
-            <option value="{{city.name_ka}}">
-              @if (isGeorgian){
-                {{city.name_ka}}
-              }@else {
-                {{city.name_en}}
-              }
-            </option>
-          }
+        <option value="" disabled selected>აირჩიე</option>
+        @for (city of cities; track city){
+          <option value="{{city.name_ka}}">
+            @if (isGeorgian){
+              {{city.name_ka}}
+            } @else {
+              {{city.name_en}}
+            }
+          </option>
+        }
         </select>
       </div>
+
       <div class="form-group">
-        <label for="zip">
-          {{ "checkout.zip" | translate }}
-        </label>
+        <label for="zip">{{ "checkout.zip" | translate }}</label>
         <input
           type="text"
           id="zip"
           name="zip"
           class="form-control"
           formControlName="zipCode"
+          autocomplete="postal-code"
         >
         @if (zip?.touched && zip?.errors?.['required']) {
           <small>{{ "auth.required-field" | translate }}</small>
@@ -149,17 +161,19 @@
         }
       </div>
     </div>
+
     <div class="form-group">
-      <label for="comment">
-        {{ "checkout.comment" | translate }}
-      </label>
+      <label for="comment">{{ "checkout.comment" | translate }}</label>
       <textarea
         id="comment"
         name="comment"
         class="form-control"
         formControlName="comment"
+        [placeholder]="'checkout.comment-placeholder' | translate"
+        autocomplete="off"
       ></textarea>
     </div>
+
     <button
       (click)="scrollOnTop()"
       type="submit"
@@ -167,9 +181,7 @@
       [appLangClass]="'geo-primary, eng-primary, ru-primary'"
       [class.is-disabled]="checkoutForm.invalid"
     >
-      <span>
-        {{ "checkout.submit" | translate }}
-      </span>
+      <span>{{ "checkout.submit" | translate }}</span>
     </button>
   </form>
 </div>

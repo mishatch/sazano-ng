@@ -72,10 +72,10 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
   public formatCardNumber(event: Event): void {
     const input = event.target as HTMLInputElement;
-    let value = input.value.replace(/\s+/g, '');
+    let value = input.value.replace(/\D/g, ''); // Remove non-digit characters
 
     if (value.length > 0) {
-      value = value.match(/.{1,4}/g)?.join(' ') ?? value;
+      value = value.match(/.{1,4}/g)?.join(' ') ?? value; // Format into groups of 4
     }
 
     input.value = value;
