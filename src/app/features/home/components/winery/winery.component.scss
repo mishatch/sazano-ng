@@ -17,7 +17,7 @@
     justify-content: space-between;
     height: 56%;
 
-    > h1 {
+    > h2 {
       font-size: $font-size-xlarge;
       color: $nav-links;
     }
@@ -60,7 +60,7 @@
       justify-content: space-around;
       height: 90%;
 
-      > h1 {
+      > h2 {
         width: 100%;
       }
 
@@ -110,7 +110,7 @@
       display: flex;
       gap: 90px;
 
-      > h1 {
+      > h2 {
         font-size: $font-size-xxlarge;
       }
 

@@ -24,24 +24,24 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./hotel.component.scss'],
 })
 export class HotelComponent {
-  paused = false;
-  unpauseOnArrow = false;
-  pauseOnIndicator = false;
-  pauseOnHover = true;
-  pauseOnFocus = true;
+  public paused = false;
+  public unpauseOnArrow = false;
+  public pauseOnIndicator = false;
+  public pauseOnHover = true;
+  public pauseOnFocus = true;
 
-  @ViewChild('carousel', { static: true }) carousel!: NgbCarousel;
+  @ViewChild('hotelCarousel', { static: true }) hotelCarousel!: NgbCarousel;
 
-  togglePaused() {
+  public togglePaused() {
     if (this.paused) {
-      this.carousel.cycle();
+      this.hotelCarousel.cycle();
     } else {
-      this.carousel.pause();
+      this.hotelCarousel.pause();
     }
     this.paused = !this.paused;
   }
 
-  onSlide(slideEvent: NgbSlideEvent) {
+  public onHotelSlide(slideEvent: NgbSlideEvent) {
     if (
       this.unpauseOnArrow &&
       slideEvent.paused &&
@@ -60,7 +60,7 @@ export class HotelComponent {
     }
   }
 
-  scrollOnTop() {
+  public scrollOnTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }

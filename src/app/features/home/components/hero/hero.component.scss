@@ -1,6 +1,6 @@
 @import "../../../../../variables";
 
-.header {
+.hero {
   position: relative;
   width: 100%;
   height: 100vh;
@@ -10,7 +10,7 @@
   padding-left: 20px;
   padding-right: 20px;
 
-  .header-img {
+  .hero-img {
     > img:nth-child(1) {
       max-width: 100%;
       width: 480px;
@@ -21,22 +21,22 @@
     }
   }
 
-  .header-txt {
+  .hero-txt {
     display: none;
   }
 }
 
 @media screen and (min-width: $tablet) {
-  #header {
+  .hero {
     padding-left: 60px;
     padding-right: 60px;
     justify-content: space-around;
 
-    > .header-img {
+    > .hero-img {
       width: 50%;
     }
 
-    > .header-txt {
+    > .hero-txt {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
@@ -47,7 +47,7 @@
       padding-right: 40px;
       height: 400px;
 
-      > .heading-image {
+      > .hero-image {
         display: flex;
         justify-content: center;
         width: 100%;
@@ -73,11 +73,11 @@
 }
 
 @media screen and (min-width: $desktop) {
-  #header {
+  .hero {
     padding-left: 80px;
     padding-right: 80px;
 
-    > .header-img {
+    > .hero-img {
       display: flex;
       align-items: center;
       justify-content: start;
@@ -94,7 +94,7 @@
       }
     }
 
-    > .header-txt {
+    > .hero-txt {
       > p {
         line-height: 30px;
       }
@@ -103,11 +103,11 @@
 }
 
 @media screen and (min-width: $desktop-large) {
-  #header {
+  .hero {
     padding-left: 12%;
     padding-right: 12%;
 
-    > .header-txt {
+    > .hero-txt {
       > p {
         font-size: $font-size-large;
       }

@@ -1,5 +1,5 @@
-<header class="header main" id="header">
-  <div class="header-img">
+<section class="hero" id="hero">
+  <div class="hero-img">
     <img
       [src]="mobileHeaderUrl"
       alt="Sazano Wine"
@@ -10,22 +10,22 @@
       class="desktop-main"
     />
   </div>
-  <div class="header-txt">
+  <article class="hero-txt">
     <h1
-      class="desktop-header-title"
+      class="desktop-hero-title"
       id="desktopTitle"
       [appLangClass]="'geo-primary, eng-primary, eng-primary'"
     >
-      {{ "header.title" | translate }}
+      {{ "hero.title" | translate }}
     </h1>
     <p
-      class="header-title-description"
+      class="hero-title-description"
       [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'"
     >
-      {{ "header.text" | translate }}
+      {{ "hero.text" | translate }}
     </p>
-    <div class="heading-image">
-      <img src="assets/images/home/header/Group%2042.svg" alt="Grape" />
+    <div class="hero-image">
+      <img src="../../../../../assets/images/home/hero/Group%2042.svg" alt="Grape" />
     </div>
-  </div>
-</header>
+  </article>
+</section>

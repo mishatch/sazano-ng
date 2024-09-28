@@ -5,13 +5,13 @@ import { LanguageService } from '../../../../shared/services/language.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-header',
+  selector: 'app-hero',
   standalone: true,
   imports: [LanguageClassDirective, TranslateModule],
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+  templateUrl: './hero.component.html',
+  styleUrls: ['./hero.component.scss'],
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeroComponent implements OnInit, OnDestroy {
   mobileHeaderUrl: string = '';
   desktopHeaderUrl: string = '';
   private currentLanguage: string = '';
@@ -40,14 +40,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private updateHeaderUrls() {
     if (this.currentLanguage === 'geo') {
       this.mobileHeaderUrl =
-        'assets/images/home/header/main_logo_mobile_ge.webp';
+        'assets/images/home/hero/main_logo_mobile_ge.webp';
       this.desktopHeaderUrl =
-        'assets/images/home/header/main_logo_desktop_ge.webp';
+        'assets/images/home/hero/main_logo_desktop_ge.webp';
     } else {
       this.mobileHeaderUrl =
-        'assets/images/home/header/main_logo_mobile_en.webp';
+        'assets/images/home/hero/main_logo_mobile_en.webp';
       this.desktopHeaderUrl =
-        'assets/images/home/header/main_logo_desktop_en.webp';
+        'assets/images/home/hero/main_logo_desktop_en.webp';
     }
   }
 }

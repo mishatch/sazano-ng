@@ -1,10 +1,10 @@
 <section class="restaurant" id="restaurant">
-  <h1
+  <h2
     class="heading restaurant-heading"
     [appLangClass]="'geo-primary, eng-primary, ru-primary'"
   >
     {{ "restaurant.title" | translate }}
-  </h1>
+  </h2>
   <div class="restaurant-content">
     <div class="restaurant-img">
       <img
@@ -23,13 +23,13 @@
         [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'"
       >
         {{ "restaurant.text" | translate }}
-        <span (click)="openScrollableContent(longContent)">
+        <span (click)="openMenu(menu)">
           {{ "restaurant.button-text" | translate }}
         </span>
       </p>
     </div>
   </div>
-  <ng-template #longContent let-modal>
+  <ng-template #menu let-modal>
     <div class="modal-body">
       <button
         type="button"

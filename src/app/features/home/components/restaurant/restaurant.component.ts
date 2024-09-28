@@ -32,7 +32,7 @@ export class RestaurantComponent implements OnInit, OnDestroy {
     this.languageSubscription.unsubscribe();
   }
 
-  public openScrollableContent(longContent: TemplateRef<any>) {
+  public openMenu(longContent: TemplateRef<any>) {
     this.modalService.open(longContent, {
       scrollable: true,
       centered: true,

@@ -3,13 +3,13 @@
   id="hotel"
   [appLangClass]="'geo-primary, eng-primary, ru-primary'"
 >
-  <h1 class="hotel-heading">{{ "hotel.title" | translate }}</h1>
+  <h2 class="hotel-heading">{{ "hotel.title" | translate }}</h2>
   <ngb-carousel
-    #carousel
+    #hotelCarousel
     [interval]="2000"
     [pauseOnHover]="pauseOnHover"
     [pauseOnFocus]="pauseOnFocus"
-    (slide)="onSlide($event)"
+    (slide)="onHotelSlide($event)"
     class="carousel-container"
   >
     <ng-template ngbSlide>
