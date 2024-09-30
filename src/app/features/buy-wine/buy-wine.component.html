@@ -179,6 +179,8 @@
         </p>
         <p class="eng-primary">{{ wine.price }} ₾</p>
 
+        <a routerLink="/wines">დეტალები</a>
+
         @if(getWineQuantity(wine) === 0) {
           <button class="primary-btn" [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'"
                   (click)="addToCart(wine)">

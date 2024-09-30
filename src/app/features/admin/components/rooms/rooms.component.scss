@@ -1,0 +1,41 @@
+@import "../../../../../variables";
+
+.rooms {
+  min-height: $wrapper-min-height-mobile;
+  padding: 80px 20px 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  >div:first-of-type {
+    margin-right: auto;
+    >a {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+@media screen and (min-width: $tablet) {
+  .rooms {
+    min-height: $wrapper-min-height-tablet;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media screen and (min-width: $desktop) {
+  .rooms {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}
+
+
+@media screen and (min-width: $desktop-large) {
+  .rooms {
+    padding-left: 12%;
+    padding-right: 12%;
+    min-height: $wrapper-min-height-desktop-large;
+  }
+}

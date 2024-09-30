@@ -32,7 +32,7 @@
               <button class="btn btn-warning btn-sm" (click)="editWine(wine?.id)" >Edit</button>
             </td>
             <td>
-              <button class="btn btn-danger btn-sm" (click)="openModal(content, wine?.id)" >Delete</button>
+              <button class="btn btn-danger btn-sm" (click)="openModal(deleteModal, wine?.id)" >Delete</button>
             </td>
           </tr>
         }
@@ -40,7 +40,7 @@
     </table>
   </div>
 </div>
-<ng-template #content let-modal>
+<ng-template #deleteModal let-modal>
   <div class="modal-header">
     <h4 class="modal-title">დარწმუნებული ხართ რომ გსურთ ღვინის წაშლა?</h4>
     <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>

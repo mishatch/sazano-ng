@@ -6,4 +6,5 @@ export interface Room {
   id: number;
   modalImages: string[];
   name: string;
+  price: number;
 }

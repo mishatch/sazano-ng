@@ -14,14 +14,14 @@
       color: $nav-links;
     }
 
-    .btn {
-      width: 100%;
-      background-color: $nav-links;
-      color: $body-bg;
-    }
 
     .card-img-top {
       height: 227px;
+    }
+    >.card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
   }
 }
@@ -46,7 +46,7 @@
     padding: 0 80px;
 
     > .card {
-      width: calc(33% - 30px);
+      width: calc(33% - 31px);
     }
   }
 }

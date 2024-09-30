@@ -83,6 +83,10 @@
           color: $body-bg;
           border-radius: 8px;
         }
+        >a {
+          margin-bottom: 1rem;
+          color: $nav-links;
+        }
 
         > .adjust-quantity {
           display: flex;

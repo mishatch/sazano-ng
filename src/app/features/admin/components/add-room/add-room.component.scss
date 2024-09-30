@@ -1,0 +1,36 @@
+@import "../../../../../variables";
+
+.add-room {
+  min-height: $wrapper-min-height-mobile;
+  padding: 80px 20px 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  >form {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: $tablet) {
+  .add-room {
+    min-height: $wrapper-min-height-tablet;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media screen and (min-width: $desktop) {
+  .add-room {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}
+
+
+@media screen and (min-width: $desktop-large) {
+  .add-room {
+    padding-left: 12%;
+    padding-right: 12%;
+    min-height: $wrapper-min-height-desktop-large;
+  }
+}

@@ -109,6 +109,30 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'admin/rooms',
+    canActivate: [AdminGuard, AuthGuard],
+    loadComponent: () =>
+      import('./features/admin/components/rooms/rooms.component').then(
+        (m) => m.RoomsComponent
+      ),
+  },
+  {
+    path: 'admin/add-room',
+    canActivate: [AdminGuard, AuthGuard],
+    loadComponent: () =>
+      import('./features/admin/components/add-room/add-room.component').then(
+        (m) => m.AddRoomComponent
+      ),
+  },
+  {
+    path: 'admin/edit-room/:id',
+    canActivate: [AdminGuard, AuthGuard],
+    loadComponent: () =>
+      import('./features/admin/components/add-room/add-room.component').then(
+        (m) => m.AddRoomComponent
+      ),
+  },
+  {
     path: 'checkout',
     canActivate: [AuthGuard],
     loadComponent: () =>

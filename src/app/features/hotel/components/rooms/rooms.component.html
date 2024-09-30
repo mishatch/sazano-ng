@@ -3,13 +3,15 @@
   <div class="card">
     <img class="card-img-top" [src]="room.cardImage" alt="Room Image" />
     <div class="card-body">
-      <h5 class="card-title eng-primary">{{ room.name }}</h5>
+      <h5 class="card-title eng-primary">{{ room.name }} - {{room.price}} ₾</h5>
       <a
-        class="btn"
+        class="primary-btn"
         (click)="openRoomDetails(room.description, room.modalImages, room.name)"
         [appLangClass]="'geo-primary, eng-primary, ru-primary'"
       >
-        {{ "hotel-page.room-description" | translate }}
+        <span>
+          {{ "hotel-page.room-description" | translate }}
+        </span>
       </a>
     </div>
   </div>

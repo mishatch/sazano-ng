@@ -1,0 +1,46 @@
+<section class="rooms geo-primary" id="rooms">
+  <div>
+    <a routerLink="/admin/add-room" class="primary-btn">
+      <span>
+        ოთახის დამატება
+      </span>
+    </a>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="ძებნა" [(ngModel)]="searchTerm" (ngModelChange)="filterRooms()"/>
+    </div>
+  </div>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th>ოთახის სახელი</th>
+      <th>ფასი</th>
+      <th>ჩასწორება</th>
+      <th>წაშლა</th>
+    </tr>
+    </thead>
+    <tbody>
+      @for (room of filteredRooms; track room) {
+        <tr class="eng-secondary">
+          <td>{{ room.name }}</td>
+          <td>{{ room.price }} ₾</td>
+          <td><button class="btn btn-warning btn-sm" (click)="editRoom(room)">Edit</button></td>
+          <td><button class="btn btn-danger btn-sm" (click)="openModal(deleteModal, room.id)">Delete</button></td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</section>
+
+<ng-template #deleteModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">დარწმუნებული ხართ რომ გსურთ ოთახის წაშლა?</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <p>ოთახის ინფორმაცია წაიშლება მონაცემთა ბაზიდან</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="deleteRoom(); modal.close()">დიახ</button>
+    <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">არა</button>
+  </div>
+</ng-template>

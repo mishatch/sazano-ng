@@ -1,0 +1,114 @@
+<section class="add-room geo-secondary">
+  <form [formGroup]="addRoomForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="roomName">ოთახის სახელი</label>
+      <input
+        type="text"
+        id="roomName"
+        formControlName="name"
+        class="form-control"
+        [class.is-invalid]="name?.touched && name?.invalid"
+      />
+      @if (name?.touched && name?.errors?.['required']) {
+        <small>ეს ველი სავალდებულოა</small>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="roomPrice">ფასი 1 ღამეზე</label>
+      <input
+        type="number"
+        id="roomPrice"
+        formControlName="price"
+        class="form-control"
+        [class.is-invalid]="price?.touched && price?.invalid"
+      />
+      @if (price?.touched && price?.errors?.['required']) {
+        <small>ეს ველი სავალდებულოა</small>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="cardImage">მთავარი სურათის URL</label>
+      <input
+        type="text"
+        id="cardImage"
+        formControlName="cardImage"
+        class="form-control"
+        [class.is-invalid]="cardImage?.touched && cardImage?.invalid"
+      />
+      @if (cardImage?.touched && cardImage?.errors?.['required']) {
+        <small>ეს ველი სავალდებულოა</small>
+      }
+    </div>
+
+    <div formGroupName="description">
+      <div class="form-group">
+        <label for="roomDescriptionka">ოთახის აღწერა (ქართული)</label>
+        <textarea
+          id="roomDescriptionka"
+          formControlName="ka"
+          class="form-control"
+          [class.is-invalid]="ka?.touched && ka?.invalid"
+        >
+
+        </textarea>
+        @if (ka?.touched && ka?.errors?.['required']) {
+          <small>ეს ველი სავალდებულოა</small>
+        }
+      </div>
+      <div class="form-group">
+        <label for="roomDescriptionen">ოთახის აღწერა (ინგლისურად)</label>
+        <textarea
+          id="roomDescriptionen"
+          formControlName="en"
+          class="form-control"
+          [class.is-invalid]="en?.touched && en?.invalid"
+        ></textarea>
+        @if (en?.touched && en?.errors?.['required']) {
+          <small>ეს ველი სავალდებულოა</small>
+        }
+      </div>
+      <div class="form-group">
+        <label for="roomDescriptionru">ოთახის აღწერა (რუსულად)</label>
+        <textarea
+          id="roomDescriptionru"
+          formControlName="ru"
+          class="form-control"
+          [class.is-invalid]="ru?.touched && ru?.invalid"
+        ></textarea>
+
+        @if (ru?.touched && ru?.errors?.['required']) {
+          <small>ეს ველი სავალდებულოა</small>
+        }
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>ოთახის სურათები</label>
+      <div formArrayName="modalImages">
+        <div *ngFor="let imageCtrl of modalImages.controls; let i = index">
+          <input type="text" [formControlName]="i" class="form-control mb-2" placeholder="Image URL {{i + 1}}" />
+          <button type="button" class="btn btn-danger btn-sm" (click)="removeModalImage(i)">წაშლა</button>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary btn-sm mt-2" (click)="addModalImage()">ფოტოს დამატება</button>
+    </div>
+
+    @if (errorMessage) {
+      <div class="alert alert-danger" role="alert">
+        დაფიქსირდა შეცდომა, გთხოვთ სცადოთ ახლიდან
+      </div>
+    }
+
+    <button type="submit" class="primary-btn" [class.is-disabled]="addRoomForm.invalid">
+      <span>
+        @if (isEditMode) {
+          ჩასწორება
+        } @else {
+          ოთახის დამატება
+        }
+      </span>
+    </button>
+  </form>
+</section>

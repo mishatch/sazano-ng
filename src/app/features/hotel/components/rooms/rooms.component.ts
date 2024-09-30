@@ -1,13 +1,13 @@
 import {Component, ViewChild, OnDestroy, OnInit} from '@angular/core';
 import { RoomDetailsComponent } from '../room-details/room-details.component';
-import { RoomService } from '../../services/room.service';
+import { RoomService } from '../../../../core/services/room.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { LanguageClassDirective } from '../../../../shared/directives/language-class.directive';
 import { LanguageService } from '../../../../shared/services/language.service';
-import { Description } from '../../models/description.interface';
-import { Room } from '../../models/room.interface';
+import { Description } from '../../../../core/models/room/description.interface';
+import { Room } from '../../../../core/models/room/room.interface';
 import { Subscription } from 'rxjs';
-import { Language } from '../../models/language.type';
+import { Language } from '../../../../core/models/room/language.type';
 @Component({
   selector: 'app-rooms',
   standalone: true,
@@ -64,6 +64,7 @@ export class RoomsComponent implements OnInit, OnDestroy {
     this.roomsSubscription = this.roomService.getRooms().subscribe(
       (data: Room[]) => {
         this.rooms = data;
+        console.log('Rooms:', this.rooms);
       },
       (error) => {
         console.error('Error fetching rooms:', error);
