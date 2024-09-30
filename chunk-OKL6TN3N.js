@@ -1,1 +1,0 @@
-import{Z as i,k as e}from"./chunk-MOSC54PF.js";var c=(()=>{let t=class t{constructor(){this._loading=new e(!1),this.loading$=this._loading.asObservable()}show(){this._loading.next(!0)}hide(){this._loading.next(!1)}};t.\u0275fac=function(r){return new(r||t)},t.\u0275prov=i({token:t,factory:t.\u0275fac,providedIn:"root"});let o=t;return o})();export{c as a};
