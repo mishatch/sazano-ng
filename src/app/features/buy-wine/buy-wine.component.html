@@ -179,7 +179,9 @@
         </p>
         <p class="eng-primary">{{ wine.price }} ₾</p>
 
-        <a routerLink="/wines">დეტალები</a>
+        <a routerLink="/wines" [appLangClass]="'geo-secondary, eng-secondary, eng-secondary'">
+          {{ "wines.wine-description" | translate }}
+        </a>
 
         @if(getWineQuantity(wine) === 0) {
           <button class="primary-btn" [appLangClass]="'geo-secondary, eng-secondary, ru-secondary'"
