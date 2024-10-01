@@ -1,10 +1,10 @@
-<div class="wrapper">
-  <h5>
-    შესრულებული შეკვეთები
-  </h5>
+<div class="wrapper geo-secondary">
   @if (completedOrders.length === 0) {
-    შესრულებელი შეკვეთები არ არის
+    <div class="alert alert-info">შესრულებელი შეკვეთები არ არის</div>
   } @else {
+    <h5>
+      შესრულებული შეკვეთები
+    </h5>
     <table class="table table-striped" >
       <thead>
       <tr>

@@ -19,3 +19,24 @@
     overflow-x: scroll;
   }
 }
+
+@media screen and (min-width: $tablet){
+  .wrapper{
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media screen and (min-width: $desktop){
+  .wrapper{
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}
+
+@media screen and (min-width: $desktop-large){
+  .wrapper{
+    padding-left: 12%;
+    padding-right: 12%;
+  }
+}

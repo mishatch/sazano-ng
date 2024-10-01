@@ -95,7 +95,11 @@
     }
   <button type="submit" class="primary-btn" [class.is-disabled]="addWineForm.invalid">
     <span>
-      ღვინის დამატება
+      @if (editMode){
+        რედაქტირება
+      } @else {
+        ღვინის დამატება
+      }
     </span>
   </button>
   </form>

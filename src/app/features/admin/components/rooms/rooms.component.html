@@ -9,7 +9,7 @@
       <input type="text" class="form-control" placeholder="ძებნა" [(ngModel)]="searchTerm" (ngModelChange)="filterRooms()"/>
     </div>
   </div>
-  <table class="table table-bordered table-striped">
+  <table class="table table-bordered table-striped geo-secondary">
     <thead class="thead-dark">
     <tr>
       <th>ოთახის სახელი</th>
@@ -22,7 +22,7 @@
       @for (room of filteredRooms; track room) {
         <tr class="eng-secondary">
           <td>{{ room.name }}</td>
-          <td>{{ room.price }} ₾</td>
+          <td class="geo-secondary">{{ room.price }} ₾</td>
           <td><button class="btn btn-warning btn-sm" (click)="editRoom(room)">Edit</button></td>
           <td><button class="btn btn-danger btn-sm" (click)="openModal(deleteModal, room.id)">Delete</button></td>
         </tr>

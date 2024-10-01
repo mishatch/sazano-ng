@@ -39,9 +39,12 @@ export class UsersListComponent implements OnInit, OnDestroy {
       return this.filteredUsersList;
     }
     const search = this.searchTerm.toLowerCase();
-    return this.filteredUsersList.filter((user: User) => user.name.toLowerCase().includes(search));
+    return this.filteredUsersList.filter((user: User) =>
+      user.name.toLowerCase().includes(search) ||
+      user.email.toLowerCase().includes(search) ||
+      user.phoneNumber.includes(search)
+    );
   }
-
   public showNormalUsers(): void {
     this.filteredUsersList = this.users.filter((user: User) => user.roles.includes('User') && !user.roles.includes('Admin'));
   }

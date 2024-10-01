@@ -1,10 +1,10 @@
-<div class="wrapper">
-  <h5>
-    შესასრულებელი შეკვეთები
-  </h5>
+<div class="wrapper geo-secondary">
   @if (pendingOrders.length === 0) {
-    შესასრულებელი შეკვეთები არ არის
+    <div class="alert alert-info">შესასრულებელი შეკვეთები არ არის</div>
   } @else {
+    <h5>
+      შესასრულებელი შეკვეთები
+    </h5>
     <table class="table table-striped" >
       <thead>
       <tr>
