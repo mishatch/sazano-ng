@@ -27,6 +27,9 @@
   .table-wrapper {
     width: 100%;
     overflow: auto;
+    .alert-info{
+
+    }
     table {
       width: 100%;
       overflow: auto;
@@ -38,6 +41,7 @@
       td {
         font-family: sans-serif;
       }
+
     }
   }
 }

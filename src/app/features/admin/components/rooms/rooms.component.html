@@ -20,7 +20,7 @@
     </thead>
     <tbody>
       @for (room of filteredRooms; track room) {
-        <tr class="eng-secondary">
+        <tr class="eng-primary">
           <td>{{ room.name }}</td>
           <td class="geo-secondary">{{ room.price }} ₾</td>
           <td><button class="btn btn-warning btn-sm" (click)="editRoom(room)">Edit</button></td>

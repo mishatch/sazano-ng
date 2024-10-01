@@ -6,7 +6,7 @@
     <input type="text" class="form-control" placeholder="ძებნა" [(ngModel)]="searchTerm" />
   </div>
 
-  @if (filteredUsers().length > 0){
+  @if (filteredUsers() && filteredUsers().length > 0){
     <div class="table-wrapper  geo-secondary">
       <table class="table table-striped table-bordered">
         <thead class="thead-dark">

@@ -10,34 +10,38 @@
     </div>
   </div>
   <div class="table-wrapper">
-    <table class="table table-striped table-bordered geo-secondary">
-      <thead class="thead-dark">
-      <tr>
-        <th>პროდუქტის სახელოდება</th>
-        <th>წარმოების წელი</th>
-        <th>ფასი</th>
-        <th>რაოდენობა მარაგში</th>
-        <th>ჩასწორება</th>
-        <th>წაშლა</th>
-      </tr>
-      </thead>
-      <tbody>
-        @for(wine of filteredWines(); track wine){
-          <tr class="eng-primary">
-            <td>{{ wine.name }}</td>
-            <td>{{ wine.vintageYear }}</td>
-            <td>{{ wine.price }} ₾</td>
-            <td>{{ wine.stockQuantity }}</td>
-            <td>
-              <button class="btn btn-warning btn-sm" (click)="editWine(wine?.id)" >Edit</button>
-            </td>
-            <td>
-              <button class="btn btn-danger btn-sm" (click)="openModal(deleteModal, wine?.id)" >Delete</button>
-            </td>
-          </tr>
-        }
-      </tbody>
-    </table>
+    @if (filteredWines().length === 0){
+      <div class="alert alert-info">ღვინოები არ მოიძებნა</div>
+    } @else {
+      <table class="table table-striped table-bordered geo-secondary">
+        <thead class="thead-dark">
+        <tr>
+          <th>პროდუქტის სახელოდება</th>
+          <th>წარმოების წელი</th>
+          <th>ფასი</th>
+          <th>რაოდენობა მარაგში</th>
+          <th>ჩასწორება</th>
+          <th>წაშლა</th>
+        </tr>
+        </thead>
+        <tbody>
+          @for(wine of filteredWines(); track wine){
+            <tr class="eng-primary">
+              <td>{{ wine.name }}</td>
+              <td>{{ wine.vintageYear }}</td>
+              <td>{{ wine.price }} ₾</td>
+              <td>{{ wine.stockQuantity }}</td>
+              <td>
+                <button class="btn btn-warning btn-sm" (click)="editWine(wine?.id)" >Edit</button>
+              </td>
+              <td>
+                <button class="btn btn-danger btn-sm" (click)="openModal(deleteModal, wine?.id)" >Delete</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
   </div>
 </div>
 <ng-template #deleteModal let-modal>

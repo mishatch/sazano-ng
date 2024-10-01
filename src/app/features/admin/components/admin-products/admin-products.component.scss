@@ -29,6 +29,11 @@
   .table-wrapper {
     width: 100%;
     overflow-x: auto;
+    .alert.alert-info {
+      width: 320px;
+      margin: 0 auto;
+      text-align: center;
+    }
     > table {
       width: 100%;
     }

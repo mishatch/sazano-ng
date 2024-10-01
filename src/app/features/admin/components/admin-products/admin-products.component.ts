@@ -56,7 +56,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy{
       return this.wines;
     }
     const search = this.searchTerm.toLowerCase();
-    return this.wines.filter(wine => wine.name.toLowerCase().includes(search));
+    return this.wines.filter(wine => wine.name.toLowerCase().includes(search) || wine.vintageYear.toString().includes(search));
   }
 
   public openModal(content: TemplateRef<any>, wineId: number | undefined) {
