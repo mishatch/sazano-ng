@@ -1,27 +1,28 @@
-# EthnoSazano
+# Sazano Wine Cellar and Ethno Sazano Hotel
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+პროექტი შესრულებულია Angular v.18.1.4 გამოყენებით.
 
-## Development server
+## ფუნქციონალი
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+  ეს არის ჩემი პირადი პროექტი რომელიც დამზადებულია საზანოს ღვინის მარნისა და სასტუმროსათვის.
+ვებ-გვერდს აქვს რამდენიმე მნიშვნელოვანი და გამოკვეთილი Feature. ესენია: ავტორიზაცია, რეგისტრაცია, 
+ღვინის ყიდვა და ადმინის პანელი.
+  ჩვეულებრივ მომხმარებლებს შეუძლიათ ვებ-გვერდზე იხილონ დეტალური ინფორმაცია სასტუმროსა და მეღვინეობის შესახებ.
+მათ ასევე შეუძლიათ ავტორიზაციის შემდგომ შეიძინონ სასურველი ღვინო. (ვებ გვერდზე გადახდა ჩაშენებული არ
+არის და სიმულაციაა გაკეთებული, თუმცა სურვილის შემთხვევაში მარტივად დაემატება გადახდის ფუნქციონალიც).
+შეკვეთის გაკეთების შემდეგ მომხმარებელი მის სტატუსს აკვირდება პროფილიდან შეკვეთების გვერდზე.
+  ადმინის პანელში ადმინისტრატორს შეუძლია აკონტროლოს მომხმარებლები და მიანიჭოს მათ როლები. (გახადოს ადმინისტრატორი ან წაართვას წოდება)
+ასევე, იგი ახორციელებს CRUD ოპერაციებს ღვინოებსა და ოთახებზე. ადმინისტრატორი ასევე ხედავს შეკვეთებს და 
+შესრულების შემთხვევაში შეუძლია მათი შესრულებულად მონიშვნა. ადმინის პანელი შედგება 4 კომპონენტისაგან.
+1) თავისივე პროფილის ინფორმაცია
+2) შეკვეთების მენეჯმენტი
+3) ღვინოების მენეჯმენტი
+4) ოთახების მენეჯმენტი
 
-## Code scaffolding
+## პროექტის არქიტექტურა
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+  პროექტი აწყობილია Angular14-ში დამატებული Standalone პროექტის არქიტექტურით. გამოყენებულია NgxBootstrap,
+NgxTranslate, Angular Material (Pagination-ისთვის). Backend დაწერილია C#-ში .NET Core 5-ზე. ავტორიზაციისათვის გამოყენებულია
+Angular JWT ბიბლიოთეკა. პროექტში შექმნილია სხვადასხვა Custom დირექტივები (LanguageClassDirective for applying different
+font classes according to language) და Pipe-ები.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
