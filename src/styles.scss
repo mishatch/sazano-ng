@@ -166,17 +166,19 @@ button.primary-btn, a.primary-btn {
   &::before {
     content: "";
     position: absolute;
-    top: 0;
+    top: -500%;
     left: 0;
     width: 100%;
-    height: 0;
-    background: $nav-links-light;
+    height: 700%;
+    background-image: url("assets/images/svg_icons/leaves.svg");
+    background-size: cover;
     z-index: 1;
-    transition: 0.8s;
-    border-radius: 0 0 50% 50%;
+    transition: top 1s ease-in-out, opacity 0.3s ease-out;
+    opacity: 0;
   }
   &:hover::before {
-    height: 180%;
+    top: 0;
+    opacity: 1;
   }
   &.is-disabled {
     opacity: 0.6;
