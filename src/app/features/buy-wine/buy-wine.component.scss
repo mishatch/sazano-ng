@@ -83,7 +83,7 @@
           color: $body-bg;
           border-radius: 8px;
         }
-        >a {
+        > a {
           margin-bottom: 1rem;
           color: $nav-links;
         }
@@ -95,7 +95,17 @@
 
           > button {
             width: 40%;
-            color: $body-bg;
+            padding: 10px 20px;
+            background-color: $nav-links;
+            border: none;
+            border-radius: 10px;
+            color: $white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.8s;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
           }
         }
       }
